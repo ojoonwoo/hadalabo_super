@@ -955,34 +955,38 @@
 
     // light
     function light($light, duration, opacity) {
-      $light
-        .stop()
-        .css('opacity', 1)
-        .animate(
-          {
-            opacity: opacity[0]
-          },
-          duration[0],
-          function() {
-            $light.stop().animate(
-              {
-                opacity: opacity[1]
-              },
-              duration[1],
-              function() {
-                light($light, duration, opacity);
-              }
-            );
-          }
-        );
+      setTimeout(function() {
+        $light
+          .stop()
+          .css('opacity', 0)
+          .animate(
+            {
+              opacity: opacity[0]
+            },
+            duration[1],
+            function() {
+              setTimeout(function() {
+                $light.stop().animate(
+                  {
+                    opacity: opacity[1]
+                  },
+                  duration[3],
+                  function() {
+                    light($light, duration, opacity);
+                  }
+                );
+              }, duration[2]);
+            }
+          );
+      }, duration[0]);
     }
     var $light01 = $('.js-light-01'),
       $light02 = $('.js-light-02');
     if ($light01.length) {
-      light($light01, [2500, 2500], [0.3, 1]);
+      light($light01, [0, 2500, 3500, 2000], [1, 0]);
     }
     if ($light02.length) {
-      light($light02, [1000, 1000], [0.4, 1]);
+      light($light02, [2000, 2500, 1500, 2000], [1, 0]);
     }
   });
 })(jQuery);

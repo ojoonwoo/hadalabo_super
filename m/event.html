@@ -8,9 +8,9 @@
 		<link type="text/css" rel="stylesheet" href="css/font.css">
 		<link type="text/css" rel="stylesheet" href="css/reset.css">
 		<link type="text/css" rel="stylesheet" href="css/ui.css">
-		<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
-		<script type="text/javascript" src="../js/swiper.min.js"></script>
-		<script type="text/javascript" src="../js/m.ui.js"></script>
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="js/swiper.min.js"></script>
+		<script type="text/javascript" src="js/ui.js"></script>
 	</head>
 	<body>
 		<div class="wrap">
@@ -28,23 +28,23 @@
 				<ul class="form">
 					<li class="form-01">
 						<span class="for-a11y">[수]</span>
-						<input type="text" id="quatrain01" class="quatrain-input" title="4행시 중 [수]에 대한 내용" placeholder="13자 이내로 입력해주세요">
+						<input type="text" id="quatrain01" title="4행시 중 [수]에 대한 내용" placeholder="13자 이내로 입력해주세요">
 					</li>
 					<li class="form-02">
 						<span class="for-a11y">[퍼]</span>
-						<input type="text" id="quatrain02" class="quatrain-input" title="4행시 중 [퍼]에 대한 내용" placeholder="13자 이내로 입력해주세요">
+						<input type="text" id="quatrain02" title="4행시 중 [퍼]에 대한 내용" placeholder="13자 이내로 입력해주세요">
 					</li>
 					<li class="form-03">
 						<span class="for-a11y">[보]</span>
-						<input type="text" id="quatrain03" class="quatrain-input" title="4행시 중 [보]에 대한 내용" placeholder="13자 이내로 입력해주세요">
+						<input type="text" id="quatrain03" title="4행시 중 [보]에 대한 내용" placeholder="13자 이내로 입력해주세요">
 					</li>
 					<li class="form-04">
 						<span class="for-a11y">[습]</span>
-						<input type="text" id="quatrain04" class="quatrain-input" title="4행시 중 [습]에 대한 내용" placeholder="13자 이내로 입력해주세요">
+						<input type="text" id="quatrain04" title="4행시 중 [습]에 대한 내용" placeholder="13자 이내로 입력해주세요">
 					</li>
 					<li class="form-05">
 						<span class="for-a11y">by</span>
-						<input type="text" id="name" class="quatrain-input" title="작성자 이름" placeholder="작성자 이름">
+						<input type="text" id="name" title="작성자 이름" placeholder="작성자 이름">
 					</li>
 				</ul>
 				<button type="button" class="event-submit" onclick="hadalaboUI.layer.open($('#layerEntry'));">
@@ -200,15 +200,5 @@
 				</button>
 			</section>
 		</div>
-		<script>
-			$('.quatrain-input').on('keyup', function(e) {
-				var thisInputLeng = $(this).val().length;
-				if(thisInputLeng > 13) {
-					//					console.log($(this).val());
-					$(this).val($(this).val().substring(0, 13));
-					$(this).parent().next().find('.quatrain-input').focus();
-				}
-			});
-		</script>
 	</body>
 </html>

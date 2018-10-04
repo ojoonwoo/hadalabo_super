@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="ko-KR">
-	<head>
-		<meta charset="UTF-8">
-		<title>하다라보 고쿠쥰 4행시 이벤트</title>
-		<link type="text/css" rel="stylesheet" href="css/swiper.css">
-		<link type="text/css" rel="stylesheet" href="css/font.css">
-		<link type="text/css" rel="stylesheet" href="css/reset.css">
-		<link type="text/css" rel="stylesheet" href="css/ui.css">
-		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-		<script type="text/javascript" src="js/swiper.min.js"></script>
-		<script type="text/javascript" src="js/ui.js"></script>
-	</head>
+<?
+	include_once "head.php";
+?>
 	<body>
 		<div class="wrap">
 			<div class="event-section event-section--01">
@@ -27,27 +17,27 @@
 					<ul class="form">
 						<li class="form-01">
 							<span class="for-a11y">[수]</span>
-							<input type="text" id="quatrain01" title="4행시 중 [수]에 대한 내용">
+							<input type="text" id="quatrain01" class="quatrain-input" title="4행시 중 [수]에 대한 내용">
 							<label for="quatrain01">13자 이내로 입력해주세요</label>
 						</li>
 						<li class="form-02">
 							<span class="for-a11y">[퍼]</span>
-							<input type="text" id="quatrain02" title="4행시 중 [퍼]에 대한 내용">
+							<input type="text" id="quatrain02" class="quatrain-input" title="4행시 중 [퍼]에 대한 내용">
 							<label for="quatrain02">13자 이내로 입력해주세요</label>
 						</li>
 						<li class="form-03">
 							<span class="for-a11y">[보]</span>
-							<input type="text" id="quatrain03" title="4행시 중 [보]에 대한 내용">
+							<input type="text" id="quatrain03" class="quatrain-input" title="4행시 중 [보]에 대한 내용">
 							<label for="quatrain03">13자 이내로 입력해주세요</label>
 						</li>
 						<li class="form-04">
 							<span class="for-a11y">[습]</span>
-							<input type="text" id="quatrain04" title="4행시 중 [습]에 대한 내용">
+							<input type="text" id="quatrain04" class="quatrain-input" title="4행시 중 [습]에 대한 내용">
 							<label for="quatrain04">13자 이내로 입력해주세요</label>
 						</li>
 						<li class="form-05">
 							<span class="for-a11y">by</span>
-							<input type="text" id="name" title="작성자 이름">
+							<input type="text" id="quatrain_name" title="작성자 이름">
 							<label for="name">작성자 이름</label>
 						</li>
 					</ul>
@@ -73,7 +63,8 @@
 							</button>
 						</li>
 					</ul>
-					<button type="button" class="event-submit" onclick="hadalaboUI.layer.open($('#layerEntry'));"><!-- 20180930 : onclick 추가 -->
+					<!-- <button type="button" class="event-submit" onclick="hadalaboUI.layer.open($('#layerEntry'));"> -->
+					<button type="button" class="event-submit"><!-- 20180930 : onclick 추가 -->
 						<img src="images/event-section-01-submit.png" alt="등록하기">
 					</button>
 				</div>
@@ -118,7 +109,8 @@
 						</label>
 					</dt>
 					<dd>
-						<input type="text" id="layerEntryName">
+						<!-- <input type="text" id="layerEntryName"> -->
+						<input type="text" id="mb_name">
 					</dd>
 					<dt>
 						<label for="layerEntryTel">
@@ -126,7 +118,8 @@
 						</label>
 					</dt>
 					<dd>
-						<input type="tel" id="layerEntryTel">
+						<!-- <input type="tel" id="layerEntryTel"> -->
+						<input type="tel" id="mb_phone">
 					</dd>
 					<dt>
 						<label for="layerEntryAddress">
@@ -134,11 +127,13 @@
 						</label>
 					</dt>
 					<dd>
-						<input type="text" id="layerEntryAddress" class="address-01" title="주소1">
+						<!-- <input type="text" id="layerEntryAddress" class="address-01" title="주소1"> -->
+						<input type="text" id="mb_addr1" class="address-01" title="주소1">
 						<button type="button" class="search">
 							<img src="images/layer-entry-search.png" alt="우편번호 검색">
 						</button>
-						<input type="text" class="address-02" title="나머지 주소">
+						<!-- <input type="text" class="address-02" title="나머지 주소"> -->
+						<input type="text" id="mb_addr2" class="address-02" title="나머지 주소">
 					</dd>
 				</dl>
 				<div class="agree">
@@ -206,5 +201,30 @@
 				</button>
 			</div>
 		</div>
+		<script>
+			$('.quatrain-input').on('keyup', function(e) {
+				var thisInputLeng = $(this).val().length;
+				if(thisInputLeng > 13) {
+//					console.log($(this).val());
+					$(this).val($(this).val().substring(0, 13));
+					$(this).parent().next().find('.quatrain-input').focus();
+				}
+			});
+
+			$(".event-submit").on("click", function(){
+				var quatrain01		= $("#quatrain01").val();
+				var quatrain02		= $("#quatrain02").val();
+				var quatrain03		= $("#quatrain03").val();
+				var quatrain04		= $("#quatrain04").val();
+				var quatrain_name	= $("#quatrain_name").val();
+
+				if (quatrain01 == "" || quatrain02 == "" || quatrain03 == "" || quatrain04 == "" || quatrain_name == "")
+				{
+					alert("4행시 및 작성자 이름을 모두 입력해 주세요!");
+					return false;
+				}
+
+			});
+		</script>
 	</body>
 </html>
