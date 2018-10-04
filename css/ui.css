@@ -852,6 +852,7 @@ img {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   letter-spacing: -1px;
+	cursor: pointer;
 }
 .event-section--01 .form .is-value + label {
   left: -999999px;

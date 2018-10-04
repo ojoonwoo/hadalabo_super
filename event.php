@@ -38,7 +38,7 @@
 						<li class="form-05">
 							<span class="for-a11y">by</span>
 							<input type="text" id="quatrain_name" title="작성자 이름">
-							<label for="name">작성자 이름</label>
+							<label for="quatrain_name">작성자 이름</label>
 						</li>
 					</ul>
 					<ul class="sns">
