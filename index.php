@@ -209,19 +209,56 @@
 			<div class="main-section main-section--04">
 				<div class="main-section__contents">
 					<ul class="entry-list">
+<?
+	if(isset($_REQUEST['pg']) == false)
+		$pg = "1";
+	else
+		$pg = $_REQUEST['pg'];
+
+	if (!$pg)
+		$pg = "1";
+	if(isset($pg) == false) $pg = 1;	// $pg가 없으면 1로 생성
+
+	$page_size = 8;	// 한 페이지에 나타날 개수
+	$block_size = 10;	// 한 화면에 나타낼 페이지 번호 개수
+
+	$where = "";
+
+	// if ($sDate != "")
+	// 	$where	.= " AND winner_date >= '".$sDate."' AND winner_date <= '".$eDate." 23:59:59'";
+	
+	// if ($search_txt != "")
+	// 	$where	.= " AND ".$search_type." like '%".$search_txt."%'";
+
+	$member_count_query = "SELECT count(*) FROM member_info WHERE 1".$where."";
+
+	list($member_count) = @mysqli_fetch_array(mysqli_query($my_db, $member_count_query));
+
+	$PAGE_CLASS = new mnv_page($pg,$member_count,$page_size,$block_size);
+  
+	$BLOCK_LIST = $PAGE_CLASS->blockList();
+	$PAGE_UNCOUNT = $PAGE_CLASS->page_uncount;
+
+	$member_list_query = "SELECT * FROM member_info WHERE 1".$where." Order by idx DESC LIMIT $PAGE_CLASS->page_start, $page_size";
+print_r($member_list_query);
+	$res = mysqli_query($my_db, $member_list_query);
+
+	while($member_data = @mysqli_fetch_array($res))
+	{
+?>						
 						<li>
-							<p class="name">박규리 님</p>
+							<p class="name"><?=$member_data["quatrain_name"]?> 님</p>
 							<p class="node">
-								<span class="for-a11y">[수]</span>퍼보습 하다라보하다라보
+								<span class="for-a11y">[수]</span><?=$member_data["quatrain01"]?>
 							</p>
 							<p class="node">
-								<span class="for-a11y">[퍼]</span>펙트한 얼굴을 위해
+								<span class="for-a11y">[퍼]</span><?=$member_data["quatrain01"]?>
 							</p>
 							<p class="node">
-								<span class="for-a11y">[보]</span>습빵빵 하다라보
+								<span class="for-a11y">[보]</span><?=$member_data["quatrain01"]?>
 							</p>
 							<p class="node">
-								<span class="for-a11y">[습]</span>관적으로 발라주자!
+								<span class="for-a11y">[습]</span><?=$member_data["quatrain01"]?>
 							</p>
 							<button type="button" class="like">
 								<span class="for-a11y">좋아요</span>
@@ -230,153 +267,9 @@
 								<span class="for-a11y">상세보기</span>
 							</a>
 						</li>
-						<li>
-							<p class="name">박규리 님</p>
-							<p class="node">
-								<span class="for-a11y">[수]</span>퍼보습 하다라보하다라보
-							</p>
-							<p class="node">
-								<span class="for-a11y">[퍼]</span>펙트한 얼굴을 위해
-							</p>
-							<p class="node">
-								<span class="for-a11y">[보]</span>습빵빵 하다라보
-							</p>
-							<p class="node">
-								<span class="for-a11y">[습]</span>관적으로 발라주자!
-							</p>
-							<button type="button" class="like is-active">
-								<span class="for-a11y">좋아요 취소하기</span>
-							</button>
-							<a href="#layerDetail" class="more" data-layer="#layerDetail">
-								<span class="for-a11y">상세보기</span>
-							</a>
-						</li>
-						<li>
-							<p class="name">박규리 님</p>
-							<p class="node">
-								<span class="for-a11y">[수]</span>퍼보습 하다라보하다라보
-							</p>
-							<p class="node">
-								<span class="for-a11y">[퍼]</span>펙트한 얼굴을 위해
-							</p>
-							<p class="node">
-								<span class="for-a11y">[보]</span>습빵빵 하다라보
-							</p>
-							<p class="node">
-								<span class="for-a11y">[습]</span>관적으로 발라주자!
-							</p>
-							<button type="button" class="like">
-								<span class="for-a11y">좋아요</span>
-							</button>
-							<a href="#layerDetail" class="more" data-layer="#layerDetail">
-								<span class="for-a11y">상세보기</span>
-							</a>
-						</li>
-						<li>
-							<p class="name">박규리 님</p>
-							<p class="node">
-								<span class="for-a11y">[수]</span>퍼보습 하다라보하다라보
-							</p>
-							<p class="node">
-								<span class="for-a11y">[퍼]</span>펙트한 얼굴을 위해
-							</p>
-							<p class="node">
-								<span class="for-a11y">[보]</span>습빵빵 하다라보
-							</p>
-							<p class="node">
-								<span class="for-a11y">[습]</span>관적으로 발라주자!
-							</p>
-							<button type="button" class="like">
-								<span class="for-a11y">좋아요</span>
-							</button>
-							<a href="#layerDetail" class="more" data-layer="#layerDetail">
-								<span class="for-a11y">상세보기</span>
-							</a>
-						</li>
-						<li>
-							<p class="name">박규리 님</p>
-							<p class="node">
-								<span class="for-a11y">[수]</span>퍼보습 하다라보하다라보
-							</p>
-							<p class="node">
-								<span class="for-a11y">[퍼]</span>펙트한 얼굴을 위해
-							</p>
-							<p class="node">
-								<span class="for-a11y">[보]</span>습빵빵 하다라보
-							</p>
-							<p class="node">
-								<span class="for-a11y">[습]</span>관적으로 발라주자!
-							</p>
-							<button type="button" class="like">
-								<span class="for-a11y">좋아요</span>
-							</button>
-							<a href="#layerDetail" class="more" data-layer="#layerDetail">
-								<span class="for-a11y">상세보기</span>
-							</a>
-						</li>
-						<li>
-							<p class="name">박규리 님</p>
-							<p class="node">
-								<span class="for-a11y">[수]</span>퍼보습 하다라보하다라보
-							</p>
-							<p class="node">
-								<span class="for-a11y">[퍼]</span>펙트한 얼굴을 위해
-							</p>
-							<p class="node">
-								<span class="for-a11y">[보]</span>습빵빵 하다라보
-							</p>
-							<p class="node">
-								<span class="for-a11y">[습]</span>관적으로 발라주자!
-							</p>
-							<button type="button" class="like">
-								<span class="for-a11y">좋아요</span>
-							</button>
-							<a href="#layerDetail" class="more" data-layer="#layerDetail">
-								<span class="for-a11y">상세보기</span>
-							</a>
-						</li>
-						<li>
-							<p class="name">박규리 님</p>
-							<p class="node">
-								<span class="for-a11y">[수]</span>퍼보습 하다라보하다라보
-							</p>
-							<p class="node">
-								<span class="for-a11y">[퍼]</span>펙트한 얼굴을 위해
-							</p>
-							<p class="node">
-								<span class="for-a11y">[보]</span>습빵빵 하다라보
-							</p>
-							<p class="node">
-								<span class="for-a11y">[습]</span>관적으로 발라주자!
-							</p>
-							<button type="button" class="like">
-								<span class="for-a11y">좋아요</span>
-							</button>
-							<a href="#layerDetail" class="more" data-layer="#layerDetail">
-								<span class="for-a11y">상세보기</span>
-							</a>
-						</li>
-						<li>
-							<p class="name">박규리 님</p>
-							<p class="node">
-								<span class="for-a11y">[수]</span>퍼보습 하다라보하다라보
-							</p>
-							<p class="node">
-								<span class="for-a11y">[퍼]</span>펙트한 얼굴을 위해
-							</p>
-							<p class="node">
-								<span class="for-a11y">[보]</span>습빵빵 하다라보
-							</p>
-							<p class="node">
-								<span class="for-a11y">[습]</span>관적으로 발라주자!
-							</p>
-							<button type="button" class="like">
-								<span class="for-a11y">좋아요</span>
-							</button>
-							<a href="#layerDetail" class="more" data-layer="#layerDetail">
-								<span class="for-a11y">상세보기</span>
-							</a>
-						</li>
+<?
+	}
+?>						
 					</ul>
 					<a href="" class="prev">
 						<span class="for-a11y">이전</span>

@@ -128,7 +128,7 @@
 					</dt>
 					<dd>
 						<!-- <input type="text" id="layerEntryAddress" class="address-01" title="주소1"> -->
-						<input type="text" id="mb_addr1" class="address-01" title="주소1">
+						<input type="text" id="mb_addr1" class="address-01" title="주소1" readonly>
 						<button type="button" class="search">
 							<img src="images/layer-entry-search.png" alt="우편번호 검색">
 						</button>
@@ -202,6 +202,14 @@
 			</div>
 		</div>
 		<script>
+			var search_zipcode 	= "";
+			var search_addr1 	= "";
+			var quatrain01		= "";
+			var quatrain02		= "";
+			var quatrain03		= "";
+			var quatrain04		= "";
+			var quatrain_name	= "";
+
 			$('.quatrain-input').on('keyup', function(e) {
 				var thisInputLeng = $(this).val().length;
 				if(thisInputLeng > 13) {
@@ -212,11 +220,11 @@
 			});
 
 			$(".event-submit").on("click", function(){
-				var quatrain01		= $("#quatrain01").val();
-				var quatrain02		= $("#quatrain02").val();
-				var quatrain03		= $("#quatrain03").val();
-				var quatrain04		= $("#quatrain04").val();
-				var quatrain_name	= $("#quatrain_name").val();
+				quatrain01		= $("#quatrain01").val();
+				quatrain02		= $("#quatrain02").val();
+				quatrain03		= $("#quatrain03").val();
+				quatrain04		= $("#quatrain04").val();
+				quatrain_name	= $("#quatrain_name").val();
 
 				if (quatrain01 == "" || quatrain02 == "" || quatrain03 == "" || quatrain04 == "" || quatrain_name == "")
 				{
@@ -224,6 +232,96 @@
 					return false;
 				}
 
+				hadalaboUI.layer.open($('#layerEntry'));
+			});
+
+			$(".submit").on("click", function(){
+				var mb_name		= $("#mb_name").val();
+				var mb_phone		= $("#mb_phone").val();
+				var mb_addr2		= $("#mb_addr2").val();
+
+				if (mb_name == "")
+				{
+					alert("이름을 입력해 주세요");
+					return false;
+				}
+
+				if (mb_phone == "")
+				{
+					alert("전화번호를 입력해 주세요");
+					return false;
+				}
+				
+				if (search_addr1 == "")
+				{
+					alert("주소를 입력해 주세요");
+					return false;
+				}
+				
+				if (mb_addr2 == "")
+				{
+					alert("주소를 입력해 주세요");
+					return false;
+				}
+
+				$.ajax({
+					type:"POST",
+					data:{
+						"exec"				: "insert_member_info",
+						"mb_name"			: mb_name,
+						"mb_phone"			: mb_phone,
+						// "mb_mail"			: mb_mail,
+						"mb_zipcode"		: search_zipcode,
+						"mb_addr1"			: search_addr1,
+						"mb_addr2"			: mb_addr2,
+						"quatrain01"		: quatrain01,
+						"quatrain02"		: quatrain02,
+						"quatrain03"		: quatrain03,
+						"quatrain04"		: quatrain04,
+						"quatrain_name"		: quatrain_name
+					},
+					url: "./main_exec.php",
+					success: function(response){
+						console.log(response);
+					}
+				});
+			});
+
+			$(".search").on("click", function(){
+				new daum.Postcode({
+					oncomplete: function(data) {
+						// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+			
+						// 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
+						// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+						var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
+						var extraRoadAddr = ''; // 도로명 조합형 주소 변수
+			
+						// 법정동명이 있을 경우 추가한다. (법정리는 제외)
+						// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+						if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+							extraRoadAddr += data.bname;
+						}
+						// 건물명이 있고, 공동주택일 경우 추가한다.
+						if(data.buildingName !== '' && data.apartment === 'Y'){
+						extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+						}
+						// 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+						if(extraRoadAddr !== ''){
+							extraRoadAddr = ' (' + extraRoadAddr + ')';
+						}
+						// 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
+						if(fullRoadAddr !== ''){
+							fullRoadAddr += extraRoadAddr;
+						}
+			
+						// 우편번호와 주소 정보를 해당 필드에 넣는다.
+						// document.getElementById('mb_zipcode').value = data.zonecode; //5자리 새우편번호 사용
+						document.getElementById('mb_addr1').value 	= "(" + data.zonecode + ") " + fullRoadAddr;
+						search_zipcode 	= data.zonecode;
+						search_addr1 	= fullRoadAddr;
+					}
+				}).open();
 			});
 		</script>
 	</body>

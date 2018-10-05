@@ -776,7 +776,7 @@
   };
   HadalaboSelectbox.prototype.selectChange = function(i) {
     var _ = this;
-
+console.log(i);
     _.$option.prop('selected', false);
     _.$option.eq(i).prop('selected', true);
     _.$target.trigger('change');
