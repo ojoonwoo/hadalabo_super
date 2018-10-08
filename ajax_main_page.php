@@ -19,6 +19,7 @@ if ($_REQUEST['searchName'] == "")
     $where = "";
 else
     $where = " AND quatrain_name='".$_REQUEST['searchName']."'";
+    
 //$pg = $_REQUEST['pageNum'];
 $page_size = 8;	// 한 페이지에 나타날 개수
 $block_size = 10;	// 한 화면에 나타낼 페이지 번호 개수
