@@ -249,7 +249,7 @@
 ?>						
 						<li>
 							<p class="name"><?=$member_data["quatrain_name"]?> 님</p>
-							<p class="node">
+							<p class="node" id="">
 								<span class="for-a11y">[수]</span><?=$member_data["quatrain01"]?>
 							</p>
 							<p class="node">
@@ -261,10 +261,10 @@
 							<p class="node">
 								<span class="for-a11y">[습]</span><?=$member_data["quatrain04"]?>
 							</p>
-							<button type="button" class="like">
+							<button type="button" class="like" id="like_<?=$member_data['idx']?>" onclick="likeOn('page','<?=$member_data['idx']?>')">
 								<span class="for-a11y">좋아요</span>
 							</button>
-							<a href="#layerDetail" class="more" data-layer="#layerDetail">
+							<a href="#layerDetail" class="more" data-layer="#layerDetail" data-id="<?=$member_data['idx']?>" onclick="quatrainDataStore(this);">
 								<span class="for-a11y">상세보기</span>
 							</a>
 						</li>
@@ -286,7 +286,7 @@
 								<option value="testVal 02">좋아요 많은 순</option>
 -->
 								<option value="idx">최신 등록 순</option>
-								<option value="like">좋아요 많은 순</option>
+								<option value="mb_like">좋아요 많은 순</option>
 							</select>
 						</li>
 						<li>
@@ -442,16 +442,16 @@
 					<p class="node">
 						<span class="for-a11y">[습]</span>관적으로 발라주자!
 					</p>
-					<button type="button" class="like is-active">
+					<button type="button" class="like">
 						<span class="for-a11y">좋아요 취소하기</span>
 					</button>
 				</div>
-				<button type="button" class="prev">
+				<!-- <button type="button" class="prev">
 					<span class="for-a11y">이전</span>
 				</button>
 				<button type="button" class="next">
 					<span class="for-a11y">다음</span>
-				</button>
+				</button> -->
 				<p class="text">
 					<img src="images/layer-detail-text.png" alt="하다라보 수퍼보습 공유하기" class="popup-image">
 				</p>
@@ -486,6 +486,10 @@
 			</div>
 		</div>
 		<script>
+			var detailPopupData = new Array();
+			var like_arr = new Array();
+			var totalPage = <?=$total_page?>;
+			localStorage.clear();
 		    $(window).on('load', function() {
 				var clipboard = new ClipboardJS('._copy1');
 				var clipboard2 = new ClipboardJS('._copy2');
@@ -499,12 +503,13 @@
 					e.clearSelection();
 					alert("해시태그가 복사되었습니다");
 				});
+
 			});
 			function pageRun(pageNum, direction) {
 				var pageNum = pageNum;
 				if(direction) {
 					var currentPage = parseInt($('.entry-list').attr('data-current-page'));
-					var totalPage = <?=$total_page?>;
+					// var totalPage = <?=$total_page?>;
 					switch(direction) {
 						case "prev" :
 							if(currentPage > 1) {
@@ -549,19 +554,94 @@
 				$('#orderby').val($(this).val());
 				listChange('1', $(this).val());
 			});
+			$(".search-submit").on('click', function() {
+				listChange('1');
+			});
 			function listChange(pageNum) {
 				var orderBy = $('#orderby').val();
+				var searchName = $("#search").val();
+
 				$.ajax({
 					type: "POST",
 					data: {
 						"pageNum": pageNum,
-						"orderBy": orderBy
+						"orderBy": orderBy,
+						"searchName": searchName
 					},
 					url: "./ajax_main_page.php",
 					success: function(rs) {
 						var rs = rs.split("||");
+
 						$('.entry-list').html(rs[0]).attr('data-current-page', pageNum);
 						$('.page').replaceWith(rs[1]);
+						console.log(rs[2]);
+						console.log(rs[3]);
+						totalPage = rs[2];
+						$(".entry-list").find('li').each(function(idx, el) {
+							var output = localStorage.getItem("like_idx");
+							if (output)
+							{
+								var getLikeArr  = JSON.parse(output);
+								$.each(getLikeArr,function(index, item){
+									if ($(el).find('.like').attr("id") == "like_"+item)
+									{
+										$(el).find('.like').addClass("is-active");
+										return false;
+									}else{
+										$(el).find('.like').removeClass("is-active");
+									}
+								});
+							}
+						});
+					}
+				});
+			}
+			function quatrainDataStore(el) {
+				var $el = $(el);
+				var $parent = $el.closest('li');
+				detailPopupData.push($parent.find('p.name').text()); 
+				// detailPopupData.push($parent.find('button').attr("onclick")); 
+				detailPopupData.push($el.data("id")); 
+				$parent.find('p.node').each(function(idx, el) {
+					detailPopupData.push($(el).html());
+				});
+			}
+			function likeOn(flag, idx)
+			{
+				// var $el = $(el);
+				// var gubun = "";
+				// if (flag == "popup")
+				// 	gubun = "pop";
+
+				// if ($("#like_"+gubun+idx).hasClass("is-active"))
+				if ($("#like_"+idx).hasClass("is-active"))
+					var plusMinus	= "-";
+				else
+					var plusMinus	= "+";
+
+				$.ajax({
+					type: "POST",
+					data: {
+						"exec": "like_member",
+						"mb_idx": idx,
+						"plusMinus": plusMinus
+					},
+					url: "./main_exec.php",
+					success: function(rs) {
+						if (rs == "Y")
+						{
+							if ($("#like_"+idx).hasClass("is-active")) {
+								alert("좋아요가 취소 되었습니다");
+								$("#like_"+idx).removeClass("is-active");
+								$("#like_pop_"+idx).removeClass("is-active");
+							}else{
+								alert("좋아요가 되었습니다");
+								$("#like_"+idx).addClass("is-active");
+								$("#like_pop_"+idx).addClass("is-active");
+								like_arr.push(idx);
+								localStorage.setItem("like_idx", JSON.stringify(like_arr));
+							}
+						}
 					}
 				});
 			}

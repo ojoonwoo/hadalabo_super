@@ -73,4 +73,23 @@ switch ($_REQUEST['exec'])
 
         echo $draw_array[0];
     break;
+
+    case "like_member" :
+        $mnv_f          = new mnv_function();
+        $my_db          = $mnv_f->Connect_MySQL();
+
+        $mb_idx         = $_REQUEST["mb_idx"];
+        $plusMinus      = $_REQUEST["plusMinus"];
+
+
+        $query 		= "UPDATE member_info SET mb_like = mb_like ".$plusMinus." 1 WHERE idx='".$mb_idx."'";
+        $result 	= mysqli_query($my_db, $query);
+
+        if ($result)
+            $flag = "Y";
+        else
+            $flag = "N";
+
+        echo $flag;
+    break;
 }
