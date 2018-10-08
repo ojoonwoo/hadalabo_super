@@ -208,7 +208,7 @@
 			</div>
 			<div class="main-section main-section--04">
 				<div class="main-section__contents">
-					<ul class="entry-list">
+					<ul class="entry-list" data-current-page="1">
 <?
 	if(isset($_REQUEST['pg']) == false)
 		$pg = "1";
@@ -236,11 +236,11 @@
 
 	$PAGE_CLASS = new mnv_page($pg,$member_count,$page_size,$block_size);
   
-	$BLOCK_LIST = $PAGE_CLASS->blockList();
+	$BLOCK_LIST = $PAGE_CLASS->blockList5();
 	$PAGE_UNCOUNT = $PAGE_CLASS->page_uncount;
 
 	$member_list_query = "SELECT * FROM member_info WHERE 1".$where." Order by idx DESC LIMIT $PAGE_CLASS->page_start, $page_size";
-print_r($member_list_query);
+//print_r($member_list_query);
 	$res = mysqli_query($my_db, $member_list_query);
 
 	while($member_data = @mysqli_fetch_array($res))
@@ -252,13 +252,13 @@ print_r($member_list_query);
 								<span class="for-a11y">[수]</span><?=$member_data["quatrain01"]?>
 							</p>
 							<p class="node">
-								<span class="for-a11y">[퍼]</span><?=$member_data["quatrain01"]?>
+								<span class="for-a11y">[퍼]</span><?=$member_data["quatrain02"]?>
 							</p>
 							<p class="node">
-								<span class="for-a11y">[보]</span><?=$member_data["quatrain01"]?>
+								<span class="for-a11y">[보]</span><?=$member_data["quatrain03"]?>
 							</p>
 							<p class="node">
-								<span class="for-a11y">[습]</span><?=$member_data["quatrain01"]?>
+								<span class="for-a11y">[습]</span><?=$member_data["quatrain04"]?>
 							</p>
 							<button type="button" class="like">
 								<span class="for-a11y">좋아요</span>
@@ -271,17 +271,21 @@ print_r($member_list_query);
 	}
 ?>						
 					</ul>
-					<a href="" class="prev">
+					<a href="javascript:void(0)" class="prev" onclick="pageRun('', 'prev')">
 						<span class="for-a11y">이전</span>
 					</a>
-					<a href="" class="next">
+					<a href="javascript:void(0)" class="next" onclick="pageRun('', 'next')">
 						<span class="for-a11y">다음</span>
 					</a>
 					<ul class="form">
 						<li>
 							<select name="selectTestName" id="selectTestId" class="js-selectbox" data-class="ui-select">
+<!--
 								<option value="testVal 01">최신 등록 순</option>
 								<option value="testVal 02">좋아요 많은 순</option>
+-->
+								<option value="idx">최신 등록 순</option>
+								<option value="like">좋아요 많은 순</option>
 							</select>
 						</li>
 						<li>
@@ -292,6 +296,8 @@ print_r($member_list_query);
 							</button>
 						</li>
 					</ul>
+					<? echo $BLOCK_LIST ?>
+<!--
 					<ul class="page">
 						<li><a href="">1</a></li>
 						<li><a href="">2</a></li>
@@ -304,6 +310,7 @@ print_r($member_list_query);
 						<li><a href="">9</a></li>
 						<li><a href="">10</a></li>
 					</ul>
+-->
 				</div>
 			</div>
 			<div class="main-section main-section--05">
@@ -476,5 +483,79 @@ print_r($member_list_query);
 				</button>
 			</div>
 		</div>
+		<script>
+			function pageRun(pageNum, direction) {
+				var pageNum = pageNum;
+				if(direction) {
+					var currentPage = parseInt($('.entry-list').attr('data-current-page'));
+					switch(direction) {
+						case "prev" :
+//							console.log(direction);
+							if(currentPage > 1) {
+								pageNum = currentPage-1;
+							} else {
+								return;
+							}
+							break;
+						case "next" :
+//							console.log(direction);
+							if(currentPage < 3) {
+							   	pageNum = currentPage+1;
+							} else {
+								return;
+							}
+							break;
+					}
+				}
+				console.log(pageNum);
+//				게시물 스타트 * 블록갯수 (=> 가져올 게시물들 / 현재 소팅값으로 쿼리 order by)
+//				$.ajax({
+//					type: "POST",
+//					data: {
+//						"pageNum": pageNum
+//					},
+//					url: "./ajax_main_page.php",
+//					success: function(rs) {
+////						console.log(rs);
+//						$('.entry-list').html(rs);
+//						$('.page li').each(function() {
+//							if($(this).find('a').text() == pageNum) {
+//								$(this).addClass('is-active');
+//							} else {
+//								$(this).removeClass('is-active');
+//							}
+//						});
+//					}
+//				});
+				listChange(pageNum);
+			}
+			$('#selectTestId').on('change', function() {
+//				console.log($(this).val());
+				listChange('1', $(this).val());
+			});
+			function listChange(pageNum, orderBy) {
+				$.ajax({
+					type: "POST",
+					data: {
+						"pageNum": pageNum,
+						"orderBy": orderBy
+					},
+					url: "./ajax_main_page.php",
+					success: function(rs) {
+						var rs = rs.split("||");
+//						console.log(rs[1]);
+						$('.entry-list').html(rs[0]).attr('data-current-page', pageNum);
+						$('.page').replaceWith(rs[1]);
+//						$('.page li').each(function() {
+//							if($(this).find('a').text() == pageNum) {
+//								$(this).addClass('is-active');
+//							} else {
+//								$(this).removeClass('is-active');
+//							}
+//						});
+					}
+				});
+			}
+		</script>
 	</body>
 </html>

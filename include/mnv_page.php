@@ -206,5 +206,52 @@ class mnv_page
 		$block_str .= '</ul>';
 		return $block_str;
 	}
+	function blockList5( $str = "pageRun(")
+	{
+		$b_start = $this->block_start;
+		$block_str = "";
+
+		$block_str .= '<ul class="page">';
+		
+		//-- 이전 블럭
+		if($this->block != 1)
+		{
+			$temp = $this->block_start - 1;
+			$block_str .= '<li><a href="javascript:' . $str . $temp . ');">asd</a></li>';
+		}
+
+		//--블럭 리스트
+		$arrBlock = array();
+		while($b_start <= $this->block_end && $b_start <= $this->page_count )
+		{
+			$arrBlock[] = 	$b_start++;
+		}
+
+		for($i = 0; $i < count($arrBlock); $i++)
+		{
+			if($this->pg != $arrBlock[$i])
+			{
+				$block_str .= '<li><a href="javascript:'. $str.$arrBlock[$i] . ');">' . $arrBlock[$i] . '</a></li>';
+			}
+			else
+			{
+				$block_str .= '<li class="is-active"><a href="javascript:'. $str.$arrBlock[$i] . ');">' . $arrBlock[$i] . '</a></li>';
+			}
+			//if($i < (count($arrBlock) - 1) ) $block_str .= " / ";
+		}
+
+		//다음 블럭
+		if($this->block != $this->block_count && $this->tot_no != 0){
+			$temp = $this->block_end + 1;
+			$block_str .= '<li><a href="javascript:' .$str . $temp . ')">qqq</a></li>';
+		}
+		
+		$block_str .= '</ul>';
+		return $block_str;
+	}
+//	function blockList6( $str = "pageRun(")
+//	{
+//		
+//	}
 }
 ?>
