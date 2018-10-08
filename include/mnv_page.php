@@ -217,7 +217,7 @@ class mnv_page
 		if($this->block != 1)
 		{
 			$temp = $this->block_start - 1;
-			$block_str .= '<li><a href="javascript:' . $str . $temp . ');">asd</a></li>';
+			$block_str .= '<li><a href="javascript:' . $str . $temp . ');"><</a></li>';
 		}
 
 		//--블럭 리스트
@@ -243,7 +243,7 @@ class mnv_page
 		//다음 블럭
 		if($this->block != $this->block_count && $this->tot_no != 0){
 			$temp = $this->block_end + 1;
-			$block_str .= '<li><a href="javascript:' .$str . $temp . ')">qqq</a></li>';
+			$block_str .= '<li><a href="javascript:' .$str . $temp . ')">></a></li>';
 		}
 		
 		$block_str .= '</ul>';

@@ -238,6 +238,7 @@
   
 	$BLOCK_LIST = $PAGE_CLASS->blockList5();
 	$PAGE_UNCOUNT = $PAGE_CLASS->page_uncount;
+	$total_page = ceil($member_count/$page_size);
 
 	$member_list_query = "SELECT * FROM member_info WHERE 1".$where." Order by idx DESC LIMIT $PAGE_CLASS->page_start, $page_size";
 //print_r($member_list_query);
@@ -296,6 +297,7 @@
 							</button>
 						</li>
 					</ul>
+					<input type="hidden" id="orderby" value="idx">
 					<? echo $BLOCK_LIST ?>
 <!--
 					<ul class="page">
@@ -488,26 +490,26 @@
 				var pageNum = pageNum;
 				if(direction) {
 					var currentPage = parseInt($('.entry-list').attr('data-current-page'));
+					var totalPage = <?=$total_page?>;
 					switch(direction) {
 						case "prev" :
-//							console.log(direction);
 							if(currentPage > 1) {
 								pageNum = currentPage-1;
 							} else {
+								alert("처음 페이지입니다.");
 								return;
 							}
 							break;
 						case "next" :
-//							console.log(direction);
-							if(currentPage < 3) {
+							if(currentPage < totalPage) {
 							   	pageNum = currentPage+1;
 							} else {
+								alert("마지막 페이지입니다.");
 								return;
 							}
 							break;
 					}
 				}
-				console.log(pageNum);
 //				게시물 스타트 * 블록갯수 (=> 가져올 게시물들 / 현재 소팅값으로 쿼리 order by)
 //				$.ajax({
 //					type: "POST",
@@ -530,10 +532,11 @@
 				listChange(pageNum);
 			}
 			$('#selectTestId').on('change', function() {
-//				console.log($(this).val());
+				$('#orderby').val($(this).val());
 				listChange('1', $(this).val());
 			});
-			function listChange(pageNum, orderBy) {
+			function listChange(pageNum) {
+				var orderBy = $('#orderby').val();
 				$.ajax({
 					type: "POST",
 					data: {
@@ -543,16 +546,8 @@
 					url: "./ajax_main_page.php",
 					success: function(rs) {
 						var rs = rs.split("||");
-//						console.log(rs[1]);
 						$('.entry-list').html(rs[0]).attr('data-current-page', pageNum);
 						$('.page').replaceWith(rs[1]);
-//						$('.page li').each(function() {
-//							if($(this).find('a').text() == pageNum) {
-//								$(this).addClass('is-active');
-//							} else {
-//								$(this).removeClass('is-active');
-//							}
-//						});
 					}
 				});
 			}

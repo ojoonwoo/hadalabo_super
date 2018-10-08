@@ -35,7 +35,7 @@ $output = "";
 while($member_data = mysqli_fetch_array($res))
 {
 	$output .= "<li>
-					<p class='name'>".$member_data["quatrain_name"]."</p>
+					<p class='name'>".$member_data["quatrain_name"]." 님</p>
 					<p class='node'><span class='for-a11y'>[수]</span>".$member_data["quatrain01"]."</p>
 					<p class='node'><span class='for-a11y'>[퍼]</span>".$member_data["quatrain02"]."</p>
 					<p class='node'><span class='for-a11y'>[보]</span>".$member_data["quatrain03"]."</p>
