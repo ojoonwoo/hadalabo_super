@@ -36,7 +36,7 @@ switch ($_REQUEST['exec'])
                 $flag = "N";
         }
 
-		echo $query;
+		echo $flag;
     break;
     
     case "insert_share_info" :

@@ -451,7 +451,7 @@
 						</button>
 					</li>
 				</ul>
-				<button type="button" class="copy">
+				<button type="button" class="copy _copy1" data-clipboard-text="#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부">
 					<img src="images/layer-share-copy.png" alt="해시태그 복사">
 				</button>
 			</section>
@@ -518,10 +518,91 @@
 				<p class="hash">
 					#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부
 				</p>
-				<button type="button" class="copy">
+				<button type="button" class="copy _copy2" data-clipboard-text="#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부">
 					<img src="images/layer-share-copy.png" alt="해시태그 복사">
 				</button>
 			</section>
 		</div>
+		<script>
+		    $(window).on('load', function() {
+				var clipboard = new ClipboardJS('._copy1');
+				var clipboard2 = new ClipboardJS('._copy2');
+
+				clipboard.on('success', function(e) {
+					e.clearSelection();
+					alert("해시태그가 복사되었습니다");
+				});
+
+				clipboard2.on('success', function(e) {
+					e.clearSelection();
+					alert("해시태그가 복사되었습니다");
+				});
+			});
+			function pageRun(pageNum, direction) {
+				var pageNum = pageNum;
+				if(direction) {
+					var currentPage = parseInt($('.entry-list').attr('data-current-page'));
+					var totalPage = <?=$total_page?>;
+					switch(direction) {
+						case "prev" :
+							if(currentPage > 1) {
+								pageNum = currentPage-1;
+							} else {
+								alert("처음 페이지입니다.");
+								return;
+							}
+							break;
+						case "next" :
+							if(currentPage < totalPage) {
+							   	pageNum = currentPage+1;
+							} else {
+								alert("마지막 페이지입니다.");
+								return;
+							}
+							break;
+					}
+				}
+//				게시물 스타트 * 블록갯수 (=> 가져올 게시물들 / 현재 소팅값으로 쿼리 order by)
+//				$.ajax({
+//					type: "POST",
+//					data: {
+//						"pageNum": pageNum
+//					},
+//					url: "./ajax_main_page.php",
+//					success: function(rs) {
+////						console.log(rs);
+//						$('.entry-list').html(rs);
+//						$('.page li').each(function() {
+//							if($(this).find('a').text() == pageNum) {
+//								$(this).addClass('is-active');
+//							} else {
+//								$(this).removeClass('is-active');
+//							}
+//						});
+//					}
+//				});
+				listChange(pageNum);
+			}
+			$('#selectTestId').on('change', function() {
+				$('#orderby').val($(this).val());
+				listChange('1', $(this).val());
+			});
+			function listChange(pageNum) {
+				var orderBy = $('#orderby').val();
+				$.ajax({
+					type: "POST",
+					data: {
+						"pageNum": pageNum,
+						"orderBy": orderBy
+					},
+					url: "./ajax_main_page.php",
+					success: function(rs) {
+						var rs = rs.split("||");
+						$('.entry-list').html(rs[0]).attr('data-current-page', pageNum);
+						$('.page').replaceWith(rs[1]);
+					}
+				});
+			}
+		</script>
 	</body>
 </html>

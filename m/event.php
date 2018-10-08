@@ -284,6 +284,7 @@
 					},
 					url: "../main_exec.php",
 					success: function(response){
+						console.log(response);
 						if (response == "Y")
 						{
 							alert("신청이 완료되었습니다. 다음주 월요일 발송됩니다.");

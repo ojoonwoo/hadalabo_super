@@ -388,7 +388,7 @@
 						[수퍼보습 5days KIT]를 100% 드립니다
 					</span>
 				</p>
-				<p class="hash">
+				<p class="hash" id="hash_txt">
 					#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부
 				</p>
 				<ul class="sns">
@@ -413,7 +413,7 @@
 						</button>
 					</li>
 				</ul>
-				<button type="button" class="copy">
+				<button type="button" class="copy _copy1" data-clipboard-text="#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부">
 					<img src="images/layer-share-copy.png" alt="해시태그 복사">
 				</button>
 			</div>
@@ -480,12 +480,26 @@
 				<p class="hash">
 					#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부
 				</p>
-				<button type="button" class="copy">
+				<button type="button" class="copy _copy2" data-clipboard-text="#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부">
 					<img src="images/layer-share-copy.png" alt="해시태그 복사">
 				</button>
 			</div>
 		</div>
 		<script>
+		    $(window).on('load', function() {
+				var clipboard = new ClipboardJS('._copy1');
+				var clipboard2 = new ClipboardJS('._copy2');
+
+				clipboard.on('success', function(e) {
+					e.clearSelection();
+					alert("해시태그가 복사되었습니다");
+				});
+
+				clipboard2.on('success', function(e) {
+					e.clearSelection();
+					alert("해시태그가 복사되었습니다");
+				});
+			});
 			function pageRun(pageNum, direction) {
 				var pageNum = pageNum;
 				if(direction) {
