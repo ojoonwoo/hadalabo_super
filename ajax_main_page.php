@@ -41,7 +41,7 @@ while($member_data = mysqli_fetch_array($res))
 					<p class='node'><span class='for-a11y'>[보]</span>".$member_data["quatrain03"]."</p>
 					<p class='node'><span class='for-a11y'>[습]</span>".$member_data["quatrain04"]."</p>
 					<button type='button' class='like'><span class='for-a11y'>좋아요</span></button>
-					<a href='#layerDetail' class='more' data-layer='#layerDetail'><span class='for-a11y'>상세보기</span></a>
+					<a href='#layerDetail' class='more' data-layer='#layerDetail' onclick='quatrainDataStore(this)'><span class='for-a11y'>상세보기</span></a>
 				</li>";
 }
 

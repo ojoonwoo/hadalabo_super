@@ -249,7 +249,7 @@
 ?>						
 						<li>
 							<p class="name"><?=$member_data["quatrain_name"]?> 님</p>
-							<p class="node">
+							<p class="node" id="">
 								<span class="for-a11y">[수]</span><?=$member_data["quatrain01"]?>
 							</p>
 							<p class="node">
@@ -264,7 +264,7 @@
 							<button type="button" class="like">
 								<span class="for-a11y">좋아요</span>
 							</button>
-							<a href="#layerDetail" class="more" data-layer="#layerDetail">
+							<a href="#layerDetail" class="more" data-layer="#layerDetail" onclick="quatrainDataStore(this);">
 								<span class="for-a11y">상세보기</span>
 							</a>
 						</li>
@@ -486,6 +486,7 @@
 			</div>
 		</div>
 		<script>
+			var detailPopupData = new Array();
 			function pageRun(pageNum, direction) {
 				var pageNum = pageNum;
 				if(direction) {
@@ -545,10 +546,20 @@
 					},
 					url: "./ajax_main_page.php",
 					success: function(rs) {
+//						console.log(rs);
 						var rs = rs.split("||");
+//						console.log(rs[0]);
 						$('.entry-list').html(rs[0]).attr('data-current-page', pageNum);
 						$('.page').replaceWith(rs[1]);
 					}
+				});
+			}
+			function quatrainDataStore(el) {
+				var $el = $(el);
+				var $parent = $el.closest('li');
+				detailPopupData.push($parent.find('p.name').text()); 
+				$parent.find('p.node').each(function(idx, el) {
+					detailPopupData.push($(el).html());
 				});
 			}
 		</script>
