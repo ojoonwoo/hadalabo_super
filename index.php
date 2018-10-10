@@ -499,7 +499,7 @@
 				<p class="hash">
 					#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #속보습부스터 #건성피부 #고보습 #수퍼보습 #스킨케어 #스킨 #모찌피부 #이벤트 #스킨로션추천 #고보습스킨
 				</p>
-				<button type="button" class="copy _copy2" data-clipboard-text="#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부">
+				<button type="button" class="copy _copy2" onclick="copyTxt()">
 					<img src="images/layer-share-copy.png" alt="해시태그 복사">
 				</button>
 			</div>
@@ -537,11 +537,11 @@
 			// 	}
 			// });
 
-			var clipboard2 = new ClipboardJS('._copy2', {
-				text: function() {
-					return '#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #속보습부스터 #건성피부 #고보습 #수퍼보습 #스킨케어 #스킨 #모찌피부 #이벤트 #스킨로션추천 #고보습스킨';
-				}
-			});
+			// var clipboard2 = new ClipboardJS('._copy2', {
+			// 	text: function() {
+			// 		return '#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #속보습부스터 #건성피부 #고보습 #수퍼보습 #스킨케어 #스킨 #모찌피부 #이벤트 #스킨로션추천 #고보습스킨';
+			// 	}
+			// });
 
 			// clipboard.on('success', function(e) {
 			// 	console.info('Action:', e.action);
