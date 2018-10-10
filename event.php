@@ -43,22 +43,22 @@
 					</ul>
 					<ul class="sns">
 						<li class="sns-01">
-							<button type="button">
+							<button type="button" onclick="sns_share('fb', 'event')">
 								<img src="images/event-section-01-sns-01.png" alt="페이스북으로 공유하기">
 							</button>
 						</li>
 						<li class="sns-02">
-							<button type="button">
+							<button type="button" onclick="sns_share('tw', 'event')">
 								<img src="images/event-section-01-sns-02.png" alt="트위터로 공유하기">
 							</button>
 						</li>
 						<li class="sns-03">
-							<button type="button">
+							<button type="button" onclick="sns_share('kt', 'event')">
 								<img src="images/event-section-01-sns-03.png" alt="카카오 톡으로 공유하기">
 							</button>
 						</li>
 						<li class="sns-04">
-							<button type="button">
+							<button type="button" onclick="sns_share('ks', 'event')">
 								<img src="images/event-section-01-sns-04.png" alt="카카오 스토리로 공유하기">
 							</button>
 						</li>

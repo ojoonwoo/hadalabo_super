@@ -1050,3 +1050,98 @@
     }
   });
 })(jQuery);
+
+function sns_share(media, flag)
+{
+	if (media == "fb")
+	{
+    var newWindow = window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent('http://www.hadalabo-superbosp.com/?media=share_fb'),'sharer','toolbar=0,status=0,width=600,height=325');
+
+		$.ajax({
+			type   : "POST",
+			async  : false,
+			url    : "../main_exec.php",
+			data:{
+				"exec"          : "insert_share_info",
+				"sns_media"     : media,
+				"sns_flag"		: flag
+			}
+		});
+	}else if (media == "kt"){
+		Kakao.init('996645db5157a953e8db96181cbccf2d');
+
+		Kakao.Link.sendDefault({
+			objectType: 'feed',
+			content: {
+				// title: '불만족스러웠던 기존의 시카 제품들, 해결되지 않던 당신의 피부 고민!\n\n바이오더마의 특허 다프 성분과 안탈지신 기술을 담아 오랜 연구 끝에 탄생한 바이오더마 포마드로 A/S 받으세요!',
+				title: '하다라보 내가 쓰는 수퍼보습 사행시',
+				description: "더 깊어진 하다라보의 '수퍼보습'으로 4행시에 도전하세요.\n\n참여만 해도 100% 하다라보 5일 샘플을 드립니다.",
+				// description: '#케익 #딸기 #삼평동 #카페 #분위기 #소개팅',
+				imageUrl: "http://www.hadalabo-superbosp.com/images/kakao_share.jpg",
+				link: {
+					mobileWebUrl: 'http://www.hadalabo-superbosp.com/m/index.php?media=share_fb',
+					webUrl: 'http://www.hadalabo-superbosp.com/?media=share_fb'
+				}
+			},
+			buttons: [
+				{
+					title: '웹으로 보기',
+					link: {
+						mobileWebUrl: 'http://www.hadalabo-superbosp.com/m/index.php?media=share_fb',
+						webUrl: 'http://www.hadalabo-superbosp.com/?media=share_fb'
+					}
+				}
+			],
+			success: function(res) {
+				console.log("success");
+				console.log(res);
+			},
+			fail: function(res) {
+				console.log("fail");
+				console.log(res);
+			},
+			callback: function() {
+	//					console.log("callback:"+res);
+				// shareEnd();
+			}
+		});
+		$.ajax({
+			type   : "POST",
+			async  : false,
+			url    : "../main_exec.php",
+			data:{
+				"exec" : "insert_share_info",
+				"sns_media" : media,
+				"sns_flag"		: flag
+			}
+		});
+	}else if (media == "tw"){
+    var newWindow = window.open('http://twitter.com/share?url=' + encodeURIComponent('http://www.hadalabo-superbosp.com/?media=share_tw') + '&text=' + encodeURIComponent("하다라보 내가 쓰는 수퍼보습 사행시\n\n더 깊어진 하다라보의 '수퍼보습'으로 4행시에 도전하세요.\n참여만 해도 100% 하다라보 5일 샘플을 드립니다."),'sharer','toolbar=0,status=0,width=600,height=325');
+
+    $.ajax({
+			type   : "POST",
+			async  : false,
+			url    : "../main_exec.php",
+			data:{
+				"exec"          : "insert_share_info",
+				"sns_media"     : media,
+				"sns_flag"		: flag
+			}
+		});
+  }else{
+    Kakao.Story.share({
+      url: 'http://www.hadalabo-superbosp.com/?media=share_ks',
+      text: "하다라보 내가 쓰는 수퍼보습 사행시\n\n더 깊어진 하다라보의 '수퍼보습'으로 4행시에 도전하세요.\n참여만 해도 100% 하다라보 5일 샘플을 드립니다."
+    });
+    $.ajax({
+			type   : "POST",
+			async  : false,
+			url    : "../main_exec.php",
+			data:{
+				"exec"          : "insert_share_info",
+				"sns_media"     : media,
+				"sns_flag"		: flag
+			}
+		});
+  }
+}
