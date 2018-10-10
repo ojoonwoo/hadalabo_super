@@ -119,7 +119,7 @@
 					</dt>
 					<dd>
 						<!-- <input type="tel" id="layerEntryTel"> -->
-						<input type="tel" id="mb_phone">
+						<input type="tel" id="mb_phone" onkeyup="only_num(this);chk_len(this,11)">
 					</dd>
 					<dt>
 						<label for="layerEntryAddress">
