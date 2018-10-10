@@ -367,7 +367,7 @@
 							</a>
 						</li>
 						<li class="sns-04">
-							<a href="https://www.instagram.com/hadalabo_korea/" target="_blank">
+							<a href="https://www.youtube.com/channel/UCsq93AwlyafoGFMNPzQgOiQ" target="_blank">
 								<img src="images/main-section-05-sns-04.png" alt="유튜브">
 							</a>
 						</li>
@@ -432,7 +432,7 @@
 					</li>
 				</ul>
 				<!-- <button type="button" class="copy _copy1" data-clipboard-text="#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부"> -->
-				<button type="button" class="copy _copy1">
+				<button type="button" class="copy _copy1" onclick="copyTxt()">
 					<img src="images/layer-share-copy.png" alt="해시태그 복사">
 				</button>
 			</div>
@@ -531,30 +531,50 @@
 			var like_arr = new Array();
 			var totalPage = <?=$total_page?>;
 			localStorage.clear();
-			var clipboard = new ClipboardJS('._copy1', {
-				text: function() {
-					return '#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #속보습부스터 #건성피부 #고보습 #수퍼보습 #스킨케어 #스킨 #모찌피부 #이벤트 #스킨로션추천 #고보습스킨';
-				}
-			});
+			// var clipboard = new ClipboardJS('._copy1', {
+			// 	text: function() {
+			// 		return '#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #속보습부스터 #건성피부 #고보습 #수퍼보습 #스킨케어 #스킨 #모찌피부 #이벤트 #스킨로션추천 #고보습스킨';
+			// 	}
+			// });
+
 			var clipboard2 = new ClipboardJS('._copy2', {
 				text: function() {
 					return '#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #속보습부스터 #건성피부 #고보습 #수퍼보습 #스킨케어 #스킨 #모찌피부 #이벤트 #스킨로션추천 #고보습스킨';
 				}
 			});
 
-			clipboard.on('success', function(e) {
-				console.info('Action:', e.action);
-				console.info('Text:', e.text);
-				console.info('Trigger:', e.trigger);
+			// clipboard.on('success', function(e) {
+			// 	console.info('Action:', e.action);
+			// 	console.info('Text:', e.text);
+			// 	console.info('Trigger:', e.trigger);
 
-				e.clearSelection();
-				alert("해시태그가 복사되었습니다");
-			});
+			// 	e.clearSelection();
+			// 	alert("해시태그가 복사되었습니다");
+			// });
 
 			clipboard2.on('success', function(e) {
 				// e.clearSelection();
 				alert("해시태그가 복사되었습니다");
 			});
+			function copyTxt()
+			{
+				var textarea = document.createElement('textarea');
+				textarea.textContent = '#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #속보습부스터 #건성피부 #고보습 #수퍼보습 #스킨케어 #스킨 #모찌피부 #이벤트 #스킨로션추천 #고보습스킨';
+				document.body.appendChild(textarea);
+
+				var selection = document.getSelection();
+				var range = document.createRange();
+				//  range.selectNodeContents(textarea);
+				range.selectNode(textarea);
+				selection.removeAllRanges();
+				selection.addRange(range);
+
+				console.log('copy success', document.execCommand('copy'));
+				selection.removeAllRanges();
+
+				document.body.removeChild(textarea);				
+				alert("해시태그가 복사되었습니다");
+			}
 			function pageRun(pageNum, direction) {
 				var pageNum = pageNum;
 				if(direction) {

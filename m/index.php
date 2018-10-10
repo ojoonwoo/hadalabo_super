@@ -361,7 +361,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="https://www.instagram.com/hadalabo_korea/" target="_blank">
+						<a href="https://www.youtube.com/channel/UCsq93AwlyafoGFMNPzQgOiQ" target="_blank">
 							<img src="images/main-section-05-sns-04.png" alt="유튜브">
 						</a>
 					</li>
