@@ -1086,7 +1086,7 @@
             }
           });
         }
-console.log(detailPopupData);
+// console.log(detailPopupData);
 				target.find('.card .name').text(detailPopupData[0]);
 				target.find('.card .like').attr("onclick","likeOn('popup','"+detailPopupData[1]+"')");
 				target.find('.card .like').attr("id","like_pop_"+detailPopupData[1]);
@@ -1100,7 +1100,7 @@ console.log(detailPopupData);
 	});
 	$(document).on('layerClosed', function(args) {
 		if(args.target.id == 'layerDetail') {
-      console.log(args);
+      // console.log(args);
 			detailPopupData = new Array();
 			// detailPopupData.length = 0;
       console.log(detailPopupData);
