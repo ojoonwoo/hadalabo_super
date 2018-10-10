@@ -202,7 +202,7 @@
 			var quatrain04		= "";
 			var quatrain_name	= "";
 			var tabooWordArr	= new Array(
-				"식약처", "파라벤", "유해성분", "유해", "성분", "회수", "리콜", "환불"
+				"식약처", "파라벤", "유해성분", "유해", "성분", "회수", "리콜", "환불", "유해성분", "발암물질", "방사능", "발암성분", "유해물질"
 			);
 
 			$('.quatrain-input').on('keyup', function(e) {
