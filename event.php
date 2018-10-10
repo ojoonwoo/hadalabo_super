@@ -17,27 +17,27 @@
 					<ul class="form">
 						<li class="form-01">
 							<span class="for-a11y">[수]</span>
-							<input type="text" id="quatrain01" class="quatrain-input" title="4행시 중 [수]에 대한 내용">
+							<input type="text" id="quatrain01" class="quatrain-input quatrain-check" title="4행시 중 [수]에 대한 내용">
 							<label for="quatrain01">13자 이내로 입력해주세요</label>
 						</li>
 						<li class="form-02">
 							<span class="for-a11y">[퍼]</span>
-							<input type="text" id="quatrain02" class="quatrain-input" title="4행시 중 [퍼]에 대한 내용">
+							<input type="text" id="quatrain02" class="quatrain-input quatrain-check" title="4행시 중 [퍼]에 대한 내용">
 							<label for="quatrain02">13자 이내로 입력해주세요</label>
 						</li>
 						<li class="form-03">
 							<span class="for-a11y">[보]</span>
-							<input type="text" id="quatrain03" class="quatrain-input" title="4행시 중 [보]에 대한 내용">
+							<input type="text" id="quatrain03" class="quatrain-input quatrain-check" title="4행시 중 [보]에 대한 내용">
 							<label for="quatrain03">13자 이내로 입력해주세요</label>
 						</li>
 						<li class="form-04">
 							<span class="for-a11y">[습]</span>
-							<input type="text" id="quatrain04" class="quatrain-input" title="4행시 중 [습]에 대한 내용">
+							<input type="text" id="quatrain04" class="quatrain-input quatrain-check" title="4행시 중 [습]에 대한 내용">
 							<label for="quatrain04">13자 이내로 입력해주세요</label>
 						</li>
 						<li class="form-05">
 							<span class="for-a11y">by</span>
-							<input type="text" id="quatrain_name" title="작성자 이름">
+							<input type="text" id="quatrain_name" class="quatrain-check" title="작성자 이름">
 							<label for="quatrain_name">작성자 이름</label>
 						</li>
 					</ul>
@@ -209,6 +209,9 @@
 			var quatrain03		= "";
 			var quatrain04		= "";
 			var quatrain_name	= "";
+			var tabooWordArr	= new Array(
+				"식약처", "파라벤", "유해성분", "유해", "성분", "회수", "리콜", "환불"
+			);
 
 			$('.quatrain-input').on('keyup', function(e) {
 				var thisInputLeng = $(this).val().length;
@@ -220,6 +223,8 @@
 			});
 
 			$(".event-submit").on("click", function(){
+				var isTaboo		= false;
+				var tabooWords	= [];
 				quatrain01		= $("#quatrain01").val();
 				quatrain02		= $("#quatrain02").val();
 				quatrain03		= $("#quatrain03").val();
@@ -231,8 +236,22 @@
 					alert("4행시 및 작성자 이름을 모두 입력해 주세요!");
 					return false;
 				}
-
-				hadalaboUI.layer.open($('#layerEntry'));
+				$('.quatrain-check').each(function() {
+					var value = $(this).val();
+					tabooWordArr.forEach(function(word) {
+						if(value.indexOf(word) !== -1) {
+							isTaboo = true;
+							tabooWords.push(word);
+						}
+					});
+				});
+				
+				if(isTaboo) {
+					alert(tabooWords.toString()+ "은(는) 사용불가능한 단어입니다.");
+				} else {
+					hadalaboUI.layer.open($('#layerEntry'));
+				}
+				
 			});
 
 			$(".submit").on("click", function(){

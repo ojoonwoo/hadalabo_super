@@ -1019,14 +1019,9 @@
 		}
 	});
 	$(document).on('layerClosed', function(args) {
-    detailPopupData = new Array();
-    // switch(args.target.id) {
-		// 	case 'layerDetail':
-    //     var target = $(args.target);
-    //     target.attr("data-idx","");
-		// 	break;
-		// }
-
+		if(args.target.id == 'layerDetail') {
+			detailPopupData = new Array();
+		}
 	});
 })(jQuery);
 
