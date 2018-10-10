@@ -998,6 +998,8 @@
 		}
 	});
 	$(document).on('layerClosed', function(args) {
-		detailPopupData = new Array();
+		if(args.target.id == 'layerDetail') {
+			detailPopupData = new Array();
+		}
 	});
 })(jQuery);
