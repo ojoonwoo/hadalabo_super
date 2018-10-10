@@ -431,13 +431,7 @@
 						</button>
 					</li>
 				</ul>
-<<<<<<< HEAD
-				<button type="button" class="copy _copy1 hashtag-copy-trigger" data-clipboard-text="3"> 
-<!--				<button type="button" class="copy _copy1">-->
-=======
-				<!-- <button type="button" class="copy _copy1" data-clipboard-text="#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부"> -->
 				<button type="button" class="copy _copy1" onclick="copyTxt()">
->>>>>>> 1106fd68805f170f71a7b16b5f8fb636cdee44f8
 					<img src="images/layer-share-copy.png" alt="해시태그 복사">
 				</button>
 			</div>
