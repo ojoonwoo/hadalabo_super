@@ -334,22 +334,22 @@
 					</p>
 					<ul class="sns">
 						<li class="sns-01">
-							<a href="">
+							<a href="http://www.mentholatum-hadalabo.co.kr/product/gocojun_oli_cleansing.php" target="_blank">
 								<img src="images/main-section-05-sns-01.png" alt="hadalabo.com">
 							</a>
 						</li>
 						<li class="sns-02">
-							<a href="">
+							<a href="https://www.facebook.com/HadaLaboKorea/" target="_blank">
 								<img src="images/main-section-05-sns-02.png" alt="페이스북">
 							</a>
 						</li>
 						<li class="sns-03">
-							<a href="">
+							<a href="https://www.instagram.com/hadalabo_korea/" target="_blank">
 								<img src="images/main-section-05-sns-03.png" alt="인스타그램">
 							</a>
 						</li>
 						<li class="sns-04">
-							<a href="">
+							<a href="https://www.instagram.com/hadalabo_korea/" target="_blank">
 								<img src="images/main-section-05-sns-04.png" alt="유튜브">
 							</a>
 						</li>
