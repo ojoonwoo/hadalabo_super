@@ -17,23 +17,23 @@
 				<ul class="form">
 					<li class="form-01">
 						<span class="for-a11y">[수]</span>
-						<input type="text" id="quatrain01" class="quatrain-input" title="4행시 중 [수]에 대한 내용" placeholder="13자 이내로 입력해주세요">
+						<input type="text" id="quatrain01" class="quatrain-input quatrain-check" title="4행시 중 [수]에 대한 내용" placeholder="13자 이내로 입력해주세요">
 					</li>
 					<li class="form-02">
 						<span class="for-a11y">[퍼]</span>
-						<input type="text" id="quatrain02" class="quatrain-input" title="4행시 중 [퍼]에 대한 내용" placeholder="13자 이내로 입력해주세요">
+						<input type="text" id="quatrain02" class="quatrain-input quatrain-check" title="4행시 중 [퍼]에 대한 내용" placeholder="13자 이내로 입력해주세요">
 					</li>
 					<li class="form-03">
 						<span class="for-a11y">[보]</span>
-						<input type="text" id="quatrain03" class="quatrain-input" title="4행시 중 [보]에 대한 내용" placeholder="13자 이내로 입력해주세요">
+						<input type="text" id="quatrain03" class="quatrain-input quatrain-check" title="4행시 중 [보]에 대한 내용" placeholder="13자 이내로 입력해주세요">
 					</li>
 					<li class="form-04">
 						<span class="for-a11y">[습]</span>
-						<input type="text" id="quatrain04" class="quatrain-input" title="4행시 중 [습]에 대한 내용" placeholder="13자 이내로 입력해주세요">
+						<input type="text" id="quatrain04" class="quatrain-input quatrain-check" title="4행시 중 [습]에 대한 내용" placeholder="13자 이내로 입력해주세요">
 					</li>
 					<li class="form-05">
 						<span class="for-a11y">by</span>
-						<input type="text" id="quatrain_name" title="작성자 이름" placeholder="작성자 이름">
+						<input type="text" id="quatrain_name" class="quatrain-check" title="작성자 이름" placeholder="작성자 이름">
 					</li>
 				</ul>
 				<!-- <button type="button" class="event-submit" onclick="hadalaboUI.layer.open($('#layerEntry'));"> -->
@@ -165,16 +165,12 @@
 					<img src="images/layer-clause-sub-title-01.png" alt="개인 정보 수집 및 이용약관" class="popup-image">
 				</h2>
 				<div class="clause">
-					멘소래담(이하 "당사"라 한다) 본 이벤트를 위하여 귀하의 개인정보를 수집 및 이용합니다.<br><br>
+					한국 멘소래담(이하 "당사"라 한다) 본 이벤트를 위하여 귀하의 개인정보를 수집 및 이용합니다.<br><br>
 
 					• 수집항목 : 이름, 휴대폰번호, 주소<br>
-					• 이용목적 : 이벤트 진행을 위한 본인 확인, 경품 제공, 정보 공지<br>
-					및 불만 처리 등을 위한 연락처 확보, 이벤트 참여 내용 노출<br>
-					• 보유기간 : 이벤트 종료 후 1년 이내 파기<br><br>
-
-					1. 귀하께서 이벤트를 통해 작성하신 내용은 해당 사이트 내에<br>
-					2. 귀하께서 이벤트를 통해 작성하신 내용은 해당 사이트 내에<br>
-					3. 귀하께서 이벤트를 통해 작성하신 내용은 해당 사이트 내에
+					• 이용목적 : 이벤트 진행을 위한 본인 확인, 당첨자 선정 및 경품 제공,<br>
+					정보 공지 및 불만 처리 등을 위한 연락처 확보, 이벤트 참여 내용 노출<br>
+					• 보유기간 : 이벤트 종료 후 6개월 이내 파기
 				</div>
 				<h2 class="sub-title">
 					<img src="images/layer-clause-sub-title-02.png" alt="개인 정보 취급 위탁 약관" class="popup-image">
@@ -183,13 +179,9 @@
 					당사는 원활한 행사 진행을 위하여 아래의 전문 업체에 업무를 위탁 처리하고 있습니다.<br><br>
 
 					• 수탁자 : TBWA<br>
-					• 위탁하는 업무의 내용 : 이벤트 당첨자 확인, 경품 발송, MMS 발송<br><br>
-
-					수탁업체가 제공받은 귀하의 개인 정보는 당사의 개인 정보보호 정책에 따라 안전하게 관리됩니다.<br>
-					수탁업체가 제공받은 귀하의 개인 정보는 당사의 개인 정보보호 정책에 따라 안전하게 관리됩니다.<br>
-					수탁업체가 제공받은 귀하의 개인 정보는 당사의 개인 정보보호 정책에 따라 안전하게 관리됩니다.<br>
+					• 위탁하는 업무의 내용 : 이벤트 당첨자 확인, 경품 발송, MMS 발송
 				</div>
-				<button type="button" class="agree">
+				<button type="button" class="agree close-agree-button" onclick="agreeCheck()">
 					<img src="images/layer-clause-agree.png" alt="동의합니다">
 				</button>
 			</section>
@@ -205,6 +197,9 @@
 			var quatrain03		= "";
 			var quatrain04		= "";
 			var quatrain_name	= "";
+			var tabooWordArr	= new Array(
+				"식약처", "파라벤", "유해성분", "유해", "성분", "회수", "리콜", "환불", "유해성분", "발암물질", "방사능", "발암성분", "유해물질"
+			);
 
 			$('.quatrain-input').on('keyup', function(e) {
 				var thisInputLeng = $(this).val().length;
@@ -216,6 +211,8 @@
 			});
 
 			$(".event-submit").on("click", function(){
+				var isTaboo		= false;
+				var tabooWords	= [];
 				quatrain01		= $("#quatrain01").val();
 				quatrain02		= $("#quatrain02").val();
 				quatrain03		= $("#quatrain03").val();
@@ -227,8 +224,21 @@
 					alert("4행시 및 작성자 이름을 모두 입력해 주세요!");
 					return false;
 				}
-
-				hadalaboUI.layer.open($('#layerEntry'));
+				$('.quatrain-check').each(function() {
+					var value = $(this).val();
+					tabooWordArr.forEach(function(word) {
+						if(value.indexOf(word) !== -1) {
+							isTaboo = true;
+							tabooWords.push(word);
+						}
+					});
+				});
+				
+				if(isTaboo) {
+					alert(tabooWords.toString()+ "은(는) 사용불가능한 단어입니다.");
+				} else {
+					hadalaboUI.layer.open($('#layerEntry'));
+				}
 			});
 
 			$(".submit").on("click", function(){
@@ -373,6 +383,10 @@
 				element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 60 + 'px';
 			}
 
+			function agreeCheck()
+			{
+				$("input:checkbox[id='layerEntryAgree']").prop("checked", true);
+			}
 		</script>
 	</body>
 </html>

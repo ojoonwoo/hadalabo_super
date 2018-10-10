@@ -228,17 +228,17 @@
 	{
 ?>						
 					<li>
-						<p class="name"><?=$member_data["quatrain_name"]?> 님</p>
-						<p class="node">
+						<p class="name first"><?=$member_data["quatrain_name"]?> 님</p>
+						<p class="node first">
 							<span class="for-a11y">[수]</span><?=$member_data["quatrain01"]?>
 						</p>
-						<p class="node">
+						<p class="node first">
 							<span class="for-a11y">[퍼]</span><?=$member_data["quatrain02"]?>
 						</p>
-						<p class="node">
+						<p class="node first">
 							<span class="for-a11y">[보]</span><?=$member_data["quatrain03"]?>
 						</p>
-						<p class="node">
+						<p class="node first">
 							<span class="for-a11y">[습]</span><?=$member_data["quatrain04"]?>
 						</p>
 						<button type="button" class="like" id="like_<?=$member_data['idx']?>" onclick="likeOn('page','<?=$member_data['idx']?>')" data-layer="#layerLead">
@@ -418,7 +418,8 @@
 					<p class="node">
 						<span class="for-a11y">[습]</span>관적으로 발라주자!
 					</p>
-					<button type="button" class="like is-active">
+					<!-- <button type="button" class="like is-active"> -->
+					<button type="button" class="like">
 						<span class="for-a11y">좋아요 취소하기</span>
 					</button>
 				</div>
@@ -485,7 +486,6 @@
 			var detailPopupData = new Array();
 			var like_arr = new Array();
 			var totalPage = <?=$total_page?>;
-			var totalPage = 1;
 			localStorage.clear();
 			var clipboard = new ClipboardJS('._copy1', {
 				text: function() {
@@ -506,10 +506,10 @@
 				e.clearSelection();
 				alert("해시태그가 복사되었습니다");
 			});
-			clipboard.on('error', function(e) {
-				console.error('Action:', e.action);
-				console.error('Trigger:', e.trigger);
-			});
+			// clipboard.on('error', function(e) {
+			// 	console.error('Action:', e.action);
+			// 	console.error('Trigger:', e.trigger);
+			// });
 			clipboard2.on('success', function(e) {
 				// e.clearSelection();
 				alert("해시태그가 복사되었습니다");
@@ -569,7 +569,8 @@
 			function listChange(pageNum) {
 				var orderBy = $('#orderby').val();
 				var searchName = $("#search").val();
-				console.log(orderBy);
+//				모바일 현재 팝업 오픈코드 전용
+				$('body').append($('#layerDetail'));
 				$.ajax({
 					type: "POST",
 					data: {
@@ -584,8 +585,8 @@
 						$('.entry-list').html(rs[0]).attr('data-current-page', pageNum);
 						// <li><a href="javascript:void(0)" class="prev" onclick="pageRun('', 'prev')"><span class="for-a11y">이전</span></a></li>
 
-						// $('.page').replaceWith(rs[1]);
-						$('.page').html(rs[1]);
+						$('.page').replaceWith(rs[1]);
+//						$('.page').html(rs[1]);
 						console.log(rs[2]);
 						console.log(rs[3]);
 						totalPage = rs[2];
@@ -611,10 +612,10 @@
 			function quatrainDataStore(el) {
 				var $el = $(el);
 				var $parent = $el.closest('li');
-				detailPopupData.push($parent.find('p.name').text()); 
+				detailPopupData.push($parent.find('p.name.first').text()); 
 				// detailPopupData.push($parent.find('button').attr("onclick")); 
-				detailPopupData.push($el.data("id")); 
-				$parent.find('p.node').each(function(idx, el) {
+				detailPopupData.push($el.attr('data-id')); 
+				$parent.find('p.node.first').each(function(idx, el) {
 					detailPopupData.push($(el).html());
 				});
 			}

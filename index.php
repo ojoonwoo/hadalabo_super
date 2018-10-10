@@ -631,7 +631,7 @@
 				var $parent = $el.closest('li');
 				detailPopupData.push($parent.find('p.name').text()); 
 				// detailPopupData.push($parent.find('button').attr("onclick")); 
-				detailPopupData.push($el.data("id")); 
+				detailPopupData.push($el.attr("data-id")); 
 				$parent.find('p.node').each(function(idx, el) {
 					detailPopupData.push($(el).html());
 				});

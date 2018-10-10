@@ -41,11 +41,11 @@ $output = "";
 while($member_data = mysqli_fetch_array($res))
 {
 	$output .= "<li>
-					<p class='name'>".$member_data["quatrain_name"]." 님</p>
-					<p class='node'><span class='for-a11y'>[수]</span>".$member_data["quatrain01"]."</p>
-					<p class='node'><span class='for-a11y'>[퍼]</span>".$member_data["quatrain02"]."</p>
-					<p class='node'><span class='for-a11y'>[보]</span>".$member_data["quatrain03"]."</p>
-					<p class='node'><span class='for-a11y'>[습]</span>".$member_data["quatrain04"]."</p>
+					<p class='name first'>".$member_data["quatrain_name"]." 님</p>
+					<p class='node first'><span class='for-a11y'>[수]</span>".$member_data["quatrain01"]."</p>
+					<p class='node first'><span class='for-a11y'>[퍼]</span>".$member_data["quatrain02"]."</p>
+					<p class='node first'><span class='for-a11y'>[보]</span>".$member_data["quatrain03"]."</p>
+					<p class='node first'><span class='for-a11y'>[습]</span>".$member_data["quatrain04"]."</p>
 					<button type='button' class='like' id='like_".$member_data["idx"]."' onclick=likeOn('page','".$member_data["idx"]."') data-layer='#layerLead'><span class='for-a11y'>좋아요</span></button>
 					<a href='#layerDetail' class='more' data-layer='#layerDetail' data-id='".$member_data["idx"]."' onclick='quatrainDataStore(this)'><span class='for-a11y'>상세보기</span></a>
                 </li>";

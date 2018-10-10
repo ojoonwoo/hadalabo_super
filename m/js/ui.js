@@ -1,11 +1,11 @@
-(function ($) {
+(function($) {
 	'use strict';
 
 	var $doc = $(document),
 		$win = $(window);
 
 	// swiperSet
-	$.fn.swiperSet = function (customOption) {
+	$.fn.swiperSet = function(customOption) {
 		var defaultOption = {
 			appendController: null,
 			pageControl: false,
@@ -19,7 +19,7 @@
 			scrollbar: {}
 		};
 
-		this.each(function () {
+		this.each(function() {
 			var option = $.extend({}, defaultOption, customOption);
 			var $this = $(this);
 
@@ -81,17 +81,17 @@
 				var swiper = new Swiper($target.get(0), option);
 				$this.data('swiper', swiper);
 
-				$(option.playButton).on('click', function () {
+				$(option.playButton).on('click', function() {
 					swiper.autoplay.start();
 				});
-				$(option.pauseButton).on('click', function () {
+				$(option.pauseButton).on('click', function() {
 					swiper.autoplay.stop();
 				});
-				swiper.on('autoplayStart', function () {
+				swiper.on('autoplayStart', function() {
 					$(option.playButton).addClass('active');
 					$(option.pauseButton).removeClass('active');
 				});
-				swiper.on('autoplayStop', function () {
+				swiper.on('autoplayStop', function() {
 					$(option.playButton).removeClass('active');
 					$(option.pauseButton).addClass('active');
 				});
@@ -105,19 +105,19 @@
 	hadalaboUI.userAgent = navigator.userAgent;
 	hadalaboUI.ios = hadalaboUI.userAgent.match(/iPod|iPhone|iPad/);
 	hadalaboUI.android = hadalaboUI.userAgent.match(/Android/);
-	hadalaboUI.androidVersion = (function () {
+	hadalaboUI.androidVersion = (function() {
 		if (hadalaboUI.android) {
 			var match = hadalaboUI.userAgent.match(/Android ([0-9]+\.[0-9]+(\.[0-9]+)*)/);
 			return match[1];
 		}
 	})();
 	hadalaboUI.transitionEnd = 'transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd';
-	hadalaboUI.hasTransition = (function () {
+	hadalaboUI.hasTransition = (function() {
 		var transition = ['transition', 'WebkitTransition', 'MozTransition', 'OTransition', 'msTransition'],
 			el = document.createElement('div'),
 			array = [];
 
-		$.each(transition, function (i, val) {
+		$.each(transition, function(i, val) {
 			if (el.style[val] !== undefined) {
 				array.push(val);
 			}
@@ -125,11 +125,11 @@
 
 		return array.length ? true : false;
 	})();
-	hadalaboUI.getTransition = function ($target) {
+	hadalaboUI.getTransition = function($target) {
 		if (hadalaboUI.hasTransition && $target && $target.length) {
 			var transition = ['transition', 'WebkitTransition', 'MozTransition', 'OTransition', 'msTransition'],
 				targetStyle = window.getComputedStyle($target.get(0)),
-				targetTransition = (function () {
+				targetTransition = (function() {
 					var result = '';
 
 					for (var i = 0; i < transition.length; i++) {
@@ -151,22 +151,22 @@
 					length: 0
 				};
 
-			$.each(array, function (i, val) {
+			$.each(array, function(i, val) {
 				var crr = val.replace(blankReg, ''),
 					key = crr.match(keyReg),
-					time = (function () {
+					time = (function() {
 						var ms = crr.match(msReg),
 							s = crr.match(sReg),
 							total = 0;
 
 						if (ms && ms.length) {
-							$.each(ms, function (j, item) {
+							$.each(ms, function(j, item) {
 								total += parseFloat(item);
 							});
 						}
 
 						if (s && s.length) {
-							$.each(s, function (j, item) {
+							$.each(s, function(j, item) {
 								total += parseFloat(item) * 1000;
 							});
 						}
@@ -190,7 +190,7 @@
 	};
 
 	// hash
-	hadalaboUI.hash = function (size, addString) {
+	hadalaboUI.hash = function(size, addString) {
 		var string = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
 			result = '';
 
@@ -212,7 +212,7 @@
 		className: {
 			block: 'is-scroll-blocking'
 		},
-		block: function (customTop) {
+		block: function(customTop) {
 			var _ = hadalaboUI.scrollBlock,
 				$html = $('html'),
 				$wrap = $('.wrap'),
@@ -225,7 +225,7 @@
 				$wrap.scrollTop(scrollTop);
 			}
 		},
-		clear: function () {
+		clear: function() {
 			var _ = hadalaboUI.scrollBlock,
 				$html = $('html'),
 				$wrap = $('.wrap'),
@@ -265,7 +265,7 @@
 			allClose: true,
 			timer: null
 		},
-		addOpenLayers: function ($layer) {
+		addOpenLayers: function($layer) {
 			var _ = hadalaboUI.layer;
 
 			if ($layer && $layer.length) {
@@ -288,7 +288,7 @@
 				}
 			}
 		},
-		removeOpenLayers: function ($layer) {
+		removeOpenLayers: function($layer) {
 			var _ = hadalaboUI.layer;
 
 			if ($layer && $layer.length) {
@@ -306,82 +306,96 @@
 				}
 			}
 		},
-		bind: function () {
+		bind: function() {
 			var _ = hadalaboUI.layer;
 			$doc
-				.on('click.hadalaboUILayer touchend.hadalaboUILayer', function (e) {
-					var target = e.target,
-						$target = $(target),
-						exceptTarget = target.hadalaboUIExceptTarget;
+				.on('click.hadalaboUILayer touchend.hadalaboUILayer', function(e) {
+				var target = e.target,
+					$target = $(target),
+					exceptTarget = target.hadalaboUIExceptTarget;
 
-					if (exceptTarget) {
-						_.documentClose(exceptTarget);
-						target.hadalaboUIExceptTarget = null;
+				if (exceptTarget) {
+					_.documentClose(exceptTarget);
+					target.hadalaboUIExceptTarget = null;
+				} else {
+					var $openLayers = $(_.openLayers),
+						$closest = $target.closest($openLayers);
+
+					if ($target.is($openLayers)) {
+						_.documentClose(e.target);
+						target.hadalaboUIExceptTarget = target;
+					} else if ($closest && $closest.length) {
+						_.documentClose($closest.get(0));
+						target.hadalaboUIExceptTarget = $closest.get(0);
 					} else {
-						var $openLayers = $(_.openLayers),
-							$closest = $target.closest($openLayers);
-
-						if ($target.is($openLayers)) {
-							_.documentClose(e.target);
-							target.hadalaboUIExceptTarget = target;
-						} else if ($closest && $closest.length) {
-							_.documentClose($closest.get(0));
-							target.hadalaboUIExceptTarget = $closest.get(0);
-						} else {
-							_.documentClose();
-							target.hadalaboUIExceptTarget = null;
-						}
+						_.documentClose();
+						target.hadalaboUIExceptTarget = null;
 					}
-				})
-				.on('click.hadalaboUILayer', '[data-layer]', function (e) {
-					var $this = $(this),
-						datas = _.getDatas($this);
+				}
+			})
+				.on('click.hadalaboUILayer', '[data-layer]', function(e) {
+				var $this = $(this),
+					datas = _.getDatas($this);
 
-					_.open(datas.$layer, datas.options);
+				_.open(datas.$layer, datas.options);
 
-					if ($this.is('a')) {
-						e.preventDefault();
-					}
-				})
-				.on('click.hadalaboUILayer', '[data-layer-toggle]', function (e) {
-					var $this = $(this),
-						datas = _.getDatas($this);
+				if ($this.is('a')) {
+					e.preventDefault();
+				}
+			})
+				.on('click.hadalaboUILayer', '[data-layer-toggle]', function(e) {
+				var $this = $(this),
+					datas = _.getDatas($this);
 
-					_.toggle(datas.$layer, datas.options);
+				_.toggle(datas.$layer, datas.options);
 
-					if ($this.is('a')) {
-						e.preventDefault();
-					}
-				})
-				.on('click.hadalaboUILayer', '[data-layer-close]', function (e) {
-					var $this = $(this),
-						datas = _.getDatas($this);
+				if ($this.is('a')) {
+					e.preventDefault();
+				}
+			})
+				.on('click.hadalaboUILayer', '[data-layer-close]', function(e) {
+				var $this = $(this),
+					datas = _.getDatas($this);
 
-					_.close(datas.$layer, datas.options);
+				_.close(datas.$layer, datas.options);
 
-					if ($this.is('a')) {
-						e.preventDefault();
-					}
-				})
-				.on('click.hadalaboUILayer', '.' + _.className.closeBtn, function (e) {
-					var $this = $(this),
-						$openLayers = $(_.openLayers),
-						$layer = $this.closest($openLayers);
+				if ($this.is('a')) {
+					e.preventDefault();
+				}
+			})
+				.on('click.hadalaboUILayer', '.' + _.className.closeBtn, function(e) {
+				var $this = $(this),
+					$openLayers = $(_.openLayers),
+					$layer = $this.closest($openLayers);
 
-					if ($layer && $layer.length) {
-						_.close($layer);
-					}
+				if ($layer && $layer.length) {
+					_.close($layer);
+				}
 
-					if ($this.is('a')) {
-						e.preventDefault();
-					}
-				})
-				.on('click.hadalaboUILayer touchend.hadalaboUILayer', '[data-layer], [data-layer-toggle], .' + _.className.closeBtn, function (e) {
-					e.stopPropagation();
-				});
+				if ($this.is('a')) {
+					e.preventDefault();
+				}
+			})
+				.on('click.hadalaboUILayer', '.close-agree-button', function(e) {
+				console.log($(_.openLayers));
+				var $this = $(this),
+					$openLayers = $(_.openLayers),
+					// $layer = $this.closest($openLayers);
+					$layer = $("#layerClause");
+
+				// if ($layer && $layer.length) {
+				_.close($layer);
+				// }
+
+				// if ($this.is('a')) {
+				//   e.preventDefault();
+				// }
+			})
+				.on('click.hadalaboUILayer touchend.hadalaboUILayer', '[data-layer], [data-layer-toggle], .close-agree-button, .' + _.className.closeBtn, function(e) {
+				e.stopPropagation();
+			});
 		},
-		getDatas: function ($btn) {
-			console.log($btn.attr('data-layer'));
+		getDatas: function($btn) {
 			if ($btn && $btn.length) {
 				var _ = hadalaboUI.layer,
 					dataLayer = $btn.attr('data-layer-toggle') || $btn.attr('data-layer') || null,
@@ -405,7 +419,7 @@
 				};
 			}
 		},
-		getOptions: function (string) {
+		getOptions: function(string) {
 			var _ = hadalaboUI.layer,
 				string = string || '';
 
@@ -420,7 +434,7 @@
 					array = string.split(';'),
 					options = {};
 
-				$.each(array, function (i, value) {
+				$.each(array, function(i, value) {
 					var crr = value.replace(blankReg, ''),
 						key = crr.match(keyReg),
 						val = crr.match(valReg);
@@ -447,7 +461,7 @@
 				return {};
 			}
 		},
-		toggle: function ($layer, options) {
+		toggle: function($layer, options) {
 			var _ = hadalaboUI.layer;
 
 			options = $.extend({}, _.defaultOptions, options || {});
@@ -458,7 +472,7 @@
 				_.open($layer, options);
 			}
 		},
-		open: function ($layer, options) {
+		open: function($layer, options) {
 			var _ = hadalaboUI.layer;
 
 			if ($layer && $layer.length && !$layer.hasClass(_.className.show)) {
@@ -469,11 +483,11 @@
 				}
 
 				if (options.timer && typeof options.timer === 'number') {
-					var timer = setTimeout(function () {
+					var timer = setTimeout(function() {
 						_.close($layer);
 					}, options.timer);
 
-					$layer.data('hadalaboUILayerTimer', timer).one('layerClosed.hadalaboUILayerTimer', function () {
+					$layer.data('hadalaboUILayerTimer', timer).one('layerClosed.hadalaboUILayerTimer', function() {
 						var timer = $(this).data('hadalaboUILayerTimer') || null;
 						clearTimeout(timer);
 					});
@@ -505,7 +519,7 @@
 
 				_.addOpenLayers($layer);
 
-				setTimeout(function () {
+				setTimeout(function() {
 					$layer.removeClass(_.className.hide).addClass(_.className.animated + ' ' + _.className.show);
 
 					$layer.trigger('layerOpened', [$layer, options.$btn]);
@@ -524,11 +538,11 @@
 					}
 
 					if (transition.length) {
-						var transitionEndTimer = setTimeout(function () {
+						var transitionEndTimer = setTimeout(function() {
 							$layer.off(_.transitionEnd);
 							afterClose();
 						}, 2000);
-						$layer.one(_.transitionEnd, function () {
+						$layer.one(_.transitionEnd, function() {
 							clearTimeout(transitionEndTimer);
 							$layer.off(_.transitionEnd);
 							afterClose();
@@ -539,7 +553,7 @@
 				}, 10);
 			}
 		},
-		close: function ($layer, options) {
+		close: function($layer, options) {
 			var _ = hadalaboUI.layer;
 
 			if ($layer && $layer.length && $layer.hasClass(_.className.show)) {
@@ -568,11 +582,11 @@
 				var transition = _.getTransition($animate);
 
 				if (transition.length) {
-					var transitionEndTimer = setTimeout(function () {
+					var transitionEndTimer = setTimeout(function() {
 						$layer.off(_.transitionEnd);
 						afterClose();
 					}, 2000);
-					$layer.one(_.transitionEnd, function () {
+					$layer.one(_.transitionEnd, function() {
 						clearTimeout(transitionEndTimer);
 						$layer.off(_.transitionEnd);
 						afterClose();
@@ -593,7 +607,7 @@
 				$layer.trigger('layerAfterClosed', [$layer, options.$btn]);
 			}
 		},
-		scrollBlockClearCheck: function () {
+		scrollBlockClearCheck: function() {
 			var _ = hadalaboUI.layer,
 				count = 0,
 				openLayers = _.openLayers,
@@ -615,14 +629,14 @@
 				return true;
 			}
 		},
-		documentClose: function (notLayer) {
+		documentClose: function(notLayer) {
 			var _ = hadalaboUI.layer,
 				$openLayers = $(_.openLayers);
 
 			if ($openLayers.length) {
 				var lastOptions = $openLayers.eq(-1).data('hadalaboUILayerOptions');
 				if (lastOptions.allClose) {
-					$openLayers.each(function () {
+					$openLayers.each(function() {
 						var $layer = $(this),
 							layerOptions = $layer.data('hadalaboUILayerOptions');
 
@@ -652,35 +666,35 @@
 			option: 'js-select-ui__option',
 			val: 'js-select-ui__val'
 		},
-		bind: function () {
+		bind: function() {
 			var _ = this;
 
 			$doc
-				.on('click.hadalaboUISelectLayer', function () {
-					_.close($('.' + _.className.wrap));
-				})
-				.on('click.hadalaboUISelectLayer', '.' + _.className.opener, function (e) {
-					var $this = $(this),
-						$wrap = $this.closest('.' + _.className.wrap);
+				.on('click.hadalaboUISelectLayer', function() {
+				_.close($('.' + _.className.wrap));
+			})
+				.on('click.hadalaboUISelectLayer', '.' + _.className.opener, function(e) {
+				var $this = $(this),
+					$wrap = $this.closest('.' + _.className.wrap);
 
-					_.toggle($wrap);
+				_.toggle($wrap);
 
-					if ($this.is('a')) {
-						e.preventDefault();
-					}
-				})
-				.on('click.hadalaboUISelectLayer', '.' + _.className.option, function (e) {
-					var $this = $(this),
-						$wrap = $this.closest('.' + _.className.wrap);
+				if ($this.is('a')) {
+					e.preventDefault();
+				}
+			})
+				.on('click.hadalaboUISelectLayer', '.' + _.className.option, function(e) {
+				var $this = $(this),
+					$wrap = $this.closest('.' + _.className.wrap);
 
-					_.selected($wrap, $this);
-					_.close($wrap);
-				})
-				.on('click.hadalaboUISelectLayer', '.' + _.className.wrap, function (e) {
-					e.stopPropagation();
-				});
+				_.selected($wrap, $this);
+				_.close($wrap);
+			})
+				.on('click.hadalaboUISelectLayer', '.' + _.className.wrap, function(e) {
+				e.stopPropagation();
+			});
 		},
-		selected: function ($wrap, $this) {
+		selected: function($wrap, $this) {
 			var _ = this,
 				$option = $wrap.find('.' + _.className.option),
 				$val = $wrap.find('.' + _.className.val);
@@ -692,7 +706,7 @@
 				$val.html($this.html());
 			}
 		},
-		toggle: function ($wrap) {
+		toggle: function($wrap) {
 			var _ = this;
 
 			if ($wrap.hasClass(_.className.active)) {
@@ -701,13 +715,13 @@
 				_.open($wrap);
 			}
 		},
-		open: function ($wrap) {
+		open: function($wrap) {
 			var _ = this,
 				docH = $doc.height();
 
 			_.close($('.' + _.className.wrap).not($wrap));
 
-			$wrap.each(function () {
+			$wrap.each(function() {
 				var $wrap = $(this),
 					$opener = $wrap.find('.' + _.className.opener),
 					$layer = $wrap.find('.' + _.className.layer),
@@ -730,14 +744,14 @@
 						$wrap.removeClass(_.className.top);
 					}
 
-					setTimeout(function () {
+					setTimeout(function() {
 						$layerInner.css('transition-duration', '');
 						$wrap.addClass(_.className.active);
 
 						if (_.hasTransition) {
 							$wrap.addClass(_.className.animated);
 
-							$layerInner.one(_.transitionEnd, function () {
+							$layerInner.one(_.transitionEnd, function() {
 								$wrap.removeClass(_.className.animated);
 								$layerInner.off(_.transitionEnd);
 							});
@@ -746,10 +760,10 @@
 				}
 			});
 		},
-		close: function ($wrap) {
+		close: function($wrap) {
 			var _ = this;
 
-			$wrap.each(function () {
+			$wrap.each(function() {
 				var $wrap = $(this),
 					$opener = $wrap.find('.' + _.className.opener),
 					$layer = $wrap.find('.' + _.className.layer),
@@ -763,7 +777,7 @@
 					if (_.hasTransition) {
 						$wrap.addClass(_.className.animated);
 
-						$layerInner.one(_.transitionEnd, function () {
+						$layerInner.one(_.transitionEnd, function() {
 							$wrap.removeClass(_.className.animated + ' ' + _.className.top);
 							$layer.css('display', 'none');
 							$layerInner.off(_.transitionEnd);
@@ -779,7 +793,7 @@
 	hadalaboUI.selectLayer.bind();
 
 	// selectbox
-	var HadalaboSelectbox = function (target, options) {
+	var HadalaboSelectbox = function(target, options) {
 		var _ = this,
 			$target = $(target).eq(0);
 
@@ -804,7 +818,7 @@
 		_.on();
 		_.update();
 	};
-	HadalaboSelectbox.prototype.init = function () {
+	HadalaboSelectbox.prototype.init = function() {
 		var _ = this,
 			selectLayerClassName = hadalaboUI.selectLayer.className,
 			html = '' + '<div class="' + _.className.wrap + ' ' + selectLayerClassName.wrap + '">' + '<button type="button" class="' + _.className.opener + ' ' + selectLayerClassName.opener + '" title="옵션 레이어 열기/닫기"></button>' + '<div class="' + _.className.layer + ' ' + selectLayerClassName.layer + '">' + '<div class="' + _.className.layerInner + ' ' + selectLayerClassName.layerInner + '">' + '<ul class="' + _.className.list + '">' + '</ul>' + '</div>' + '</div>' + '</div>',
@@ -836,7 +850,7 @@
 			return hash;
 		}
 
-		_.name = (function () {
+		_.name = (function() {
 			var name = _.$target.attr('name');
 
 			if (!name || !name.length) {
@@ -852,7 +866,7 @@
 			_.$option.eq(0).prop('selected', true);
 		}
 
-		_.$option.each(function (i) {
+		_.$option.each(function(i) {
 			var $this = $(this),
 				data = $this.data('html');
 
@@ -870,43 +884,43 @@
 		_.radio = _.list.find('.' + _.className.radio);
 		_.label = _.list.find('.' + _.className.label);
 	};
-	HadalaboSelectbox.prototype.on = function () {
+	HadalaboSelectbox.prototype.on = function() {
 		var _ = this;
 
-		_.radio.on('change.hadalaboSelectbox', function () {
+		_.radio.on('change.hadalaboSelectbox', function() {
 			var i = _.radio.index($(this));
 			_.selectChange(i);
 		});
 
-		_.$target.on('change.hadalaboSelectbox', function () {
+		_.$target.on('change.hadalaboSelectbox', function() {
 			_.update();
 		});
 
-		_.label.on('click.hadalaboSelectbox', function () {
+		_.label.on('click.hadalaboSelectbox', function() {
 			hadalaboUI.selectLayer.close(_.wrap);
 		});
 	};
-	HadalaboSelectbox.prototype.selectChange = function (i) {
+	HadalaboSelectbox.prototype.selectChange = function(i) {
 		var _ = this;
 
 		_.$option.prop('selected', false);
 		_.$option.eq(i).prop('selected', true);
 		_.$target.trigger('change');
 	};
-	HadalaboSelectbox.prototype.radioChange = function () {
+	HadalaboSelectbox.prototype.radioChange = function() {
 		var _ = this,
 			i = _.selected;
 
 		_.radio.prop('checked', false);
 		_.radio.eq(i).prop('checked', true);
 	};
-	HadalaboSelectbox.prototype.valChange = function () {
+	HadalaboSelectbox.prototype.valChange = function() {
 		var _ = this,
 			i = _.selected;
 
 		_.opener.html(_.data[i]);
 	};
-	HadalaboSelectbox.prototype.update = function () {
+	HadalaboSelectbox.prototype.update = function() {
 		var _ = this,
 			i = _.$option.filter(':selected').index();
 
@@ -925,21 +939,21 @@
 			_.radio.prop('disabled', false);
 		}
 	};
-	$.fn.hadalaboSelectbox = function (custom) {
+	$.fn.hadalaboSelectbox = function(custom) {
 		var defaultOption = {
-				customClass: null
-			},
+			customClass: null
+		},
 			other = [];
 
 		custom = custom || {};
 
-		$.each(arguments, function (i) {
+		$.each(arguments, function(i) {
 			if (i > 0) {
 				other.push(this);
 			}
 		});
 
-		this.each(function () {
+		this.each(function() {
 			if (typeof custom === 'object' && !this.HadalaboSelectbox) {
 				var options = $.extend({}, defaultOption, custom);
 				this.HadalaboSelectbox = new HadalaboSelectbox(this, options);
@@ -958,18 +972,19 @@
 	};
 
 	// 아래 화살표 기능
-	$doc.on('click.hadalaboUI', '.js-main-down', function () {
+	$doc.on('click.hadalaboUI', '.js-main-down', function() {
 		$('html, body')
 			.stop()
-			.animate({
-					scrollTop: $('.main-section--02').offset().top
-				},
-				500
-			);
+			.animate(
+			{
+				scrollTop: $('.main-section--02').offset().top
+			},
+			500
+		);
 	});
 
 	// dom ready
-	$(function () {
+	$(function() {
 		// selectbox
 		$('.js-selectbox').hadalaboSelectbox();
 
@@ -985,23 +1000,25 @@
 	});
 
 	// window load
-	$win.on('load', function () {
+	$win.on('load', function() {
 		//drop
 		function drop($drop, duration, top) {
 			$drop
 				.stop()
 				.prop('scale', 0)
 				.css({
-					marginTop: 0,
-					opacity: 1,
-					'-webkit-transform': 'scale(0)',
-					transform: 'scale(0)'
-				})
-				.animate({
+				marginTop: 0,
+				opacity: 1,
+				'-webkit-transform': 'scale(0)',
+				transform: 'scale(0)'
+			})
+				.animate(
+				{
 					scale: 100
-				}, {
+				},
+				{
 					duration: duration[0],
-					step: function (now, fx) {
+					step: function(now, fx) {
 						if (fx.prop === 'scale') {
 							$(this).css({
 								'-webkit-transform': 'scale(' + now * 0.01 + ')',
@@ -1009,16 +1026,17 @@
 							});
 						}
 					},
-					complete: function () {
-						var timer = setTimeout(function () {
+					complete: function() {
+						var timer = setTimeout(function() {
 							clearTimeout(timer);
-							$drop.stop().animate({
+							$drop.stop().animate(
+								{
 									marginTop: top,
 									opacity: 0.1
 								},
 								duration[2],
-								function () {
-									var timer = setTimeout(function () {
+								function() {
+									var timer = setTimeout(function() {
 										clearTimeout(timer);
 										drop($drop, duration, top);
 									}, duration[3]);
@@ -1026,7 +1044,8 @@
 							);
 						}, duration[1]);
 					}
-				});
+				}
+			);
 		}
 		var $drop01 = $('.js-drop'),
 			$drop02 = $('.js-drop-02'),
@@ -1035,71 +1054,75 @@
 			drop($drop01, [2000, 1000, 800, 3200], 90);
 		}
 		if ($drop02.length) {
-			setTimeout(function () {
+			setTimeout(function() {
 				drop($drop02, [2000, 1000, 1000, 3000], 300);
 			}, 500);
 		}
 		if ($drop03.length) {
-			setTimeout(function () {
+			setTimeout(function() {
 				drop($drop03, [2000, 1200, 800, 3000], 200);
 			}, 700);
 		}
 	});
-
 	$(document).on('layerOpened', function (args) {
-		switch (args.target.id) {
+		switch(args.target.id) {
 			case 'layerDetail':
 				var target = $(args.target);
 
 				// 로컬스토리지에 저장한 idx 불러와서 라이크여부 체크
 				// target.attr("data-idx",detailPopupData[1]);
 				var output = localStorage.getItem("like_idx");
-				if (output) {
-					var getLikeArr = JSON.parse(output);
-					console.log(detailPopupData[1] + "||" + getLikeArr);
-					$.each(getLikeArr, function (index, item) {
-						if (detailPopupData[1] == item) {
+				if (output)
+				{
+					var getLikeArr  = JSON.parse(output);
+					console.log(detailPopupData[1]+"||"+getLikeArr);
+					$.each(getLikeArr,function(index, item){
+						if (detailPopupData[1] == item)
+						{
 							target.find('.card .like').addClass("is-active");
 							return false;
-						} else {
+						}else{
 							target.find('.card .like').removeClass("is-active");
 						}
 					});
 				}
-
 				target.find('.card .name').text(detailPopupData[0]);
-				target.find('.card .like').attr("onclick", "likeOn('popup','" + detailPopupData[1] + "')");
-				target.find('.card .like').attr("id", "like_pop_" + detailPopupData[1]);
-				target.find('.card .node').each(function (idx, el) {
-					$(el).html(detailPopupData[idx + 2]);
+				target.find('.card .like').attr("onclick","likeOn('popup','"+detailPopupData[1]+"')");
+				target.find('.card .like').attr("id","like_pop_"+detailPopupData[1]);
+				target.find('.card .node').each(function(idx, el) {
+					$(el).html(detailPopupData[idx+2]);
 					//					var data = $(el).find('span')[0].outerHTML+detailPopupData[idx+1];
 					//					$(el).html(data);
 				});
 				break;
 		}
 	});
-	$(document).on('layerClosed', function (args) {
-		if (args.target.id == 'layerDetail') {
+	$(document).on('layerClosed', function(args) {
+		if(args.target.id == 'layerDetail') {
 			detailPopupData = new Array();
+//			console.log(detailPopupData);
+			// detailPopupData.length = 0;
 		}
 	});
 })(jQuery);
 
-function sns_share(media, flag) {
-	if (media == "fb") {
-		var newWindow = window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent('http://www.hadalabo-superbosp.com/?media=share_fb'), 'sharer', 'toolbar=0,status=0,width=600,height=325');
+function sns_share(media, flag)
+{
+	if (media == "fb")
+	{
+		var newWindow = window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent('http://www.hadalabo-superbosp.com/?media=share_fb'),'sharer','toolbar=0,status=0,width=600,height=325');
 
 		$.ajax({
-			type: "POST",
-			async: false,
-			url: "../main_exec.php",
-			data: {
-				"exec": "insert_share_info",
-				"sns_media": media,
-				"sns_flag": flag
+			type   : "POST",
+			async  : false,
+			url    : "../main_exec.php",
+			data:{
+				"exec"          : "insert_share_info",
+				"sns_media"     : media,
+				"sns_flag"		: flag
 			}
 		});
-	} else if (media == "kt") {
+	}else if (media == "kt"){
 		Kakao.init('996645db5157a953e8db96181cbccf2d');
 
 		Kakao.Link.sendDefault({
@@ -1124,55 +1147,55 @@ function sns_share(media, flag) {
 					}
 				}
 			],
-			success: function (res) {
+			success: function(res) {
 				console.log("success");
 				console.log(res);
 			},
-			fail: function (res) {
+			fail: function(res) {
 				console.log("fail");
 				console.log(res);
 			},
-			callback: function () {
+			callback: function() {
 				//					console.log("callback:"+res);
 				// shareEnd();
 			}
 		});
 		$.ajax({
-			type: "POST",
-			async: false,
-			url: "../main_exec.php",
-			data: {
-				"exec": "insert_share_info",
-				"sns_media": media,
-				"sns_flag": flag
+			type   : "POST",
+			async  : false,
+			url    : "../main_exec.php",
+			data:{
+				"exec" : "insert_share_info",
+				"sns_media" : media,
+				"sns_flag"		: flag
 			}
 		});
-	} else if (media == "tw") {
-		var newWindow = window.open('http://twitter.com/share?url=' + encodeURIComponent('http://www.hadalabo-superbosp.com/?media=share_tw') + '&text=' + encodeURIComponent("하다라보 내가 쓰는 수퍼보습 사행시\n\n더 깊어진 하다라보의 '수퍼보습'으로 4행시에 도전하세요.\n참여만 해도 100% 하다라보 5일 샘플을 드립니다."), 'sharer', 'toolbar=0,status=0,width=600,height=325');
+	}else if (media == "tw"){
+		var newWindow = window.open('http://twitter.com/share?url=' + encodeURIComponent('http://www.hadalabo-superbosp.com/?media=share_tw') + '&text=' + encodeURIComponent("하다라보 내가 쓰는 수퍼보습 사행시\n\n더 깊어진 하다라보의 '수퍼보습'으로 4행시에 도전하세요.\n참여만 해도 100% 하다라보 5일 샘플을 드립니다."),'sharer','toolbar=0,status=0,width=600,height=325');
 
 		$.ajax({
-			type: "POST",
-			async: false,
-			url: "../main_exec.php",
-			data: {
-				"exec": "insert_share_info",
-				"sns_media": media,
-				"sns_flag": flag
+			type   : "POST",
+			async  : false,
+			url    : "../main_exec.php",
+			data:{
+				"exec"          : "insert_share_info",
+				"sns_media"     : media,
+				"sns_flag"		: flag
 			}
 		});
-	} else {
+	}else{
 		Kakao.Story.share({
 			url: 'http://www.hadalabo-superbosp.com/?media=share_ks',
 			text: "하다라보 내가 쓰는 수퍼보습 사행시\n\n더 깊어진 하다라보의 '수퍼보습'으로 4행시에 도전하세요.\n참여만 해도 100% 하다라보 5일 샘플을 드립니다."
 		});
 		$.ajax({
-			type: "POST",
-			async: false,
-			url: "../main_exec.php",
-			data: {
-				"exec": "insert_share_info",
-				"sns_media": media,
-				"sns_flag": flag
+			type   : "POST",
+			async  : false,
+			url    : "../main_exec.php",
+			data:{
+				"exec"          : "insert_share_info",
+				"sns_media"     : media,
+				"sns_flag"		: flag
 			}
 		});
 	}
