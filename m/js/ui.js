@@ -1234,7 +1234,7 @@ function chk_len(obj, len)
 	if(obj.value.length >= len) {
 		// alert("전화번호는 11자를 초과할 수 없습니다.");
 		// obj.value = obj.value.slice(0, -(obj.value.length-4));
-
+		obj.value = obj.value.substring(0, 11);
 		$("#mb_phone").blur();
 
     return false;
