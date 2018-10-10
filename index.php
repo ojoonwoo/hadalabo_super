@@ -308,8 +308,8 @@
 							</select>
 						</li>
 						<li>
-							<input type="text" class="search-input" id="search" placeholder="아이디로 찾기" title="아이디 검색 키워드 입력">
-							<label for="search">아이디로 찾기</label>
+							<input type="text" class="search-input" id="search" placeholder="작성자 이름" title="아이디 검색 키워드 입력">
+							<label for="search">작성자 이름</label>
 							<button type="button" class="search-submit">
 								<span class="for-a11y">검색</span>
 							</button>
@@ -680,14 +680,16 @@
 					},
 					url: "./main_exec.php",
 					success: function(rs) {
+						console.log(plusMinus);
+						console.log(rs);
 						if (rs == "Y")
 						{
-							if ($("#like_"+idx).hasClass("is-active")) {
-								alert("좋아요가 취소 되었습니다");
+							if (plusMinus == "-") {
+								// alert("좋아요가 취소 되었습니다");
 								$("#like_"+idx).removeClass("is-active");
 								$("#like_pop_"+idx).removeClass("is-active");
 							}else{
-								alert("좋아요가 되었습니다");
+								// alert("좋아요가 되었습니다");
 								$("#like_"+idx).addClass("is-active");
 								$("#like_pop_"+idx).addClass("is-active");
 								like_arr.push(idx);
