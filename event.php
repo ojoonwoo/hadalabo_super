@@ -172,16 +172,12 @@
 					<img src="images/layer-clause-sub-title-01.png" alt="개인 정보 수집 및 이용약관">
 				</h2>
 				<div class="clause">
-					멘소래담(이하 "당사"라 한다) 본 이벤트를 위하여 귀하의 개인정보를 수집 및 이용합니다.<br><br>
+					한국 멘소래담(이하 "당사"라 한다) 본 이벤트를 위하여 귀하의 개인정보를 수집 및 이용합니다.<br><br>
 
 					• 수집항목 : 이름, 휴대폰번호, 주소<br>
-					• 이용목적 : 이벤트 진행을 위한 본인 확인, 경품 제공, 정보 공지<br>
-					및 불만 처리 등을 위한 연락처 확보, 이벤트 참여 내용 노출<br>
-					• 보유기간 : 이벤트 종료 후 1년 이내 파기<br><br>
-
-					1. 귀하께서 이벤트를 통해 작성하신 내용은 해당 사이트 내에<br>
-					2. 귀하께서 이벤트를 통해 작성하신 내용은 해당 사이트 내에<br>
-					3. 귀하께서 이벤트를 통해 작성하신 내용은 해당 사이트 내에
+					• 이용목적 : 이벤트 진행을 위한 본인 확인, 당첨자 선정 및 경품 제공,<br>
+					정보 공지 및 불만 처리 등을 위한 연락처 확보, 이벤트 참여 내용 노출<br>
+					• 보유기간 : 이벤트 종료 후 6개월 이내 파기
 				</div>
 				<h2 class="sub-title">
 					<img src="images/layer-clause-sub-title-02.png" alt="개인 정보 취급 위탁 약관">
@@ -190,13 +186,9 @@
 					당사는 원활한 행사 진행을 위하여 아래의 전문 업체에 업무를 위탁 처리하고 있습니다.<br><br>
 
 					• 수탁자 : TBWA<br>
-					• 위탁하는 업무의 내용 : 이벤트 당첨자 확인, 경품 발송, MMS 발송<br><br>
-
-					수탁업체가 제공받은 귀하의 개인 정보는 당사의 개인 정보보호 정책에 따라 안전하게 관리됩니다.<br>
-					수탁업체가 제공받은 귀하의 개인 정보는 당사의 개인 정보보호 정책에 따라 안전하게 관리됩니다.<br>
-					수탁업체가 제공받은 귀하의 개인 정보는 당사의 개인 정보보호 정책에 따라 안전하게 관리됩니다.<br>
+					• 위탁하는 업무의 내용 : 이벤트 당첨자 확인, 경품 발송, MMS 발송
 				</div>
-				<button type="button" class="agree">
+				<button type="button" class="agree" onclick="agreeCheck()">
 					<img src="images/layer-clause-agree.png" alt="동의합니다">
 				</button>
 			</div>
@@ -358,6 +350,12 @@
 					}
 				}).open();
 			});
+
+			function agreeCheck()
+			{
+				$("input:checkbox[id='layerEntryAgree']").prop("checked", true);
+				hadalaboUI.layer.close($('#layerClause'));
+			}
 		</script>
 	</body>
 </html>

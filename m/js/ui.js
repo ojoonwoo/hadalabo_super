@@ -376,7 +376,22 @@
             e.preventDefault();
           }
         })
-        .on('click.hadalaboUILayer touchend.hadalaboUILayer', '[data-layer], [data-layer-toggle], .' + _.className.closeBtn, function(e) {
+        .on('click.hadalaboUILayer', '.close-agree-button', function(e) {
+          console.log($(_.openLayers));
+          var $this = $(this),
+            $openLayers = $(_.openLayers),
+            // $layer = $this.closest($openLayers);
+            $layer = $("#layerClause");
+
+          // if ($layer && $layer.length) {
+            _.close($layer);
+          // }
+
+          // if ($this.is('a')) {
+          //   e.preventDefault();
+          // }
+        })
+        .on('click.hadalaboUILayer touchend.hadalaboUILayer', '[data-layer], [data-layer-toggle], .close-agree-button, .' + _.className.closeBtn, function(e) {
           e.stopPropagation();
         });
     },
