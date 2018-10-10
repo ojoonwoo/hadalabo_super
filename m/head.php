@@ -3,7 +3,12 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>하다라보 고쿠쥰 4행시 이벤트</title>
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="하다라보 내가 쓰는 수퍼보습 사행시" />
+		<meta property="og:url" content="http://hadalabo-superbosp.com" />
+		<meta property="og:image" content="http://hadalabo-superbosp.com/images/share_img.jpg" />
+		<meta property="og:description" content="더 깊어진 하다라보의 '수퍼보습'으로 4행시에 도전하세요. 참여만 해도 100% 하다라보 5일 샘플을 드립니다." />
+		<title>하다라보 - 수퍼보습</title>
 		<link type="text/css" rel="stylesheet" href="css/swiper.css">
 		<link type="text/css" rel="stylesheet" href="css/font.css">
 		<link type="text/css" rel="stylesheet" href="css/reset.css">
