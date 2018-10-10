@@ -47,73 +47,91 @@
 							<li>
 								<p class="quatrain-node">
 									<span class="for-a11y">[수]</span>
-									지야, 이건 함부로
+									분이 속 깊이 스며들고
 								</p>
 								<p class="quatrain-node">
 									<span class="for-a11y">[퍼]</span>
-									붓지 마
+									펙트하게 마무리하여
 								</p>
 								<p class="quatrain-node">
 									<span class="for-a11y">[보]</span>
-									기보다 촉촉해서, 피부에
+									습을 압도하다
 								</p>
 								<p class="quatrain-node">
 									<span class="for-a11y">[습]</span>
-									관된다?!
+									관을 바꾸세요 수퍼보습으로
 								</p>
 							</li>
 							<li>
 								<p class="quatrain-node">
 									<span class="for-a11y">[수]</span>
-									지야, 이건 함부로
+									분이 부족할 땐
 								</p>
 								<p class="quatrain-node">
 									<span class="for-a11y">[퍼]</span>
-									붓지 마
+									펙트한 보습이 필요해
 								</p>
 								<p class="quatrain-node">
 									<span class="for-a11y">[보]</span>
-									기보다 촉촉해서, 피부에
+									습을 넘어 하다라보 수퍼보습
 								</p>
 								<p class="quatrain-node">
 									<span class="for-a11y">[습]</span>
-									관된다?!
+									관을 바꿔 촉촉해져봐!
 								</p>
 							</li>
 							<li>
 								<p class="quatrain-node">
 									<span class="for-a11y">[수]</span>
-									지야, 이건 함부로
+									분이 속 깊이
 								</p>
 								<p class="quatrain-node">
 									<span class="for-a11y">[퍼]</span>
-									붓지 마
+									지는
 								</p>
 								<p class="quatrain-node">
 									<span class="for-a11y">[보]</span>
-									기보다 촉촉해서, 피부에
+									습은 오직 하다라보 수퍼보습 뿐
 								</p>
 								<p class="quatrain-node">
 									<span class="for-a11y">[습]</span>
-									관된다?!
+									관 되면 피부가 달라질 걸
 								</p>
 							</li>
 							<li>
 								<p class="quatrain-node">
 									<span class="for-a11y">[수]</span>
-									지야, 이건 함부로
+									고했어 오늘도
 								</p>
 								<p class="quatrain-node">
 									<span class="for-a11y">[퍼]</span>
-									붓지 마
+									퍽한 보습하느라
 								</p>
 								<p class="quatrain-node">
 									<span class="for-a11y">[보]</span>
-									기보다 촉촉해서, 피부에
+									습이 수퍼, 수퍼보습으로
 								</p>
 								<p class="quatrain-node">
 									<span class="for-a11y">[습]</span>
-									관된다?!
+									관을 체인지, 수퍼보습으로
+								</p>
+							</li>
+							<li>
+								<p class="quatrain-node">
+									<span class="for-a11y">[수]</span>
+									분이 차고 넘쳐
+								</p>
+								<p class="quatrain-node">
+									<span class="for-a11y">[퍼]</span>
+									펙트 말을 잃어
+								</p>
+								<p class="quatrain-node">
+									<span class="for-a11y">[보]</span>
+									습을 뛰어 넘어
+								</p>
+								<p class="quatrain-node">
+									<span class="for-a11y">[습]</span>
+									관을 바꿔 버려
 								</p>
 							</li>
 						</ul>
