@@ -418,7 +418,8 @@
 					<p class="node">
 						<span class="for-a11y">[습]</span>관적으로 발라주자!
 					</p>
-					<button type="button" class="like is-active">
+					<!-- <button type="button" class="like is-active"> -->
+					<button type="button" class="like">
 						<span class="for-a11y">좋아요 취소하기</span>
 					</button>
 				</div>
@@ -465,7 +466,6 @@
 			var detailPopupData = new Array();
 			var like_arr = new Array();
 			var totalPage = <?=$total_page?>;
-			var totalPage = 1;
 			localStorage.clear();
 			var clipboard = new ClipboardJS('._copy1', {
 				text: function() {
@@ -486,10 +486,10 @@
 				e.clearSelection();
 				alert("해시태그가 복사되었습니다");
 			});
-			clipboard.on('error', function(e) {
-				console.error('Action:', e.action);
-				console.error('Trigger:', e.trigger);
-			});
+			// clipboard.on('error', function(e) {
+			// 	console.error('Action:', e.action);
+			// 	console.error('Trigger:', e.trigger);
+			// });
 			clipboard2.on('success', function(e) {
 				// e.clearSelection();
 				alert("해시태그가 복사되었습니다");
@@ -549,7 +549,6 @@
 			function listChange(pageNum) {
 				var orderBy = $('#orderby').val();
 				var searchName = $("#search").val();
-console.log(orderBy);
 				$.ajax({
 					type: "POST",
 					data: {

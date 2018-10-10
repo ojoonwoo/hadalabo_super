@@ -1064,6 +1064,47 @@
       }, 700);
     }
   });
+	$(document).on('layerOpened', function (args) {
+		switch(args.target.id) {
+			case 'layerDetail':
+        var target = $(args.target);
+        
+        // 로컬스토리지에 저장한 idx 불러와서 라이크여부 체크
+        // target.attr("data-idx",detailPopupData[1]);
+        var output = localStorage.getItem("like_idx");
+        if (output)
+        {
+          var getLikeArr  = JSON.parse(output);
+          console.log(detailPopupData[1]+"||"+getLikeArr);
+          $.each(getLikeArr,function(index, item){
+            if (detailPopupData[1] == item)
+            {
+              target.find('.card .like').addClass("is-active");
+              return false;
+            }else{
+              target.find('.card .like').removeClass("is-active");
+            }
+          });
+        }
+console.log(detailPopupData[0]);
+				target.find('.card .name').text(detailPopupData[0]);
+				target.find('.card .like').attr("onclick","likeOn('popup','"+detailPopupData[1]+"')");
+				target.find('.card .like').attr("id","like_pop_"+detailPopupData[1]);
+				target.find('.card .node').each(function(idx, el) {
+					$(el).html(detailPopupData[idx+2]);
+//					var data = $(el).find('span')[0].outerHTML+detailPopupData[idx+1];
+//					$(el).html(data);
+				});
+				break;
+		}
+	});
+	$(document).on('layerClosed', function(args) {
+		if(args.target.id == 'layerDetail') {
+      console.log(args);
+			detailPopupData = new Array();
+			// detailPopupData.length = 0;
+		}
+	});
 })(jQuery);
 
 function sns_share(media, flag)
