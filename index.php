@@ -515,25 +515,6 @@
 				// e.clearSelection();
 				alert("해시태그가 복사되었습니다");
 			});
-		    // $(window).on('load', function() {
-			// 	var clipboard = new ClipboardJS('._copy1');
-			// 	var clipboard2 = new ClipboardJS('._copy2');
-
-			// 	clipboard.on('success', function(e) {
-			// 		console.info('Action:', e.action);
-			// 		console.info('Text:', e.text);
-			// 		console.info('Trigger:', e.trigger);
-
-			// 		e.clearSelection();
-			// 		alert("해시태그가 복사되었습니다");
-			// 	});
-
-			// 	clipboard2.on('success', function(e) {
-			// 		// e.clearSelection();
-			// 		alert("해시태그가 복사되었습니다");
-			// 	});
-
-			// });
 			function pageRun(pageNum, direction) {
 				var pageNum = pageNum;
 				if(direction) {
