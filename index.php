@@ -367,7 +367,7 @@
 							</a>
 						</li>
 						<li class="sns-04">
-							<a href="https://www.instagram.com/hadalabo_korea/" target="_blank">
+							<a href="https://www.youtube.com/channel/UCsq93AwlyafoGFMNPzQgOiQ" target="_blank">
 								<img src="images/main-section-05-sns-04.png" alt="유튜브">
 							</a>
 						</li>
@@ -407,7 +407,7 @@
 					</span>
 				</p>
 				<p class="hash" id="hash_txt">
-					#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부
+					#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #속보습부스터 #건성피부 #고보습 #수퍼보습 #스킨케어 #스킨 #모찌피부 #이벤트 #스킨로션추천 #고보습스킨
 				</p>
 				<ul class="sns">
 					<li class="sns-01">
@@ -431,8 +431,13 @@
 						</button>
 					</li>
 				</ul>
+<<<<<<< HEAD
 				<button type="button" class="copy _copy1 hashtag-copy-trigger" data-clipboard-text="3"> 
 <!--				<button type="button" class="copy _copy1">-->
+=======
+				<!-- <button type="button" class="copy _copy1" data-clipboard-text="#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부"> -->
+				<button type="button" class="copy _copy1" onclick="copyTxt()">
+>>>>>>> 1106fd68805f170f71a7b16b5f8fb636cdee44f8
 					<img src="images/layer-share-copy.png" alt="해시태그 복사">
 				</button>
 			</div>
@@ -497,9 +502,9 @@
 					</li>
 				</ul>
 				<p class="hash">
-					#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부
+					#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #속보습부스터 #건성피부 #고보습 #수퍼보습 #스킨케어 #스킨 #모찌피부 #이벤트 #스킨로션추천 #고보습스킨
 				</p>
-				<button type="button" class="copy _copy2 hashtag-copy-trigger">
+				<button type="button" class="copy _copy2" onclick="copyTxt()">
 					<img src="images/layer-share-copy.png" alt="해시태그 복사">
 				</button>
 			</div>
@@ -515,9 +520,11 @@
 					<img src="images/layer-lead-title.png" alt="4행시 도전하고  수퍼보습 5Days Kit 100% 겟!">
 				</h1>
 				<div class="btn-wrap">
-					<button type="button" class="">
-						<img src="images/layer-lead-btn-01.png" alt="4행시 도전">
-					</button>
+					<a href="event.php">
+						<button type="button" class="">
+							<img src="images/layer-lead-btn-01.png" alt="4행시 도전">
+						</button>
+					</a>
 					<button type="button" class="js-layer-close">
 						<img src="images/layer-lead-btn-02.png" alt="되돌아가기">
 					</button>
@@ -531,71 +538,31 @@
 <!--		<input type="text" id="foo" value="#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부">-->
 <!--		<script type="text/javascript" src="./js/clipboard.min.js"></script>-->
 		<script>
-			var clipboard = new ClipboardJS('.copy');
-			clipboard.on('success', function(e) {
-				console.log(e);
-			});
-			clipboard.on('error', function(e) {
-				console.log(e);
-			});
 			
 			var detailPopupData = new Array();
 			var like_arr = new Array();
 			var totalPage = <?=$total_page?>;
 			localStorage.clear();
-//			var clipboard = new ClipboardJS('._copy1');
-//			var clipboard2 = new ClipboardJS('._copy2');
 
-//			var clipboard = new ClipboardJS('._copy1', {
-//				text: function() {
-//					return '#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부';
-//				}
-//			});
-//			var clipboard2 = new ClipboardJS('._copy2', {
-//				text: function() {
-//					return '#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부';
-//				}
-//			});
+			function copyTxt()
+			{
+				var textarea = document.createElement('textarea');
+				textarea.textContent = '#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #속보습부스터 #건성피부 #고보습 #수퍼보습 #스킨케어 #스킨 #모찌피부 #이벤트 #스킨로션추천 #고보습스킨';
+				document.body.appendChild(textarea);
 
-//			clipboard.on('success', function(e) {
-//				console.info('Action:', e.action);
-//				console.info('Text:', e.text);
-//				console.info('Trigger:', e.trigger);
-//
-//				e.clearSelection();
-//				alert("해시태그가 복사되었습니다");
-//			});
+				var selection = document.getSelection();
+				var range = document.createRange();
+				//  range.selectNodeContents(textarea);
+				range.selectNode(textarea);
+				selection.removeAllRanges();
+				selection.addRange(range);
 
-//			clipboard2.on('success', function(e) {
-////				console.info('Action:', e.action);
-////				console.info('Text:', e.text);
-////				console.info('Trigger:', e.trigger);
-//
-//				e.clearSelection();
-//				alert("해시태그가 복사되었습니다");
-//			});
-//			
-//			clipboard.on('success', function(e) {
-//				console.info('Action:', e.action);
-//				console.info('Text:', e.text);
-//				console.info('Trigger:', e.trigger);
-//			})
-			
-//			function copyToClipboard(val) {
-//				var t = document.createElement("textarea");
-//				document.body.appendChild(t);
-//				t.value = val;
-//				t.select();
-//				document.execCommand('copy');
-//				document.body.removeChild(t);
-//			}
-//			$('.hashtag-copy-trigger').click(function() {
-//				var text = $(this).data('clipboard-text');
-//				console.log(text);
-//				copyToClipboard(text);
-//				alert('Copied!');
-//			});
-			
+				console.log('copy success', document.execCommand('copy'));
+				selection.removeAllRanges();
+
+				document.body.removeChild(textarea);				
+				alert("해시태그가 복사되었습니다");
+			}
 			function pageRun(pageNum, direction) {
 				var pageNum = pageNum;
 				if(direction) {

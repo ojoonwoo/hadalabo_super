@@ -361,7 +361,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="https://www.instagram.com/hadalabo_korea/" target="_blank">
+						<a href="https://www.youtube.com/channel/UCsq93AwlyafoGFMNPzQgOiQ" target="_blank">
 							<img src="images/main-section-05-sns-04.png" alt="유튜브">
 						</a>
 					</li>
@@ -401,7 +401,7 @@
 					</span>
 				</p>
 				<p class="hash">
-					#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부
+					#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #속보습부스터 #건성피부 #고보습 #수퍼보습 #스킨케어 #스킨 #모찌피부 #이벤트 #스킨로션추천 #고보습스킨
 				</p>
 				<ul class="sns">
 					<li class="sns-01">
@@ -491,7 +491,7 @@
 					</li>
 				</ul>
 				<p class="hash">
-					#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부
+					#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #속보습부스터 #건성피부 #고보습 #수퍼보습 #스킨케어 #스킨 #모찌피부 #이벤트 #스킨로션추천 #고보습스킨
 				</p>
 				<button type="button" class="copy _copy2">
 					<img src="images/layer-share-copy.png" alt="해시태그 복사">
@@ -509,9 +509,11 @@
 					<img src="images/layer-lead-title.png" alt="4행시 도전하고  수퍼보습 5Days Kit 100% 겟!">
 				</h1>
 				<div class="btn-wrap">
-					<button type="button" class="">
-						<img src="images/layer-lead-btn-01.png" alt="4행시 도전">
-					</button>
+					<a href="event.php">
+						<button type="button" class="">
+							<img src="images/layer-lead-btn-01.png" alt="4행시 도전">
+						</button>
+					</a>
 					<button type="button" class="js-layer-close">
 						<img src="images/layer-lead-btn-02.png" alt="되돌아가기">
 					</button>
@@ -525,12 +527,12 @@
 			localStorage.clear();
 			var clipboard = new ClipboardJS('._copy1', {
 				text: function() {
-					return '#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부';
+					return '#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #속보습부스터 #건성피부 #고보습 #수퍼보습 #스킨케어 #스킨 #모찌피부 #이벤트 #스킨로션추천 #고보습스킨';
 				}
 			});
 			var clipboard2 = new ClipboardJS('._copy2', {
 				text: function() {
-					return '#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부';
+					return '#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #속보습부스터 #건성피부 #고보습 #수퍼보습 #스킨케어 #스킨 #모찌피부 #이벤트 #스킨로션추천 #고보습스킨';
 				}
 			});
 

@@ -1102,6 +1102,7 @@
 			detailPopupData = new Array();
 //			console.log(detailPopupData);
 			// detailPopupData.length = 0;
+      console.log(detailPopupData);
 		}
 	});
 })(jQuery);
@@ -1199,4 +1200,44 @@ function sns_share(media, flag)
 			}
 		});
 	}
+}
+function only_num(obj)
+{
+	var inText = obj.value;
+	var outText = "";
+	var flag = true;
+	var ret;
+	for(var i = 0; i < inText.length; i++)
+	{
+		ret = inText.charCodeAt(i);
+		if((ret < 48) || (ret > 57))
+		{
+			flag = false;
+		}
+		else
+		{
+			outText += inText.charAt(i);
+		}
+	}
+
+	if(flag == false)
+	{
+		alert("전화번호는 숫자입력만 가능합니다.");
+		obj.value = outText;
+		obj.focus();
+		return false;
+	}
+	return true;
+}
+function chk_len(obj, len)
+{
+	if(obj.value.length >= len) {
+		// alert("전화번호는 11자를 초과할 수 없습니다.");
+		// obj.value = obj.value.slice(0, -(obj.value.length-4));
+
+		$("#mb_phone").blur();
+
+    return false;
+	}
+	return;
 }

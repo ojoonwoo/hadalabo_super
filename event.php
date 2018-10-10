@@ -119,7 +119,7 @@
 					</dt>
 					<dd>
 						<!-- <input type="tel" id="layerEntryTel"> -->
-						<input type="tel" id="mb_phone">
+						<input type="tel" id="mb_phone" onkeyup="only_num(this);chk_len(this,11)">
 					</dd>
 					<dt>
 						<label for="layerEntryAddress">
@@ -172,7 +172,7 @@
 					<img src="images/layer-clause-sub-title-01.png" alt="개인 정보 수집 및 이용약관">
 				</h2>
 				<div class="clause">
-					한국 멘소래담(이하 "당사"라 한다) 본 이벤트를 위하여 귀하의 개인정보를 수집 및 이용합니다.<br><br>
+					한국 멘소래담(주)(이하 "당사"라 한다)는 본 이벤트를 위하여 귀하의 개인정보를 수집 및 이용합니다.<br><br>
 
 					• 수집항목 : 이름, 휴대폰번호, 주소<br>
 					• 이용목적 : 이벤트 진행을 위한 본인 확인, 당첨자 선정 및 경품 제공,<br>
