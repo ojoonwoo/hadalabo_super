@@ -413,7 +413,8 @@
 						</button>
 					</li>
 				</ul>
-				<button type="button" class="copy _copy1" data-clipboard-text="#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부">
+				<!-- <button type="button" class="copy _copy1" data-clipboard-text="#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부"> -->
+				<button type="button" class="copy _copy1">
 					<img src="images/layer-share-copy.png" alt="해시태그 복사">
 				</button>
 			</div>
@@ -490,21 +491,49 @@
 			var like_arr = new Array();
 			var totalPage = <?=$total_page?>;
 			localStorage.clear();
-		    $(window).on('load', function() {
-				var clipboard = new ClipboardJS('._copy1');
-				var clipboard2 = new ClipboardJS('._copy2');
-
-				clipboard.on('success', function(e) {
-					e.clearSelection();
-					alert("해시태그가 복사되었습니다");
-				});
-
-				clipboard2.on('success', function(e) {
-					e.clearSelection();
-					alert("해시태그가 복사되었습니다");
-				});
-
+			var clipboard = new ClipboardJS('._copy1', {
+				text: function() {
+					return '#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부';
+				}
 			});
+			var clipboard2 = new ClipboardJS('._copy2', {
+				text: function() {
+					return '#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부';
+				}
+			});
+
+			clipboard.on('success', function(e) {
+				console.info('Action:', e.action);
+				console.info('Text:', e.text);
+				console.info('Trigger:', e.trigger);
+
+				e.clearSelection();
+				alert("해시태그가 복사되었습니다");
+			});
+
+			clipboard2.on('success', function(e) {
+				// e.clearSelection();
+				alert("해시태그가 복사되었습니다");
+			});
+		    // $(window).on('load', function() {
+			// 	var clipboard = new ClipboardJS('._copy1');
+			// 	var clipboard2 = new ClipboardJS('._copy2');
+
+			// 	clipboard.on('success', function(e) {
+			// 		console.info('Action:', e.action);
+			// 		console.info('Text:', e.text);
+			// 		console.info('Trigger:', e.trigger);
+
+			// 		e.clearSelection();
+			// 		alert("해시태그가 복사되었습니다");
+			// 	});
+
+			// 	clipboard2.on('success', function(e) {
+			// 		// e.clearSelection();
+			// 		alert("해시태그가 복사되었습니다");
+			// 	});
+
+			// });
 			function pageRun(pageNum, direction) {
 				var pageNum = pageNum;
 				if(direction) {
