@@ -45,55 +45,91 @@
 						<li>
 							<p class="quatrain-node">
 								<span class="for-a11y">[수]</span>
-								지야, 이건 함부로
+								분이 속 깊이 스며들고
 							</p>
 							<p class="quatrain-node">
 								<span class="for-a11y">[퍼]</span>
-								붓지 마
+								펙트하게 마무리하여
 							</p>
 							<p class="quatrain-node">
 								<span class="for-a11y">[보]</span>
-								기보다 촉촉해서, 피부에
+								습을 압도하다
 							</p>
 							<p class="quatrain-node">
 								<span class="for-a11y">[습]</span>
-								관된다?!
+								관을 바꾸세요 수퍼보습으로
 							</p>
 						</li>
 						<li>
 							<p class="quatrain-node">
 								<span class="for-a11y">[수]</span>
-								지야, 이건 함부로
+								분이 부족할 땐
 							</p>
 							<p class="quatrain-node">
 								<span class="for-a11y">[퍼]</span>
-								붓지 마
+								펙트한 보습이 필요해
 							</p>
 							<p class="quatrain-node">
 								<span class="for-a11y">[보]</span>
-								기보다 촉촉해서, 피부에
+								습을 넘어 하다라보 수퍼보습
 							</p>
 							<p class="quatrain-node">
 								<span class="for-a11y">[습]</span>
-								관된다?!
+								관을 바꿔 촉촉해져봐!
 							</p>
 						</li>
 						<li>
 							<p class="quatrain-node">
 								<span class="for-a11y">[수]</span>
-								지야, 이건 함부로
+								분이 속 깊이
 							</p>
 							<p class="quatrain-node">
 								<span class="for-a11y">[퍼]</span>
-								붓지 마
+								지는
 							</p>
 							<p class="quatrain-node">
 								<span class="for-a11y">[보]</span>
-								기보다 촉촉해서, 피부에
+								습은 오직 하다라보 수퍼보습 뿐
 							</p>
 							<p class="quatrain-node">
 								<span class="for-a11y">[습]</span>
-								관된다?!
+								관 되면 피부가 달라질 걸
+							</p>
+						</li>
+						<li>
+							<p class="quatrain-node">
+								<span class="for-a11y">[수]</span>
+								고했어 오늘도
+							</p>
+							<p class="quatrain-node">
+								<span class="for-a11y">[퍼]</span>
+								퍽한 보습하느라
+							</p>
+							<p class="quatrain-node">
+								<span class="for-a11y">[보]</span>
+								습이 수퍼, 수퍼보습으로
+							</p>
+							<p class="quatrain-node">
+								<span class="for-a11y">[습]</span>
+								관을 체인지, 수퍼보습으로
+							</p>
+						</li>
+						<li>
+							<p class="quatrain-node">
+								<span class="for-a11y">[수]</span>
+								분이 차고 넘쳐
+							</p>
+							<p class="quatrain-node">
+								<span class="for-a11y">[퍼]</span>
+								펙트 말을 잃어
+							</p>
+							<p class="quatrain-node">
+								<span class="for-a11y">[보]</span>
+								습을 뛰어 넘어
+							</p>
+							<p class="quatrain-node">
+								<span class="for-a11y">[습]</span>
+								관을 바꿔 버려
 							</p>
 						</li>
 					</ul>
@@ -228,20 +264,20 @@
 	{
 ?>						
 					<li>
-						<p class="name"><?=$member_data["quatrain_name"]?> 님</p>
-						<p class="node">
+						<p class="name first"><?=$member_data["quatrain_name"]?> 님</p>
+						<p class="node first">
 							<span class="for-a11y">[수]</span><?=$member_data["quatrain01"]?>
 						</p>
-						<p class="node">
+						<p class="node first">
 							<span class="for-a11y">[퍼]</span><?=$member_data["quatrain02"]?>
 						</p>
-						<p class="node">
+						<p class="node first">
 							<span class="for-a11y">[보]</span><?=$member_data["quatrain03"]?>
 						</p>
-						<p class="node">
+						<p class="node first">
 							<span class="for-a11y">[습]</span><?=$member_data["quatrain04"]?>
 						</p>
-						<button type="button" class="like" id="like_<?=$member_data['idx']?>" onclick="likeOn('page','<?=$member_data['idx']?>')">
+						<button type="button" class="like" id="like_<?=$member_data['idx']?>" onclick="likeOn('page','<?=$member_data['idx']?>')" data-layer="#layerLead">
 							<span class="for-a11y">좋아요</span>
 						</button>
 						<a href="#layerDetail" class="more" data-layer="#layerDetail" data-id="<?=$member_data['idx']?>" onclick="quatrainDataStore(this);">
@@ -462,6 +498,26 @@
 				</button>
 			</section>
 		</div>
+		
+		<!-- layer : 좋아요 클릭 (참여유도) -->
+		<div class="layer-wrap layer-lead" id="layerLead">
+			<section class="layer layer--medium">
+				<button type="button" class="layer-close js-layer-close">
+					<span class="for-a11y">참여유도 레이어 팝업 닫기</span>
+				</button>
+				<h1 class="title">
+					<img src="images/layer-lead-title.png" alt="4행시 도전하고  수퍼보습 5Days Kit 100% 겟!">
+				</h1>
+				<div class="btn-wrap">
+					<button type="button" class="">
+						<img src="images/layer-lead-btn-01.png" alt="4행시 도전">
+					</button>
+					<button type="button" class="js-layer-close">
+						<img src="images/layer-lead-btn-02.png" alt="되돌아가기">
+					</button>
+				</div>
+			</section>
+		</div>
 		<script>
 			var detailPopupData = new Array();
 			var like_arr = new Array();
@@ -549,6 +605,8 @@
 			function listChange(pageNum) {
 				var orderBy = $('#orderby').val();
 				var searchName = $("#search").val();
+//				모바일 현재 팝업 오픈코드 전용
+				$('body').append($('#layerDetail'));
 				$.ajax({
 					type: "POST",
 					data: {
@@ -563,8 +621,8 @@
 						$('.entry-list').html(rs[0]).attr('data-current-page', pageNum);
 						// <li><a href="javascript:void(0)" class="prev" onclick="pageRun('', 'prev')"><span class="for-a11y">이전</span></a></li>
 
-						// $('.page').replaceWith(rs[1]);
-						$('.page').html(rs[1]);
+						$('.page').replaceWith(rs[1]);
+//						$('.page').html(rs[1]);
 						console.log(rs[2]);
 						console.log(rs[3]);
 						totalPage = rs[2];
@@ -590,10 +648,10 @@
 			function quatrainDataStore(el) {
 				var $el = $(el);
 				var $parent = $el.closest('li');
-				detailPopupData.push($parent.find('p.name').text()); 
+				detailPopupData.push($parent.find('p.name.first').text()); 
 				// detailPopupData.push($parent.find('button').attr("onclick")); 
-				detailPopupData.push($el.data("id")); 
-				$parent.find('p.node').each(function(idx, el) {
+				detailPopupData.push($el.attr('data-id')); 
+				$parent.find('p.node.first').each(function(idx, el) {
 					detailPopupData.push($(el).html());
 				});
 			}

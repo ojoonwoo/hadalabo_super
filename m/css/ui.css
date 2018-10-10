@@ -1477,3 +1477,42 @@ img {
   vertical-align: top;
   height: 100%;
 }
+
+.layer-lead .layer {
+	background: url('../images/layer-lead-bg.jpg') no-repeat 0 0;
+	background-size: 100% 100%;
+	padding: 26px 0 28px;
+}
+.layer-lead .title {
+	padding: 0 0 13px;
+	text-align: center;
+	font-size: 0;
+}
+.layer-lead .title img {
+	width: 234px;
+	margin: 0 auto;
+}
+.layer-lead .btn-wrap {
+	text-align: center;
+	font-size: 0;
+}
+.layer-lead .btn-wrap button {
+	display: inline-block;
+	border-radius: 17px;
+/*	width: 100%;*/
+	width: 105px;
+	background: #fff;
+	text-align: center;
+	line-height: 0;
+	-webkit-box-shadow: 0 6px 5px rgba(38, 49, 54, 0.33);
+	box-shadow: 0 6px 5px rgba(38, 49, 54, 0.33);
+}
+.layer-lead .btn-wrap button:first-child {
+	margin-right: 6px;
+}
+.layer-lead .btn-wrap button img {
+	display: block;
+	padding: 6px 0;
+	margin: 0 auto;
+	width: 60px;
+}
