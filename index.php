@@ -290,7 +290,7 @@
 							</select>
 						</li>
 						<li>
-							<input type="text" class="search-input" id="search">
+							<input type="text" class="search-input" id="search" placeholder="아이디로 찾기" title="아이디 검색 키워드 입력">
 							<label for="search">아이디로 찾기</label>
 							<button type="button" class="search-submit">
 								<span class="for-a11y">검색</span>
@@ -327,7 +327,7 @@
 						</span>
 					</p>
 					<div class="video">
-						<iframe src="https://www.youtube.com/embed/75YqWL73Yy0" frameborder="0" allowfullscreen></iframe>
+						<iframe src="https://www.youtube.com/embed/xs9RrNrRffg" frameborder="0" allowfullscreen></iframe>
 					</div>
 					<p class="more">
 						<img src="images/main-section-05-more.png" alt="하다라보 고쿠쥰 더 자세히 만나보기">

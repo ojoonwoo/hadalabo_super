@@ -189,138 +189,74 @@
 			</section>
 			<section class="main-section main-section--04">
 				<ul class="entry-list">
+<?
+	if(isset($_REQUEST['pg']) == false)
+		$pg = "1";
+	else
+		$pg = $_REQUEST['pg'];
+
+	if (!$pg)
+		$pg = "1";
+	if(isset($pg) == false) $pg = 1;	// $pg가 없으면 1로 생성
+
+	$page_size = 6;	// 한 페이지에 나타날 개수
+	$block_size = 10;	// 한 화면에 나타낼 페이지 번호 개수
+
+	$where = "";
+
+	// if ($sDate != "")
+	// 	$where	.= " AND winner_date >= '".$sDate."' AND winner_date <= '".$eDate." 23:59:59'";
+	
+	// if ($search_txt != "")
+	// 	$where	.= " AND ".$search_type." like '%".$search_txt."%'";
+
+	$member_count_query = "SELECT count(*) FROM member_info WHERE 1".$where."";
+
+	list($member_count) = @mysqli_fetch_array(mysqli_query($my_db, $member_count_query));
+
+	$PAGE_CLASS = new mnv_page($pg,$member_count,$page_size,$block_size);
+  
+	$BLOCK_LIST = $PAGE_CLASS->blockList6();
+	$PAGE_UNCOUNT = $PAGE_CLASS->page_uncount;
+	$total_page = ceil($member_count/$page_size);
+
+	$member_list_query = "SELECT * FROM member_info WHERE 1".$where." Order by idx DESC LIMIT $PAGE_CLASS->page_start, $page_size";
+//print_r($member_list_query);
+	$res = mysqli_query($my_db, $member_list_query);
+
+	while($member_data = @mysqli_fetch_array($res))
+	{
+?>						
 					<li>
-						<p class="name">박규리 님</p>
+						<p class="name"><?=$member_data["quatrain_name"]?> 님</p>
 						<p class="node">
-							<span class="for-a11y">[수]</span>퍼보습 하다라보하다라보
+							<span class="for-a11y">[수]</span><?=$member_data["quatrain01"]?>
 						</p>
 						<p class="node">
-							<span class="for-a11y">[퍼]</span>펙트한 얼굴을 위해
+							<span class="for-a11y">[퍼]</span><?=$member_data["quatrain02"]?>
 						</p>
 						<p class="node">
-							<span class="for-a11y">[보]</span>습빵빵 하다라보
+							<span class="for-a11y">[보]</span><?=$member_data["quatrain03"]?>
 						</p>
 						<p class="node">
-							<span class="for-a11y">[습]</span>관적으로 발라주자!
+							<span class="for-a11y">[습]</span><?=$member_data["quatrain04"]?>
 						</p>
-						<button type="button" class="like">
+						<button type="button" class="like" id="like_<?=$member_data['idx']?>" onclick="likeOn('page','<?=$member_data['idx']?>')">
 							<span class="for-a11y">좋아요</span>
 						</button>
-						<a href="#layerDetail" class="more" data-layer="#layerDetail">
+						<a href="#layerDetail" class="more" data-layer="#layerDetail" data-id="<?=$member_data['idx']?>" onclick="quatrainDataStore(this);">
 							<span class="for-a11y">상세보기</span>
 						</a>
 					</li>
-					<li>
-						<p class="name">박규리 님</p>
-						<p class="node">
-							<span class="for-a11y">[수]</span>퍼보습 하다라보하다라보
-						</p>
-						<p class="node">
-							<span class="for-a11y">[퍼]</span>펙트한 얼굴을 위해
-						</p>
-						<p class="node">
-							<span class="for-a11y">[보]</span>습빵빵 하다라보
-						</p>
-						<p class="node">
-							<span class="for-a11y">[습]</span>관적으로 발라주자!
-						</p>
-						<button type="button" class="like is-active">
-							<span class="for-a11y">좋아요 취소하기</span>
-						</button>
-						<a href="#layerDetail" class="more" data-layer="#layerDetail">
-							<span class="for-a11y">상세보기</span>
-						</a>
-					</li>
-					<li>
-						<p class="name">박규리 님</p>
-						<p class="node">
-							<span class="for-a11y">[수]</span>퍼보습 하다라보하다라보
-						</p>
-						<p class="node">
-							<span class="for-a11y">[퍼]</span>펙트한 얼굴을 위해
-						</p>
-						<p class="node">
-							<span class="for-a11y">[보]</span>습빵빵 하다라보
-						</p>
-						<p class="node">
-							<span class="for-a11y">[습]</span>관적으로 발라주자!
-						</p>
-						<button type="button" class="like">
-							<span class="for-a11y">좋아요</span>
-						</button>
-						<a href="#layerDetail" class="more" data-layer="#layerDetail">
-							<span class="for-a11y">상세보기</span>
-						</a>
-					</li>
-					<li>
-						<p class="name">박규리 님</p>
-						<p class="node">
-							<span class="for-a11y">[수]</span>퍼보습 하다라보하다라보
-						</p>
-						<p class="node">
-							<span class="for-a11y">[퍼]</span>펙트한 얼굴을 위해
-						</p>
-						<p class="node">
-							<span class="for-a11y">[보]</span>습빵빵 하다라보
-						</p>
-						<p class="node">
-							<span class="for-a11y">[습]</span>관적으로 발라주자!
-						</p>
-						<button type="button" class="like">
-							<span class="for-a11y">좋아요</span>
-						</button>
-						<a href="#layerDetail" class="more" data-layer="#layerDetail">
-							<span class="for-a11y">상세보기</span>
-						</a>
-					</li>
-					<li>
-						<p class="name">박규리 님</p>
-						<p class="node">
-							<span class="for-a11y">[수]</span>퍼보습 하다라보하다라보
-						</p>
-						<p class="node">
-							<span class="for-a11y">[퍼]</span>펙트한 얼굴을 위해
-						</p>
-						<p class="node">
-							<span class="for-a11y">[보]</span>습빵빵 하다라보
-						</p>
-						<p class="node">
-							<span class="for-a11y">[습]</span>관적으로 발라주자!
-						</p>
-						<button type="button" class="like">
-							<span class="for-a11y">좋아요</span>
-						</button>
-						<a href="#layerDetail" class="more" data-layer="#layerDetail">
-							<span class="for-a11y">상세보기</span>
-						</a>
-					</li>
-					<li>
-						<p class="name">박규리 님</p>
-						<p class="node">
-							<span class="for-a11y">[수]</span>퍼보습 하다라보하다라보
-						</p>
-						<p class="node">
-							<span class="for-a11y">[퍼]</span>펙트한 얼굴을 위해
-						</p>
-						<p class="node">
-							<span class="for-a11y">[보]</span>습빵빵 하다라보
-						</p>
-						<p class="node">
-							<span class="for-a11y">[습]</span>관적으로 발라주자!
-						</p>
-						<button type="button" class="like">
-							<span class="for-a11y">좋아요</span>
-						</button>
-						<a href="#layerDetail" class="more" data-layer="#layerDetail">
-							<span class="for-a11y">상세보기</span>
-						</a>
-					</li>
+<?
+	}
+?>						
 				</ul>
 				<ul class="form">
 					<li>
 						<select name="selectTestName" id="selectTestId" class="js-selectbox" data-class="ui-select">
-							<option value="testVal 01">최신 등록 순</option>
-							<option value="testVal 02">좋아요 많은 순</option>
+							<option value="idx">최신 등록 순</option>
+							<option value="mb_like">좋아요 많은 순</option>
 						</select>
 					</li>
 					<li>
@@ -330,13 +266,15 @@
 						</button>
 					</li>
 				</ul>
+				<input type="hidden" id="orderby" value="idx">
 				<ul class="page">
-					<li>
-						<a href="" class="prev">
+					<!-- <li>
+						<a href="javascript:void(0)" class="prev" onclick="pageRun('', 'prev')">
 							<span class="for-a11y">이전</span>
 						</a>
-					</li>
-					<li><a href="">1</a></li>
+					</li> -->
+					<? echo $BLOCK_LIST ?>
+					<!-- <li><a href="">1</a></li>
 					<li><a href="">2</a></li>
 					<li class="is-active"><a href="">3</a></li>
 					<li><a href="">4</a></li>
@@ -345,12 +283,12 @@
 					<li><a href="">7</a></li>
 					<li><a href="">8</a></li>
 					<li><a href="">9</a></li>
-					<li><a href="">10</a></li>
-					<li>
-						<a href="" class="next">
+					<li><a href="">10</a></li> -->
+					<!-- <li>
+						<a href="javascript:void(0)" class="next" onclick="pageRun('', 'next')">
 							<span class="for-a11y">다음</span>
 						</a>
-					</li>
+					</li> -->
 				</ul>
 			</section>
 			<section class="main-section main-section--05">
@@ -365,7 +303,7 @@
 					</span>
 				</p>
 				<div class="video">
-					<iframe src="https://www.youtube.com/embed/75YqWL73Yy0" frameborder="0"></iframe>
+					<iframe src="https://www.youtube.com/embed/xs9RrNrRffg" frameborder="0"></iframe>
 				</div>
 				<p class="more">
 					<img src="images/main-section-05-more.png" alt="하다라보 고쿠쥰 더 자세히 만나보기" class="content-image">
@@ -526,7 +464,7 @@
 		<script>
 			var detailPopupData = new Array();
 			var like_arr = new Array();
-			// var totalPage = <?=$total_page?>;
+			var totalPage = <?=$total_page?>;
 			var totalPage = 1;
 			localStorage.clear();
 			var clipboard = new ClipboardJS('._copy1', {
@@ -556,49 +494,146 @@
 				// e.clearSelection();
 				alert("해시태그가 복사되었습니다");
 			});
-			// function pageRun(pageNum, direction) {
-			// 	var pageNum = pageNum;
-			// 	if(direction) {
-			// 		var currentPage = parseInt($('.entry-list').attr('data-current-page'));
-			// 		var totalPage = <?=$total_page?>;
-			// 		switch(direction) {
-			// 			case "prev" :
-			// 				if(currentPage > 1) {
-			// 					pageNum = currentPage-1;
-			// 				} else {
-			// 					alert("처음 페이지입니다.");
-			// 					return;
-			// 				}
-			// 				break;
-			// 			case "next" :
-			// 				if(currentPage < totalPage) {
-			// 				   	pageNum = currentPage+1;
-			// 				} else {
-			// 					alert("마지막 페이지입니다.");
-			// 					return;
-			// 				}
-			// 				break;
-			// 		}
-			// 	}
-			// 	listChange(pageNum);
-			// }
+			function pageRun(pageNum, direction) {
+				var pageNum = pageNum;
+				if(direction) {
+					var currentPage = parseInt($('.entry-list').attr('data-current-page'));
+					// var totalPage = <?=$total_page?>;
+					switch(direction) {
+						case "prev" :
+							if(currentPage > 1) {
+								pageNum = currentPage-1;
+							} else {
+								alert("처음 페이지입니다.");
+								return;
+							}
+							break;
+						case "next" :
+							if(currentPage < totalPage) {
+							   	pageNum = currentPage+1;
+							} else {
+								alert("마지막 페이지입니다.");
+								return;
+							}
+							break;
+					}
+				}
+//				게시물 스타트 * 블록갯수 (=> 가져올 게시물들 / 현재 소팅값으로 쿼리 order by)
+//				$.ajax({
+//					type: "POST",
+//					data: {
+//						"pageNum": pageNum
+//					},
+//					url: "./ajax_main_page.php",
+//					success: function(rs) {
+////						console.log(rs);
+//						$('.entry-list').html(rs);
+//						$('.page li').each(function() {
+//							if($(this).find('a').text() == pageNum) {
+//								$(this).addClass('is-active');
+//							} else {
+//								$(this).removeClass('is-active');
+//							}
+//						});
+//					}
+//				});
+				listChange(pageNum);
+			}
 			$('#selectTestId').on('change', function() {
 				$('#orderby').val($(this).val());
 				listChange('1', $(this).val());
 			});
+			$(".search-submit").on('click', function() {
+				listChange('1');
+			});
 			function listChange(pageNum) {
 				var orderBy = $('#orderby').val();
+				var searchName = $("#search").val();
+console.log(orderBy);
 				$.ajax({
 					type: "POST",
 					data: {
 						"pageNum": pageNum,
-						"orderBy": orderBy
+						"orderBy": orderBy,
+						"searchName": searchName
 					},
 					url: "./ajax_main_page.php",
 					success: function(rs) {
 						var rs = rs.split("||");
+
 						$('.entry-list').html(rs[0]).attr('data-current-page', pageNum);
-						$('.page').replaceWith(rs[1]);
+						// <li><a href="javascript:void(0)" class="prev" onclick="pageRun('', 'prev')"><span class="for-a11y">이전</span></a></li>
+
+						// $('.page').replaceWith(rs[1]);
+						$('.page').html(rs[1]);
+						console.log(rs[2]);
+						console.log(rs[3]);
+						totalPage = rs[2];
+						$(".entry-list").find('li').each(function(idx, el) {
+							var output = localStorage.getItem("like_idx");
+							if (output)
+							{
+								var getLikeArr  = JSON.parse(output);
+								$.each(getLikeArr,function(index, item){
+									if ($(el).find('.like').attr("id") == "like_"+item)
+									{
+										$(el).find('.like').addClass("is-active");
+										return false;
+									}else{
+										$(el).find('.like').removeClass("is-active");
+									}
+								});
+							}
+						});
+					}
+				});
+			}
+			function quatrainDataStore(el) {
+				var $el = $(el);
+				var $parent = $el.closest('li');
+				detailPopupData.push($parent.find('p.name').text()); 
+				// detailPopupData.push($parent.find('button').attr("onclick")); 
+				detailPopupData.push($el.data("id")); 
+				$parent.find('p.node').each(function(idx, el) {
+					detailPopupData.push($(el).html());
+				});
+			}
+			function likeOn(flag, idx)
+			{
+				// var $el = $(el);
+				// var gubun = "";
+				// if (flag == "popup")
+				// 	gubun = "pop";
+
+				// if ($("#like_"+gubun+idx).hasClass("is-active"))
+				if ($("#like_"+idx).hasClass("is-active"))
+					var plusMinus	= "-";
+				else
+					var plusMinus	= "+";
+
+				$.ajax({
+					type: "POST",
+					data: {
+						"exec": "like_member",
+						"mb_idx": idx,
+						"plusMinus": plusMinus
+					},
+					url: "../main_exec.php",
+					success: function(rs) {
+						if (rs == "Y")
+						{
+							if ($("#like_"+idx).hasClass("is-active")) {
+								alert("좋아요가 취소 되었습니다");
+								$("#like_"+idx).removeClass("is-active");
+								$("#like_pop_"+idx).removeClass("is-active");
+							}else{
+								alert("좋아요가 되었습니다");
+								$("#like_"+idx).addClass("is-active");
+								$("#like_pop_"+idx).addClass("is-active");
+								like_arr.push(idx);
+								localStorage.setItem("like_idx", JSON.stringify(like_arr));
+							}
+						}
 					}
 				});
 			}
