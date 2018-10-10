@@ -636,10 +636,10 @@
 								$.each(getLikeArr,function(index, item){
 									if ($(el).find('.like').attr("id") == "like_"+item)
 									{
-										$(el).find('.like').addClass("is-active");
+										$(el).find('.like').addClass("is-liked");
 										return false;
 									}else{
-										$(el).find('.like').removeClass("is-active");
+										$(el).find('.like').removeClass("is-liked");
 									}
 								});
 							}
@@ -665,7 +665,7 @@
 				// 	gubun = "pop";
 
 				// if ($("#like_"+gubun+idx).hasClass("is-active"))
-				if ($("#like_"+idx).hasClass("is-active"))
+				if ($("#like_"+idx).hasClass("is-liked"))
 					var plusMinus	= "-";
 				else
 					var plusMinus	= "+";
@@ -681,14 +681,23 @@
 					success: function(rs) {
 						if (rs == "Y")
 						{
-							if ($("#like_"+idx).hasClass("is-active")) {
+							if ($("#like_"+idx).hasClass("is-liked")) {
 								alert("좋아요가 취소 되었습니다");
-								$("#like_"+idx).removeClass("is-active");
-								$("#like_pop_"+idx).removeClass("is-active");
+								$("#like_"+idx).removeClass("is-liked");
+								$("#like_pop_"+idx).removeClass("is-liked");
+								var getLikeArr  = JSON.parse(localStorage.getItem('like_idx'));
+								$.each(getLikeArr,function(index, item){
+									if (idx == item)
+									{
+										getLikeArr.pop(item);
+										localStorage.setItem("like_idx", JSON.stringify(getLikeArr));
+										return;
+									}
+								});
 							}else{
 								alert("좋아요가 되었습니다");
-								$("#like_"+idx).addClass("is-active");
-								$("#like_pop_"+idx).addClass("is-active");
+								$("#like_"+idx).addClass("is-liked");
+								$("#like_pop_"+idx).addClass("is-liked");
 								like_arr.push(idx);
 								localStorage.setItem("like_idx", JSON.stringify(like_arr));
 							}

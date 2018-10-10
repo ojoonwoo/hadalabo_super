@@ -633,7 +633,7 @@ img {
   z-index: 20;
   background: url('../images/main-section-04-like-off.png') no-repeat 0 0;
 }
-.main-section--04 .entry-list .like.is-active {
+.main-section--04 .entry-list .like.is-liked {
   background-image: url('../images/main-section-04-like-on.png');
 }
 .main-section--04 .entry-list .more {
@@ -1032,7 +1032,7 @@ img {
   height: 44px;
   background: url('../images/layer-detail-like-off.png') no-repeat 0 0;
 }
-.layer-detail .layer .like.is-active {
+.layer-detail .layer .like.is-liked {
   background-image: url('../images/layer-detail-like-on.png');
 }
 .layer-detail .layer .prev,

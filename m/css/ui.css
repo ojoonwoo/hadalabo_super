@@ -829,7 +829,7 @@ img {
   background-size: 100% 100%;
   z-index: 20;
 }
-.main-section--04 .entry-list > li > .like.is-active {
+.main-section--04 .entry-list > li > .like.is-liked {
   background-image: url('../images/main-section-04-like-on.png');
 }
 .main-section--04 .entry-list > li > .more {
@@ -1195,7 +1195,7 @@ img {
   background-size: 100% 100%;
   z-index: 20;
 }
-.layer-detail .layer .card > .like.is-active {
+.layer-detail .layer .card > .like.is-liked {
   background-image: url('../images/layer-detail-like-on.png');
 }
 .layer-detail .layer .prev,

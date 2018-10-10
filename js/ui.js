@@ -999,10 +999,10 @@
 				  $.each(getLikeArr,function(index, item){
 					if (detailPopupData[1] == item)
 					{
-					  target.find('.card .like').addClass("is-active");
+						target.find('.card .like').addClass("is-liked");
 					  return false;
 					}else{
-					  target.find('.card .like').removeClass("is-active");
+						target.find('.card .like').removeClass("is-liked");
 					}
 				  });
 				}
