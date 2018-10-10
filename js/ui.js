@@ -1022,6 +1022,7 @@
 			detailPopupData = new Array();
 		}
 	});
+
 })(jQuery);
 
 function sns_share(media, flag)

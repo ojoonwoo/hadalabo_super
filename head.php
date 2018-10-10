@@ -14,8 +14,8 @@
 		<link type="text/css" rel="stylesheet" href="css/ui.css">
 		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 		<script type="text/javascript" src="js/swiper.min.js"></script>
-		<script type="text/javascript" src="js/ui.js"></script>
 		<script type="text/javascript" src="js/clipboard.min.js"></script>
+		<script type="text/javascript" src="js/ui.js"></script>
         <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
         <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	</head>

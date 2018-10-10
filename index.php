@@ -431,8 +431,8 @@
 						</button>
 					</li>
 				</ul>
-				<!-- <button type="button" class="copy _copy1" data-clipboard-text="#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부"> -->
-				<button type="button" class="copy _copy1">
+				<button type="button" class="copy _copy1 hashtag-copy-trigger" data-clipboard-text="3"> 
+<!--				<button type="button" class="copy _copy1">-->
 					<img src="images/layer-share-copy.png" alt="해시태그 복사">
 				</button>
 			</div>
@@ -499,7 +499,7 @@
 				<p class="hash">
 					#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부
 				</p>
-				<button type="button" class="copy _copy2" data-clipboard-text="#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부">
+				<button type="button" class="copy _copy2 hashtag-copy-trigger">
 					<img src="images/layer-share-copy.png" alt="해시태그 복사">
 				</button>
 			</div>
@@ -524,35 +524,78 @@
 				</div>
 			</section>
 		</div>
+		<button type="button" class="copy _copy1 hashtag-copy-trigger" data-clipboard-text="#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부"> 
+			<!--				<button type="button" class="copy _copy1">-->
+			<img src="images/layer-share-copy.png" alt="해시태그 복사">
+		</button>
+<!--		<input type="text" id="foo" value="#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부">-->
+<!--		<script type="text/javascript" src="./js/clipboard.min.js"></script>-->
 		<script>
+			var clipboard = new ClipboardJS('.copy');
+			clipboard.on('success', function(e) {
+				console.log(e);
+			});
+			clipboard.on('error', function(e) {
+				console.log(e);
+			});
+			
 			var detailPopupData = new Array();
 			var like_arr = new Array();
 			var totalPage = <?=$total_page?>;
 			localStorage.clear();
-			var clipboard = new ClipboardJS('._copy1', {
-				text: function() {
-					return '#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부';
-				}
-			});
-			var clipboard2 = new ClipboardJS('._copy2', {
-				text: function() {
-					return '#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부';
-				}
-			});
+//			var clipboard = new ClipboardJS('._copy1');
+//			var clipboard2 = new ClipboardJS('._copy2');
 
-			clipboard.on('success', function(e) {
-				console.info('Action:', e.action);
-				console.info('Text:', e.text);
-				console.info('Trigger:', e.trigger);
+//			var clipboard = new ClipboardJS('._copy1', {
+//				text: function() {
+//					return '#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부';
+//				}
+//			});
+//			var clipboard2 = new ClipboardJS('._copy2', {
+//				text: function() {
+//					return '#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부';
+//				}
+//			});
 
-				e.clearSelection();
-				alert("해시태그가 복사되었습니다");
-			});
+//			clipboard.on('success', function(e) {
+//				console.info('Action:', e.action);
+//				console.info('Text:', e.text);
+//				console.info('Trigger:', e.trigger);
+//
+//				e.clearSelection();
+//				alert("해시태그가 복사되었습니다");
+//			});
 
-			clipboard2.on('success', function(e) {
-				// e.clearSelection();
-				alert("해시태그가 복사되었습니다");
-			});
+//			clipboard2.on('success', function(e) {
+////				console.info('Action:', e.action);
+////				console.info('Text:', e.text);
+////				console.info('Trigger:', e.trigger);
+//
+//				e.clearSelection();
+//				alert("해시태그가 복사되었습니다");
+//			});
+//			
+//			clipboard.on('success', function(e) {
+//				console.info('Action:', e.action);
+//				console.info('Text:', e.text);
+//				console.info('Trigger:', e.trigger);
+//			})
+			
+//			function copyToClipboard(val) {
+//				var t = document.createElement("textarea");
+//				document.body.appendChild(t);
+//				t.value = val;
+//				t.select();
+//				document.execCommand('copy');
+//				document.body.removeChild(t);
+//			}
+//			$('.hashtag-copy-trigger').click(function() {
+//				var text = $(this).data('clipboard-text');
+//				console.log(text);
+//				copyToClipboard(text);
+//				alert('Copied!');
+//			});
+			
 			function pageRun(pageNum, direction) {
 				var pageNum = pageNum;
 				if(direction) {
