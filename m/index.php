@@ -509,9 +509,11 @@
 					<img src="images/layer-lead-title.png" alt="4행시 도전하고  수퍼보습 5Days Kit 100% 겟!">
 				</h1>
 				<div class="btn-wrap">
-					<button type="button" class="">
-						<img src="images/layer-lead-btn-01.png" alt="4행시 도전">
-					</button>
+					<a href="event.php">
+						<button type="button" class="">
+							<img src="images/layer-lead-btn-01.png" alt="4행시 도전">
+						</button>
+					</a>
 					<button type="button" class="js-layer-close">
 						<img src="images/layer-lead-btn-02.png" alt="되돌아가기">
 					</button>
