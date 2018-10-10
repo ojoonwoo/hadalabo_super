@@ -296,7 +296,7 @@
 						</select>
 					</li>
 					<li>
-						<input type="text" class="search-input" id="search" placeholder="아이디로 찾기" title="아이디 검색 키워드 입력">
+						<input type="text" class="search-input" id="search" placeholder="작성자 이름" title="아이디 검색 키워드 입력">
 						<button type="button" class="search-submit">
 							<span class="for-a11y">검색</span>
 						</button>
@@ -682,7 +682,6 @@
 						if (rs == "Y")
 						{
 							if ($("#like_"+idx).hasClass("is-liked")) {
-								alert("좋아요가 취소 되었습니다");
 								$("#like_"+idx).removeClass("is-liked");
 								$("#like_pop_"+idx).removeClass("is-liked");
 								var getLikeArr  = JSON.parse(localStorage.getItem('like_idx'));
@@ -695,7 +694,6 @@
 									}
 								});
 							}else{
-								alert("좋아요가 되었습니다");
 								$("#like_"+idx).addClass("is-liked");
 								$("#like_pop_"+idx).addClass("is-liked");
 								like_arr.push(idx);
