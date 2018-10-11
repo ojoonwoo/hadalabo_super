@@ -625,8 +625,8 @@
 
 						$('.page').replaceWith(rs[1]);
 //						$('.page').html(rs[1]);
-						console.log(rs[2]);
-						console.log(rs[3]);
+//						console.log(rs[2]);
+//						console.log(rs[3]);
 						totalPage = rs[2];
 						$(".entry-list").find('li').each(function(idx, el) {
 							var output = localStorage.getItem("like_idx");
