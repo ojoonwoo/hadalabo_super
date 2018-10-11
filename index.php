@@ -314,6 +314,11 @@
 								<span class="for-a11y">검색</span>
 							</button>
 						</li>
+<!--
+						<li>
+							<button type="button" class="search-reset">초기화</button>
+						</li>
+-->
 					</ul>
 					<input type="hidden" id="orderby" value="idx">
 					<? echo $BLOCK_LIST ?>
@@ -603,6 +608,10 @@
 				listChange('1', $(this).val());
 			});
 			$(".search-submit").on('click', function() {
+				listChange('1');
+			});
+			$('.search-reset').on('click', function() {
+				$('#search').val('');
 				listChange('1');
 			});
 			function listChange(pageNum) {
