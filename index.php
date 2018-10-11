@@ -20,6 +20,13 @@
 ?>	
 	<body>
 		<div class="wrap">
+			<div class="logo-area">
+				<div class="logo-wrap">
+					<a href="index.php">
+						<img src="./images/HADALABO_logo.png" alt="홈으로">
+					</a>
+				</div>
+			</div>
 			<div class="main-section main-section--01">
 				<div class="js-light-01"></div>
 				<div class="js-light-02"></div>
@@ -313,12 +320,10 @@
 							<button type="button" class="search-submit">
 								<span class="for-a11y">검색</span>
 							</button>
+							<button type="button" class="search-reset">
+								<span class="for-a11y">초기화</span>
+							</button>
 						</li>
-<!--
-						<li>
-							<button type="button" class="search-reset">초기화</button>
-						</li>
--->
 					</ul>
 					<input type="hidden" id="orderby" value="idx">
 					<? echo $BLOCK_LIST ?>
@@ -615,6 +620,20 @@
 				$('#search').val('');
 				listChange('1');
 			});
+			$('.search-input').on('keyup', function(e) {
+				if($(this).val().length>0) {
+					$(this).siblings('.search-reset').addClass('visible');
+				} else {
+					$(this).siblings('.search-reset').removeClass('visible');
+				}
+			});
+			$('.search-input').on('click', function() {
+				if($(this).val().length>0)
+					$('.search-reset').addClass('visible');
+			})
+			$('.search-input').on('blur', function() {
+				$('.search-reset').removeClass('visible');
+			})
 			function listChange(pageNum) {
 				var orderBy = $('#orderby').val();
 				var searchName = $("#search").val();

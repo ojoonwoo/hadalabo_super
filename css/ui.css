@@ -33,6 +33,27 @@ img {
   min-width: 1350px;
   overflow: hidden;
 }
+.wrap .logo-area {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+.wrap.sub-p .logo-area .logo-wrap {
+	width: 830px;
+	margin: 36px auto;
+}
+.wrap .logo-area .logo-wrap {
+	width: 1100px;
+	margin: 45px auto;
+	position: relative;
+	z-index: 10;
+	font-size: 0;
+	text-align: right;
+}
+.wrap .logo-area .logo-wrap a {
+	display: inline-block;
+}
 .main-section,
 .event-section {
   min-width: 1350px;
@@ -697,11 +718,26 @@ img {
   left: -999999px;
 }
 .main-section--04 .form .search-submit {
+	position: relative;
+	z-index: 1;
   display: block;
   float: left;
   width: 55px;
   height: 43px;
   background: url('../images/main-section-04-search.png') no-repeat 50% 50% #fff;
+}
+.main-section--04 .form .search-reset {
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 55px;
+	height: 43px;
+	background: url('../images/search-reset.png') no-repeat 50% 50% #fff;
+	transition: all 0.55s ease;
+}
+.main-section--04 .form .search-reset.visible {
+	top: 43px;
 }
 .main-section--04 .page {
   margin-top: 70px;

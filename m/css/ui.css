@@ -40,6 +40,33 @@ img {
   min-width: 320px;
   overflow: hidden;
 }
+.wrap .logo-area {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+.wrap .logo-area .logo-wrap {
+/*	margin: 20px auto;*/
+	position: relative;
+	z-index: 10;
+	font-size: 0;
+	text-align: right;
+	padding: 20px 30px;
+}
+.wrap.sub-p .logo-area .logo-wrap {
+	padding: 10px 0;
+	text-align: center;
+}
+.wrap.sub-p .logo-area .logo-wrap a {
+	margin-left: 253px;
+}
+.wrap .logo-area .logo-wrap a {
+	display: inline-block;
+}
+.wrap .logo-area .logo-wrap a img {
+	width: 44px;
+}
 .main-section,
 .event-section {
   min-width: 320px;
@@ -718,6 +745,9 @@ img {
   height: 100px;
   margin: 0 auto;
 }
+.main-section--02 .step li:last-child img {
+	height: 87px;
+}
 .main-section--02 .product {
   margin: 15px auto 28px;
   width: 305px;
@@ -849,6 +879,7 @@ img {
   text-align: center;
 }
 .main-section--04 .form > li {
+	position: relative;
   display: inline-block;
   vertical-align: top;
   width: 152px;
@@ -896,6 +927,22 @@ img {
   height: 32px;
   background: url('../images/search-icon.png') no-repeat 50% 50% #fff;
   background-size: 13px 13px;
+	position: relative;
+	z-index: 2;
+}
+.main-section--04 .form .search-reset {
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 40px;
+	height: 32px;
+	background: url('../images/search-reset.png') no-repeat 50% 50% #fff;
+	background-size: 12px 14px;
+	transition: all 0.55s ease;
+}
+.main-section--04 .form .search-reset.visible {
+	top: 32px;
 }
 .main-section--04 .page {
   margin-top: 20px;
@@ -967,6 +1014,10 @@ img {
   display: inline-block;
   vertical-align: top;
   text-align: left;
+}
+.main-section--05 .sns li:first-child img {
+	height: 16px;
+	margin-top: 16px;
 }
 .main-section--05 .sns li + li {
   margin-left: 10px;

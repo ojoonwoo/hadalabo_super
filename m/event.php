@@ -2,7 +2,14 @@
 	include_once "head.php";
 ?>
 	<body>
-		<div class="wrap">
+		<div class="wrap sub-p">
+			<div class="logo-area">
+				<div class="logo-wrap">
+					<a href="index.php">
+						<img src="./images/HADALABO_logo.png" alt="홈으로">
+					</a>
+				</div>
+			</div>
 			<section class="event-section event-section--01">
 				<h1 class="title">
 					<img src="images/event-section-01-title.png" alt="하다라보 고쿠쥰 4행시 이벤트 내가 쓰는 수퍼보습" class="content-image">
