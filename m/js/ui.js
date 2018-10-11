@@ -1124,7 +1124,6 @@ function sns_share(media, flag)
 			}
 		});
 	}else if (media == "kt"){
-		Kakao.init('996645db5157a953e8db96181cbccf2d');
 
 		Kakao.Link.sendDefault({
 			objectType: 'feed',

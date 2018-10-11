@@ -190,6 +190,7 @@
 			<img src="//i1.daumcdn.net/localimg/localimages/07/postcode/320/close.png" id="btnCloseLayer" style="width:7%;cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
 		</div>
 		<script>
+			Kakao.init('996645db5157a953e8db96181cbccf2d');
 			var search_zipcode 	= "";
 			var search_addr1 	= "";
 			var quatrain01		= "";
