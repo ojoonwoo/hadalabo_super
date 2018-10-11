@@ -112,7 +112,7 @@
 					</dt>
 					<dd>
 						<!-- <input type="tel" id="layerEntryTel"> -->
-						<input type="tel" id="mb_phone" onkeyup="only_num(this);chk_len(this,11)">
+						<input type="tel" id="mb_phone" onkeyup="only_num(this);chk_len(this,11)" placeholder="'-'없이 적어주세요">
 					</dd>
 					<dt>
 						<label for="layerEntryAddress">
