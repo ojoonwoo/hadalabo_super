@@ -194,6 +194,7 @@
 			</div>
 		</div>
 		<script>
+			Kakao.init('996645db5157a953e8db96181cbccf2d');
 			var search_zipcode 	= "";
 			var search_addr1 	= "";
 			var quatrain01		= "";

@@ -532,6 +532,7 @@
 <!--		<input type="text" id="foo" value="#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부">-->
 <!--		<script type="text/javascript" src="./js/clipboard.min.js"></script>-->
 		<script>
+			Kakao.init('996645db5157a953e8db96181cbccf2d');
 			
 			var detailPopupData = new Array();
 			var like_arr = new Array();

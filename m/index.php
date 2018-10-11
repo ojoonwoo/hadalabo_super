@@ -521,6 +521,8 @@
 			</section>
 		</div>
 		<script>
+			Kakao.init('996645db5157a953e8db96181cbccf2d');
+
 			var detailPopupData = new Array();
 			var like_arr = new Array();
 			var totalPage = <?=$total_page?>;
