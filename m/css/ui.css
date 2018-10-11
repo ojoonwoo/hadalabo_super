@@ -808,7 +808,8 @@ img {
   line-height: 13px;
   color: #004071;
   font-weight: 700;
-  padding: 20px 17px 4px;
+/*  padding: 20px 17px 4px;*/
+  padding: 20px 45px 4px 15px;
 }
 .main-section--04 .entry-list > li > .node {
   font-size: 9px;
@@ -817,7 +818,8 @@ img {
   font-weight: 700;
   letter-spacing: -1px;
   margin-top: 11px;
-  padding-left: 48px;
+/*  padding-left: 48px;*/
+  padding-left: 40px;
 }
 .main-section--04 .entry-list > li > .like {
   position: absolute;

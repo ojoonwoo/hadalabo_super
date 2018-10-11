@@ -456,12 +456,15 @@ img {
 .main-section--02 {
   position: relative;
   background: url('../images/main-section-02-bg.jpg') no-repeat 50% 0 #f3c9b1;
+  background-size: cover;
 }
 .main-section--02 .main-section__contents {
-  height: 890px;
+/*  height: 890px;*/
+  height: 910px;
 }
 .main-section--02 .title {
-  padding: 65px 0 40px;
+/*  padding: 65px 0 40px;*/
+  padding: 65px 0 45px;
 }
 .main-section--02 .title img {
   margin: 0 auto;
@@ -470,7 +473,8 @@ img {
   margin: 0 auto;
 }
 .main-section--02 .step {
-  margin: 27px 0 2px;
+/*  margin: 27px 0 2px;*/
+  margin: 19px 0 32px;
   font-size: 0;
   line-height: 0;
   text-align: center;
@@ -616,7 +620,8 @@ img {
   padding: 37px 0 27px 25px;
 }
 .main-section--04 .entry-list .node {
-  font-size: 15px;
+/*  font-size: 15px;*/
+  font-size: 14px;
   line-height: 20px;
   font-weight: 700;
   color: #004071;
