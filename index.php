@@ -614,7 +614,7 @@
 				listChange('1', $(this).val());
 			});
 			$(".search-submit").on('click', function() {
-				listChange('1');
+				listChange('1', 'submit');
 			});
 			$('.search-reset').on('click', function() {
 				$('#search').val('');
@@ -634,9 +634,9 @@
 			$('.search-input').on('blur', function() {
 				$('.search-reset').removeClass('visible');
 			})
-			function listChange(pageNum) {
+			function listChange(pageNum, submit) {
 				var orderBy = $('#orderby').val();
-				var searchName = $("#search").val();
+				var searchName = submit ? $("#search").val() : '';
 
 				$.ajax({
 					type: "POST",
