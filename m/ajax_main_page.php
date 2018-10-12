@@ -50,9 +50,9 @@ while($member_data = mysqli_fetch_array($res))
 					<a href='#layerDetail' class='more' data-layer='#layerDetail' data-id='".$member_data["idx"]."' onclick='quatrainDataStore(this)'><span class='for-a11y'>상세보기</span></a>
                 </li>";
 }
-//if($total_page<1) {
-//	$output = false;
-//}
+if($total_page<1) {
+	$output = false;
+}
 
 $output .= "||".$BLOCK_LIST."||".$total_page."||".$_REQUEST['searchName'];
 
