@@ -13,6 +13,7 @@
 		<link type="text/css" rel="stylesheet" href="css/font.css">
 		<link type="text/css" rel="stylesheet" href="css/reset.css">
 		<link type="text/css" rel="stylesheet" href="css/ui.css">
+        <link type="image/icon" rel="shortcut icon" href="http://www.hadalabo-superbosp.com/images/favi.ico" />
 		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 		<script type="text/javascript" src="js/swiper.min.js"></script>
 		<script type="text/javascript" src="js/clipboard.min.js"></script>
