@@ -51,6 +51,10 @@ while($member_data = mysqli_fetch_array($res))
                 </li>";
 }
 
+if($total_page<1) {
+	$output = false;
+}
+
 $output .= "||".$BLOCK_LIST."||".$total_page."||".$_REQUEST['searchName'];
 
 echo $output;

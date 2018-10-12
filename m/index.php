@@ -618,7 +618,7 @@
 			});
 			$('.search-reset').on('click', function() {
 				$('#search').val('');
-				listChange('1');
+				listChange($('.entry-list').data('current-page'));
 			});
 			$('.search-input').on('keyup', function(e) {
 				if($(this).val().length>0) {
@@ -649,31 +649,36 @@
 					url: "./ajax_main_page.php",
 					success: function(rs) {
 						var rs = rs.split("||");
-
-						$('.entry-list').html(rs[0]).attr('data-current-page', pageNum);
-						// <li><a href="javascript:void(0)" class="prev" onclick="pageRun('', 'prev')"><span class="for-a11y">이전</span></a></li>
-
-						$('.page').replaceWith(rs[1]);
-//						$('.page').html(rs[1]);
 //						console.log(rs[2]);
-//						console.log(rs[3]);
-						totalPage = rs[2];
-						$(".entry-list").find('li').each(function(idx, el) {
-							var output = localStorage.getItem("like_idx");
-							if (output)
-							{
-								var getLikeArr  = JSON.parse(output);
-								$.each(getLikeArr,function(index, item){
-									if ($(el).find('.like').attr("id") == "like_"+item)
-									{
-										$(el).find('.like').addClass("is-liked");
-										return false;
-									}else{
-										$(el).find('.like').removeClass("is-liked");
-									}
-								});
-							}
-						});
+						if(!rs[0]) {
+							alert("검색결과가 없습니다");
+							return;
+						} else {
+							$('.entry-list').html(rs[0]).attr('data-current-page', pageNum);
+							// <li><a href="javascript:void(0)" class="prev" onclick="pageRun('', 'prev')"><span class="for-a11y">이전</span></a></li>
+
+							$('.page').replaceWith(rs[1]);
+	//						$('.page').html(rs[1]);
+	//						console.log(rs[2]);
+	//						console.log(rs[3]);
+							totalPage = rs[2];
+							$(".entry-list").find('li').each(function(idx, el) {
+								var output = localStorage.getItem("like_idx");
+								if (output)
+								{
+									var getLikeArr  = JSON.parse(output);
+									$.each(getLikeArr,function(index, item){
+										if ($(el).find('.like').attr("id") == "like_"+item)
+										{
+											$(el).find('.like').addClass("is-liked");
+											return false;
+										}else{
+											$(el).find('.like').removeClass("is-liked");
+										}
+									});
+								}
+							});
+						}
 					}
 				});
 			}
