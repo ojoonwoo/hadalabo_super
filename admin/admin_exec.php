@@ -12,7 +12,8 @@
 			//$result 		= mysqli_query($my_db, $query);
 			//$member_info	= mysqli_fetch_array($result);
 			// if ($mb_id == "admin" && $mb_pw == "miniver_2018")
-			if ($mb_id == "admin" && $mb_pw == "miniver_2018")
+			// if ($mb_id == "admin" && $mb_pw == "miniver_2018")
+			if ($mb_id == "admin" && $mb_pw == "tbwa_2018")
 			{
 				// 회원아이디 세션 생성
 				$_SESSION['ss_mb_name'] = "admin";
