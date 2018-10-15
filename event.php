@@ -309,10 +309,10 @@
 					success: function(response){
 						if (response == "Y")
 						{
-							alert("신청이 완료되었습니다. 다음주 월요일 발송됩니다.");
+							alert("신청이 완료되었습니다. 매주 월요일에 순차적으로 발송됩니다.");
 							location.href = "index.php";
 						}else if (response == "D"){
-							alert("이미 샘플신청이 완료된 참여자입니다.");
+							alert("이미 샘플신청이 완료되셨습니다.");
 							location.href = "index.php";
 						}else{
 							alert("사용자가 많아 참여가 지연되고 있습니다. 다시 참여 부탁드립니다.");
