@@ -86,7 +86,8 @@ img {
   position: absolute;
 }
 .content-image {
-  width: 282px;
+/*  width: 282px;*/
+  width: 320px;
   margin: 0 auto;
 }
 .popup-image {
@@ -756,7 +757,7 @@ img {
   box-shadow: 0 0 11px 6px rgba(113, 69, 59, 0.15);
 }
 .main-section--02 .product li {
-  width: 277px;
+  width: 275px;
   margin: 0 auto;
 }
 .main-section--02 .product li + li {
@@ -764,6 +765,9 @@ img {
 }
 .main-section--02 .product li img {
   width: 100%;
+}
+.main-section--02 .notice .content-image {
+	width: 278px;
 }
 .main-section--03 {
   position: relative;
