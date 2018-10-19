@@ -375,6 +375,11 @@
 							<img src="images/main-section-05-sns-04.png" alt="유튜브">
 						</a>
 					</li>
+					<li class="buy-link">
+						<a href="http://www.oliveyoung.co.kr/store/goods/getGoodsDetail.do?goodsNo=A000000117864&dispCatNo=1000001000100010009" target="_blank">
+							<img src="./images/main-section-05-link.png" alt="">
+						</a>
+					</li>
 				</ul>
 			</section>
 			<footer class="footer">
