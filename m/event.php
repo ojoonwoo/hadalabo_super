@@ -331,7 +331,7 @@
 							hadalaboUI.layer.open($('#layerComplete'));
 							
 						}else if (response == "D"){
-							alert("이미 샘플신청이 완료되셨습니다.");
+							alert("이미 참여해주셨습니다! 샘플은 1인당 1회에 한합니다.");
 							location.href = "index.php";
 						}else{
 							alert("사용자가 많아 참여가 지연되고 있습니다. 다시 참여 부탁드립니다.");

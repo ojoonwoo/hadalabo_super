@@ -1,5 +1,9 @@
 <?php
-include_once "../config.php";
+// 설정파일
+include_once "../include/autoload.php";
+
+$mnv_f = new mnv_function();
+$my_db         = $mnv_f->Connect_MySQL();
 /**
  * PHPExcel
  *
@@ -43,74 +47,67 @@ $startDate =  $_REQUEST['sDate'];
 $endDate =  $_REQUEST['eDate'];
 $where = "";
 if($startDate != "" && $endDate != "") {
-    $where = "AND liking_regdate >= '".$startDate."' AND liking_regdate <= '".$endDate." 23:59:59'";
+	$where = "AND mb_like_regdate >= '".$startDate." 00:00:00' AND mb_like_regdate <= '".$endDate." 23:59:59'";
 }
-$list_query = "SELECT * FROM ".$_gl['liking_info_table']." WHERE 1 ".$where."";
+$list_query = "SELECT * FROM member_info_like WHERE 1 ".$where."";
 $list_res		= mysqli_query($my_db, $list_query);
-
 // Create new PHPExcel object
 $objPHPExcel = new PHPExcel();
 
 // Set document properties
 $objPHPExcel->getProperties()->setCreator("minivertising")
-							 ->setLastModifiedBy("minivertising")
-							 ->setTitle("Office 2007 XLSX Member Data")
-							 ->setSubject("Office 2007 XLSX Member Data")
-							 ->setDescription("Report for Office 2007 XLSX, generated using PHP classes.")
-							 ->setKeywords("office 2007 openxml php")
-							 ->setCategory("data result file");
+	->setLastModifiedBy("minivertising")
+	->setTitle("Office 2007 XLSX Member Data")
+	->setSubject("Office 2007 XLSX Member Data")
+	->setDescription("Report for Office 2007 XLSX, generated using PHP classes.")
+	->setKeywords("office 2007 openxml php")
+	->setCategory("data result file");
 
 
 // Add some data
 $objPHPExcel->setActiveSheetIndex(0)
-            ->setCellValue('A1', '이름')
-            ->setCellValue('B1', '전화번호')
-            ->setCellValue('C1', '선택한 스타일')
-            ->setCellValue('D1', '선택한 색상')
-            ->setCellValue('E1', '선택한 재질')
-            ->setCellValue('F1', '선택한 상품')
-            ->setCellValue('G1', '유입매체')
-            ->setCellValue('H1', '유입구분')
-            ->setCellValue('I1', '참여일자');
+	->setCellValue('A1', '이름')
+	->setCellValue('B1', '전화번호')
+	->setCellValue('C1', '주소')
+	->setCellValue('D1', '참여 디바이스')
+	->setCellValue('E1', '유입매체')
+	->setCellValue('F1', '참여일시');
 
 while ($buyer_data = @mysqli_fetch_array($list_res)) {
-    $buyer_info[] = $buyer_data;
+	$buyer_info[] = $buyer_data;
 }
 $dataIdx = 2;
 foreach($buyer_info as $key => $val)
-{
-    $upload_image = "https://www.hi-maumbot.co.kr/uploads/".$val["family_file_folder"]."/".$val["family_file_name"];
-    
-    
-    $objPHPExcel->setActiveSheetIndex(0)
-                ->setCellValue('A'.$dataIdx, $val['liking_name'])
-                ->setCellValue('B'.$dataIdx, $val['liking_phone'])
-                ->setCellValue('C'.$dataIdx, $val['liking_cate'])
-                ->setCellValue('D'.$dataIdx, $val['liking_tone'])
-                ->setCellValue('E'.$dataIdx, $val['liking_texture'])
-                ->setCellValue('F'.$dataIdx, $val['liking_select'])
-                ->setCellValue('G'.$dataIdx, $val['liking_media'])
-                ->setCellValue('H'.$dataIdx, $val['linking_gubun'])
-                ->setCellValue('I'.$dataIdx, $val['linking_regdate']);
+{       
+	$address = '('.$buyer_info[$key]['mb_like_zipcode'].') '.$buyer_info[$key]['mb_like_addr1'].' '.$buyer_info[$key]['mb_like_addr2'];
+	$objPHPExcel->setActiveSheetIndex(0)
+		->setCellValue('A'.$dataIdx, $buyer_info[$key]['mb_like_name'])
+		->setCellValue('B'.$dataIdx, $buyer_info[$key]['mb_like_phone'])
+		->setCellValue('C'.$dataIdx, $address)
+		->setCellValue('D'.$dataIdx, $buyer_info[$key]['mb_like_gubun'])
+		->setCellValue('E'.$dataIdx, $buyer_info[$key]['mb_like_media'])
+		->setCellValue('F'.$dataIdx, $buyer_info[$key]['mb_like_regdate']);
 
-    $dataIdx++;
+	$dataIdx++;
 }
 // $i = 0;
 // $dataIdx = 2;
 // ->getColumnDimension('A')->setWidth(15);
 
 
-// $objPHPExcel->getActiveSheet()->getStyle('A2')->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+// $objPHPExcel->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+$objPHPExcel->getActiveSheet()->getStyle("A1:K1")->getFont()->setBold(true);
 // Rename worksheet
-$objPHPExcel->getActiveSheet()->setTitle('이브자리_내마음대로부문_참여자목록_'.date("Ymd"));
+$objPHPExcel->getActiveSheet()->setTitle('하다라보슈퍼보습_좋아요참여자리스트데이터'.date("Ymd"));
 
 
 // Set active sheet index to the first sheet, so Excel opens this as the first sheet
 $objPHPExcel->setActiveSheetIndex(0);
 
+
 // Redirect output to a client’s web browser (Excel5)
 header('Content-Type: application/vnd.ms-excel');
-header('Content-Disposition: attachment;filename="이브자리_내마음대로부문_참여자목록_'.date("Ymd").'.xls"');
+header('Content-Disposition: attachment;filename="하다라보슈퍼보습_좋아요참여자리스트데이터'.date("Ymd").'.xls"');
 header('Cache-Control: max-age=0');
 // If you're serving to IE 9, then the following may be needed
 header('Cache-Control: max-age=1');

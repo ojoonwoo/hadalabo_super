@@ -108,7 +108,7 @@ foreach($buyer_info as $key => $val)
 // $objPHPExcel->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 $objPHPExcel->getActiveSheet()->getStyle("A1:K1")->getFont()->setBold(true);
 // Rename worksheet
-$objPHPExcel->getActiveSheet()->setTitle('하다라보슈퍼보습_참여자리스트데이터'.date("Ymd"));
+$objPHPExcel->getActiveSheet()->setTitle('하다라보슈퍼보습_사행시참여자리스트데이터'.date("Ymd"));
 
 
 // Set active sheet index to the first sheet, so Excel opens this as the first sheet
@@ -117,7 +117,7 @@ $objPHPExcel->setActiveSheetIndex(0);
 
 // Redirect output to a client’s web browser (Excel5)
 header('Content-Type: application/vnd.ms-excel');
-header('Content-Disposition: attachment;filename="하다라보슈퍼보습_참여자리스트데이터'.date("Ymd").'.xls"');
+header('Content-Disposition: attachment;filename="하다라보슈퍼보습_사행시참여자리스트데이터'.date("Ymd").'.xls"');
 header('Cache-Control: max-age=0');
 // If you're serving to IE 9, then the following may be needed
 header('Cache-Control: max-age=1');

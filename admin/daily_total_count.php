@@ -64,7 +64,8 @@ else
 									<th>날짜</th>
 									<th>디바이스 구분</th>
 									<th>유입</th>
-									<th>참여</th>
+									<th>사행시 참여</th>
+									<th>좋아요 참여</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -79,6 +80,7 @@ else
 
 							$all_total_tracking_cnt = 0;
 							$all_total_member_cnt = 0;
+							$all_total_like_member_cnt = 0;
 
 
 							$daily_date_query	= "SELECT tracking_date FROM tracking_info WHERE 1 ".$where." Group by substr(tracking_date,1,10) ORDER BY tracking_date DESC";
@@ -89,8 +91,12 @@ else
 								$daily_date		= substr($date_daily_data['tracking_date'],0,10);
 								$tracking_query	= "SELECT tracking_gubun, COUNT( tracking_gubun ) t_cnt FROM tracking_info WHERE 1 AND tracking_date LIKE  '%".$daily_date."%' GROUP BY tracking_gubun";
 								$member_query	= "SELECT mb_gubun, COUNT( mb_gubun ) m_cnt FROM member_info WHERE 1 AND mb_regdate LIKE  '%".$daily_date."%' GROUP BY mb_gubun";
+								$like_member_query	= "SELECT mb_like_gubun, COUNT( mb_like_gubun ) m_l_cnt FROM member_info_like WHERE 1 AND mb_like_regdate LIKE  '%".$daily_date."%' GROUP BY mb_like_gubun";
 								$tracking_res		= mysqli_query($my_db, $tracking_query);
 								$member_res		= mysqli_query($my_db, $member_query);
+								$like_member_res		= mysqli_query($my_db, $like_member_query);
+								
+//								print_r($like_member_query);
 
 								unset($gubun_name);
 								unset($tracking_cnt);
@@ -102,6 +108,11 @@ else
 								unset($member_pc_cnt);
 								unset($member_mobile_cnt);
 								unset($member_total_cnt);
+								
+								unset($like_member_cnt);
+								unset($like_member_pc_cnt);
+								unset($like_member_mobile_cnt);
+								unset($like_member_total_cnt);
 
 
 //								$total_tracking_pc_cnt = 0;
@@ -136,6 +147,20 @@ else
 									$member_mobile_cnt[]	= $member_mobile_count;
 									$member_total_cnt[]		= $member_pc_count + $member_mobile_count;
 								}
+																	   
+							   while ($like_member_daily_data = mysqli_fetch_array($like_member_res))
+							   {
+								   $like_member_cnt[]			= $like_member_daily_data['m_l_cnt'];
+								   $like_member_pc_query		= "SELECT * FROM member_info_like WHERE 1 AND mb_like_regdate LIKE  '%".$daily_date."%' AND mb_like_gubun='PC' ";
+								   $like_member_pc_count		= mysqli_num_rows(mysqli_query($my_db, $like_member_pc_query));
+								   $like_member_mobile_query	= "SELECT * FROM member_info_like WHERE 1 AND mb_like_regdate LIKE  '%".$daily_date."%' AND mb_like_gubun='MOBILE'";
+								   $like_member_mobile_count	= mysqli_num_rows(mysqli_query($my_db, $like_member_mobile_query));
+
+								   $like_member_pc_cnt[]		= $like_member_pc_count;
+//								   print_r($like_member_pc_cnt);
+								   $like_member_mobile_cnt[]	= $like_member_mobile_count;
+								   $like_member_total_cnt[]		= $like_member_pc_count + $like_member_mobile_count;
+							   }
 
 								$rowspan_cnt =  count($gubun_name);
 								$i = 0;
@@ -176,10 +201,21 @@ else
 									<td>
 									<?
 										if($val == "PC") {
-											echo number_format($member_pc_cnt[$i]);
-											$all_total_member_cnt += $member_total_cnt[$i];
+											echo number_format($member_pc_cnt[0]);
+											$all_total_member_cnt += $member_total_cnt[0];
 										} else {
-											echo number_format($member_mobile_cnt[$i]);
+											echo number_format($member_mobile_cnt[0]);
+										}
+									?>
+									</td>
+									<td>
+									<?
+										if($val == "PC") {
+//											print_r($i);
+											echo number_format($like_member_pc_cnt[0]);
+											$all_total_like_member_cnt += $like_member_total_cnt[0];
+										} else {
+											echo number_format($like_member_mobile_cnt[0]);
 										}
 									?>
 									</td>
@@ -207,6 +243,9 @@ else
 									<td>
 										<?php echo number_format($member_total_cnt[0])?>
 									</td>
+									<td>
+										<?php echo number_format($like_member_total_cnt[0])?>
+									</td>
 									<!-- <td><?php echo number_format($total_unique_pc_cnt)?></td> -->
 									<!-- <td><?php echo number_format($total_unique_mobile_cnt)?></td> -->
 									<!-- ." / IP기준 유니크 : ".$total_unique_media_cnt  -->
@@ -219,7 +258,8 @@ else
 							<div class="total-wrap" style="float: right; background: lightgrey; padding: 20px; margin-bottom: 10px;">
 								<?
 								echo "<span style='display:inline-block; margin-right:10px;'>유입 토탈: ".$all_total_tracking_cnt."</span>";
-								echo "<span style='display:inline-block; margin-right:10px;'>참여 토탈: ".$all_total_member_cnt."</span>";
+								echo "<span style='display:inline-block; margin-right:10px;'>사행시 참여 토탈: ".$all_total_member_cnt."</span>";
+								echo "<span style='display:inline-block; margin-right:10px;'>좋아요 참여 토탈: ".$all_total_like_member_cnt."</span>";
 								?>
 							</div>
 						</table>

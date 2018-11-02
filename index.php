@@ -286,7 +286,7 @@
 							<p class="node">
 								<span class="for-a11y">[습]</span><?=$member_data["quatrain04"]?>
 							</p>
-							<button type="button" class="like" id="like_<?=$member_data['idx']?>" onclick="likeOn('page','<?=$member_data['idx']?>')" data-layer="#layerLead">
+							<button type="button" class="like" id="like_<?=$member_data['idx']?>" onclick="likeOn('page','<?=$member_data['idx']?>')">
 								<span class="for-a11y">좋아요</span>
 							</button>
 							<a href="#layerDetail" class="more" data-layer="#layerDetail" data-id="<?=$member_data['idx']?>" onclick="quatrainDataStore(this);">
@@ -475,7 +475,7 @@
 					<p class="node">
 						<span class="for-a11y">[습]</span>관적으로 발라주자!
 					</p>
-					<button type="button" class="like">
+					<button type="button" class="like" data-layer="#layerEntry">
 						<span class="for-a11y">좋아요 취소하기</span>
 					</button>
 				</div>
@@ -540,6 +540,136 @@
 				</div>
 			</section>
 		</div>
+		
+		<!-- layer : 응모하기 -->
+		<div class="layer-wrap layer-entry" id="layerEntry">
+			<div class="layer layer--medium">
+				<button type="button" class="layer-close js-layer-close">
+					<span class="for-a11y">이벤트 참여하기 레이어 팝업 닫기</span>
+				</button>
+				<h1 class="title">
+					<img src="images/layer-entry-title.png" alt="참여에 감사드립니다!">
+				</h1>
+				<p class="text">
+					<img src="images/layer-entry-text.png" alt="">
+					<span class="for-a11y">
+						[수퍼보습 5days KIT] 통해 더 깊어진 하다라보 고쿠쥰의 힘을 느껴보세요!
+					</span>
+				</p>
+				<dl class="form">
+					<dt>
+						<label for="layerEntryName">
+							<img src="images/layer-entry-name.png" alt="이 름">
+						</label>
+					</dt>
+					<dd>
+						<!-- <input type="text" id="layerEntryName"> -->
+						<input type="text" id="mb_name">
+					</dd>
+					<dt>
+						<label for="layerEntryTel">
+							<img src="images/layer-entry-tel.png" alt="연락처">
+						</label>
+					</dt>
+					<dd>
+						<!-- <input type="tel" id="layerEntryTel"> -->
+						<input type="tel" id="mb_phone" onkeyup="only_num(this);chk_len(this,11)" placeholder="'-'없이 적어주세요">
+					</dd>
+					<dt>
+						<label for="layerEntryAddress">
+							<img src="images/layer-entry-address.png" alt="주소">
+						</label>
+					</dt>
+					<dd>
+						<!-- <input type="text" id="layerEntryAddress" class="address-01" title="주소1"> -->
+						<input type="text" id="mb_addr1" class="address-01" title="주소1" readonly>
+						<button type="button" class="search">
+							<img src="images/layer-entry-search.png" alt="우편번호 검색">
+						</button>
+						<!-- <input type="text" class="address-02" title="나머지 주소"> -->
+						<input type="text" id="mb_addr2" class="address-02" title="나머지 주소">
+					</dd>
+				</dl>
+				<div class="agree">
+					<input type="checkbox" id="layerEntryAgree">
+					<label for="layerEntryAgree">
+						<img src="images/layer-entry-agree.png" alt="개인 정보 수집/이용 및 취급 위탁 동의">
+					</label>
+					<a href="#layerClause" class="clause" data-layer="#layerClause">
+						<img src="images/layer-entry-clause.png" alt="약관보기">
+					</a>
+				</div>
+				<button type="button" class="submit">
+					<img src="images/layer-entry-submit.png" alt="확인">
+				</button>
+				<p class="notice">
+					<img src="images/layer-entry-notice.png" alt="">
+					<span class="for-a11y">
+						[이벤트 유의사항]<br>
+						- 샘플은 참여 시 최초 1회만 제공되며, 참여자에 한해 주 1회 발송 됩니다<br>
+						- 해당 이벤트는 경품 소진시 조기 종료 될 수 있습니다
+					</span>
+				</p>
+			</div>
+		</div>
+
+		<!-- layer : 약관 -->
+		<div class="layer-wrap layer-clause" id="layerClause">
+			<div class="layer layer--medium">
+				<button type="button" class="layer-close js-layer-close">
+					<span class="for-a11y">약관 레이어 팝업 닫기</span>
+				</button>
+				<h1 class="title">
+					<img src="images/layer-clause-title.png" alt="개인 정보 수집/이용 및 취급 위탁 약관">
+				</h1>
+				<h2 class="sub-title">
+					<img src="images/layer-clause-sub-title-01.png" alt="개인 정보 수집 및 이용약관">
+				</h2>
+				<div class="clause">
+					한국멘소래담(주)(이하 "당사"라 한다)는 본 이벤트를 위하여 귀하의 개인정보를 수집 및 이용합니다.<br><br>
+
+					• 수집항목 : 이름, 휴대폰번호, 주소<br>
+					• 이용목적 : 이벤트 진행을 위한 본인 확인, 당첨자 선정 및 경품 제공,<br>
+					정보 공지 및 불만 처리 등을 위한 연락처 확보, 이벤트 참여 내용 노출<br>
+					• 보유기간 : 이벤트 종료 후 6개월 이내 파기
+				</div>
+				<h2 class="sub-title">
+					<img src="images/layer-clause-sub-title-02.png" alt="개인 정보 취급 위탁 약관">
+				</h2>
+				<div class="clause">
+					당사는 원활한 행사 진행을 위하여 아래의 전문 업체에 업무를 위탁 처리하고 있습니다.<br><br>
+
+					• 수탁자 : TBWA<br>
+					• 위탁하는 업무의 내용 : 이벤트 당첨자 확인, 경품 발송, MMS 발송
+				</div>
+				<button type="button" class="agree" onclick="agreeCheck()">
+					<img src="images/layer-clause-agree.png" alt="동의합니다">
+				</button>
+			</div>
+		</div>
+
+		<!-- layer : 참여완료 -->
+		<div class="layer-wrap layer-complete" id="layerComplete">
+			<section class="layer layer--medium">
+<!--				<button type="button" class="layer-close" onclick="location.href='./index.php'">-->
+				<button type="button" class="layer-close">
+					<span class="for-a11y">참여완료 레이어 팝업 닫기</span>
+				</button>
+				<h1 class="title">
+					<img src="images/layer-complete-title.png" alt="신청이 완료되었습니다! 5dayz KIT는 매주 월요일 순차적으로 발송됩니다" class="popup-image">
+				</h1>
+				<div class="btn-wrap">
+<!--					<button type="button" class="btn-ok" onclick="location.href='./index.php'">-->
+					<button type="button" class="btn-ok">
+						<img src="images/layer-complete-btn-01.png" alt="확인">
+					</button>
+					<button type="button" class="btn-sale" onclick="location.href='http://www.oliveyoung.co.kr/store/goods/getGoodsDetail.do?goodsNo=A000000117864&dispCatNo=1000001000100010009'">
+						<img src="images/layer-complete-btn-02.png" alt="55%할인 효과 고쿠쥰 로션&밀크 특별 할인 구매">
+					</button>
+				</div>
+			</section>
+		</div>
+		
 <!--		<input type="text" id="foo" value="#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부">-->
 <!--		<script type="text/javascript" src="./js/clipboard.min.js"></script>-->
 		<script>
@@ -736,10 +866,138 @@
 								$("#like_pop_"+idx).addClass("is-liked");
 								like_arr.push(idx);
 								localStorage.setItem("like_idx", JSON.stringify(like_arr));
+								
+								// 좋아요 누를시 참여팝업 나오게 수정 181102
+								if($("#like_"+idx).hasClass("is-liked") || $("#like_pop_"+idx).hasClass("is-liked")) {
+									hadalaboUI.layer.open($('#layerEntry'));
+								}
 							}
 						}
 					}
 				});
+			}
+			
+			var search_zipcode 	= "";
+			var search_addr1 	= "";
+			
+			$(".submit").on("click", function(){
+				var mb_name		= $("#mb_name").val();
+				var mb_phone		= $("#mb_phone").val();
+				var mb_addr2		= $("#mb_addr2").val();
+
+				if (mb_name.trim().length < 1)
+				{
+					alert("이름/연락처/주소 모두 입력해주세요");
+					return false;
+				}
+
+				if (mb_phone.trim().length < 1)
+				{
+					alert("이름/연락처/주소 모두 입력해주세요");
+					return false;
+				}
+
+				if (search_addr1.trim().length < 1)
+				{
+					alert("이름/연락처/주소 모두 입력해주세요");
+					return false;
+				}
+
+				if (mb_addr2.trim().length < 1)
+				{
+					alert("이름/연락처/주소 모두 입력해주세요");
+					return false;
+				}
+
+				if ($("#layerEntryAgree").is(":checked") === false)
+				{
+					alert('개인정보 수집/이용 및 취급 위탁약관에 동의하셔야만 이벤트 참여가 가능합니다.');
+					return false;
+				}
+
+				$.ajax({
+					type:"POST",
+					data:{
+						"exec"				: "insert_member_info",
+						"mb_name"			: mb_name,
+						"mb_phone"			: mb_phone,
+						// "mb_mail"			: mb_mail,
+						"mb_zipcode"		: search_zipcode,
+						"mb_addr1"			: search_addr1,
+						"mb_addr2"			: mb_addr2,
+						"rq_type"			: "like"
+					},
+					url: "./main_exec.php",
+					success: function(response){
+						if (response == "Y")
+						{
+							//							alert("신청이 완료되었습니다. 매주 월요일에 순차적으로 발송됩니다.");
+							//							location.href = "index.php";
+							hadalaboUI.layer.close($('#layerEntry'));
+							hadalaboUI.layer.open($('#layerComplete'));
+						}else if (response == "D"){
+							alert("이미 참여해주셨습니다! 샘플은 1인당 1회에 한합니다.");
+//							location.href = "index.php";
+							hadalaboUI.layer.close($('#layerEntry'));
+						}else{
+							alert("사용자가 많아 참여가 지연되고 있습니다. 다시 참여 부탁드립니다.");
+							location.reload();
+						}
+						// 정보입력 인풋값 초기화
+						$('#layerEntry #mb_name').val('');
+						$('#layerEntry #mb_phone').val('');
+						$('#layerEntry #mb_addr1').val('');
+						$('#layerEntry #mb_addr2').val('');
+						$('#layerEntry #layerEntryAgree').prop('checked', false);
+					}
+				});
+			});
+			
+			$('#layerComplete .btn-ok').on('click', function() {
+				hadalaboUI.layer.close($('#layerComplete'));
+			});
+
+			$(".search").on("click", function(){
+				new daum.Postcode({
+					oncomplete: function(data) {
+						// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+						// 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
+						// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+						var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
+						var extraRoadAddr = ''; // 도로명 조합형 주소 변수
+
+						// 법정동명이 있을 경우 추가한다. (법정리는 제외)
+						// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+						if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+							extraRoadAddr += data.bname;
+						}
+						// 건물명이 있고, 공동주택일 경우 추가한다.
+						if(data.buildingName !== '' && data.apartment === 'Y'){
+							extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+						}
+						// 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+						if(extraRoadAddr !== ''){
+							extraRoadAddr = ' (' + extraRoadAddr + ')';
+						}
+						// 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
+						if(fullRoadAddr !== ''){
+							fullRoadAddr += extraRoadAddr;
+						}
+
+						// 우편번호와 주소 정보를 해당 필드에 넣는다.
+						// document.getElementById('mb_zipcode').value = data.zonecode; //5자리 새우편번호 사용
+						document.getElementById('mb_addr1').value 	= "(" + data.zonecode + ") " + fullRoadAddr;
+						search_zipcode 	= data.zonecode;
+						search_addr1 	= fullRoadAddr;
+					}
+				}).open();
+			});
+
+			function agreeCheck()
+			{
+				$("input:checkbox[id='layerEntryAgree']").prop("checked", true);
+				hadalaboUI.layer.close($('#layerClause'));
 			}
 		</script>
 	</body>

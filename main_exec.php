@@ -18,17 +18,27 @@ switch ($_REQUEST['exec'])
         $quatrain03         = trim($_REQUEST["quatrain03"]);
         $quatrain04         = trim($_REQUEST["quatrain04"]);
         $quatrain_name      = trim($_REQUEST["quatrain_name"]);
+		$rq_type			= $_REQUEST["rq_type"];
 
         $dupli_query	= "SELECT * FROM member_info WHERE mb_phone='".$mb_phone."' OR (mb_addr1='".$mb_addr1."' AND mb_addr2='".$mb_addr2."')";
 		$dupli_result 	= mysqli_query($my_db, $dupli_query);
 		$dupli_num		= mysqli_num_rows($dupli_result);
+		
+		$dupli_query_like	= "SELECT * FROM member_info_like WHERE mb_like_phone='".$mb_phone."' OR (mb_like_addr1='".$mb_addr1."' AND mb_like_addr2='".$mb_addr2."')";
+		$dupli_result_like 	= mysqli_query($my_db, $dupli_query_like);
+		$dupli_num_like		= mysqli_num_rows($dupli_result_like);
 
-        if ($dupli_num > 0)
+        if ($dupli_num > 0 || $dupli_num_like > 0)
         {
             $flag = "D";
         }else{
-			$query		= "INSERT INTO member_info(mb_ipaddr, mb_name, mb_phone, quatrain01, quatrain02, quatrain03, quatrain04, quatrain_name, mb_zipcode, mb_addr1, mb_addr2, mb_gubun, mb_media, mb_regdate) values('".$_SERVER['REMOTE_ADDR']."','".$mb_name."','".$mb_phone."','".$quatrain01."','".$quatrain02."','".$quatrain03."','".$quatrain04."','".$quatrain_name."','".$mb_zipcode."','".$mb_addr1."','".$mb_addr2."','".$gubun."','".$_SESSION['ss_media']."',now())";
-            $result		= mysqli_query($my_db, $query);
+			if($rq_type == 'like') {
+				$query		= "INSERT INTO member_info_like(mb_like_ipaddr, mb_like_name, mb_like_phone, mb_like_zipcode, mb_like_addr1, mb_like_addr2, mb_like_gubun, mb_like_media, mb_like_regdate) values('".$_SERVER['REMOTE_ADDR']."','".$mb_name."','".$mb_phone."','".$mb_zipcode."','".$mb_addr1."','".$mb_addr2."','".$gubun."','".$_SESSION['ss_media']."',now())";
+				$result		= mysqli_query($my_db, $query);
+			} else {
+				$query		= "INSERT INTO member_info(mb_ipaddr, mb_name, mb_phone, quatrain01, quatrain02, quatrain03, quatrain04, quatrain_name, mb_zipcode, mb_addr1, mb_addr2, mb_gubun, mb_media, mb_regdate) values('".$_SERVER['REMOTE_ADDR']."','".$mb_name."','".$mb_phone."','".$quatrain01."','".$quatrain02."','".$quatrain03."','".$quatrain04."','".$quatrain_name."','".$mb_zipcode."','".$mb_addr1."','".$mb_addr2."','".$gubun."','".$_SESSION['ss_media']."',now())";
+				$result		= mysqli_query($my_db, $query);
+			}
 
             if ($result)
                 $flag = "Y";
