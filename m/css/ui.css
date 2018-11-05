@@ -297,6 +297,9 @@ img {
 .main-section--01 .text {
   margin-bottom: 40px;
 }
+.main-section--01 .text .content-image {
+	width: 285px;
+}
 .main-section--01 .buttons {
   position: relative;
   width: 320px;
@@ -742,6 +745,9 @@ img {
   background: url('../images/main-section-02-step-arrow.png') no-repeat 0 42px;
   background-size: auto 12px;
 }
+.main-section--02 .step li:first-child img {
+	height: 87px;
+}
 .main-section--02 .step li img {
   height: 100px;
   margin: 0 auto;
@@ -1062,6 +1068,9 @@ img {
 .event-section--01 .title {
   padding: 38px 0 0;
   height: 50px;
+}
+.event-section--01 .text .content-image {
+	width: 259px;
 }
 .event-section--01 .form {
   margin: 27px auto;
