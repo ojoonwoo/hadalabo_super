@@ -670,6 +670,31 @@
 			</section>
 		</div>
 		
+		<!-- layer : 좋아요 참여 팝업 -->
+		<div class="layer-wrap layer-like" id="layerLike">
+			<section class="layer layer--medium">
+				<!--				<button type="button" class="layer-close" onclick="location.href='./index.php'">-->
+				<button type="button" class="layer-close js-layer-close">
+					<span class="for-a11y">좋아요참여 레이어 팝업 닫기</span>
+				</button>
+				<h1 class="title">
+					<img src="images/layer-like-title.png" alt="" class="popup-image">
+				</h1>
+				<div class="product-image">
+					<img src="./images/layer-like-product.png" alt="">
+				</div>
+				<div class="btn-wrap">
+					<!--					<button type="button" class="btn-ok" onclick="location.href='./index.php'">-->
+					<button type="button" class="btn-ok">
+						<img src="images/layer-like-btn-01.png" alt="확인">
+					</button>
+					<button type="button" class="btn-sale js-layer-close">
+						<img src="images/layer-like-btn-02.png" alt="55%할인 효과 고쿠쥰 로션&밀크 특별 할인 구매">
+					</button>
+				</div>
+			</section>
+		</div>
+		
 <!--		<input type="text" id="foo" value="#하다라보 #하다라보고쿠쥰 #하다라보수퍼보습 #3중히알루론산황금비율 #해낸건_또_하다라보고쿠쥰 #속까지_더_깊게_촘촘촉촉 #모찌피부">-->
 <!--		<script type="text/javascript" src="./js/clipboard.min.js"></script>-->
 		<script>
@@ -956,6 +981,12 @@
 			$('#layerComplete .btn-ok').on('click', function() {
 				hadalaboUI.layer.close($('#layerComplete'));
 			});
+			$('#layerLike .btn-ok').on('click', function() {
+				hadalaboUI.layer.close($('#layerLike'));
+				$('html, body').animate({
+					scrollTop: $('.main-section--04').offset().top
+				}, 1300);
+			});
 
 			$(".search").on("click", function(){
 				new daum.Postcode({
@@ -999,6 +1030,10 @@
 				$("input:checkbox[id='layerEntryAgree']").prop("checked", true);
 				hadalaboUI.layer.close($('#layerClause'));
 			}
+			
+			$(window).on('load', function() {
+				hadalaboUI.layer.open($('#layerLike'));
+			});
 		</script>
 	</body>
 </html>

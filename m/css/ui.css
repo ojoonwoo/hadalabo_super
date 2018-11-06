@@ -1598,6 +1598,51 @@ img {
 	width: 60px;
 }
 
+.layer-like .layer {
+	background: url('../images/layer-clause-bg.jpg') no-repeat 0 0;
+	background-size: 100% 100%;
+	/*	height: 415px;*/
+	padding: 30px 0 24px;
+}
+.layer-like .title {
+	padding: 0 0 15px;
+	text-align: center;
+	font-size: 0;
+}
+.layer-like .title img {
+	width: 218px;
+	margin: 0 auto;
+}
+.layer-like .product-image img {
+	width: 50px;
+	margin: 0 auto;
+	padding-bottom: 6px;
+}
+.layer-like .btn-wrap {
+	text-align: center;
+	font-size: 0;
+}
+.layer-like .btn-wrap button {
+	display: inline-block;
+	border-radius: 17px;
+	/*	width: 100%;*/
+	width: 136px;
+	background: #fff;
+	text-align: center;
+	line-height: 0;
+	-webkit-box-shadow: 0 6px 5px rgba(38, 49, 54, 0.33);
+	box-shadow: 0 6px 5px rgba(38, 49, 54, 0.33);
+}
+.layer-like .btn-wrap button:first-child {
+	margin-right: 12px;
+}
+.layer-like .btn-wrap button img {
+	display: block;
+	padding: 5px 0 6px;
+	margin: 0 auto;
+	width: 111px;
+}
+
 .layer-complete .layer {
 	background: url('../images/layer-lead-bg.jpg') no-repeat 0 0;
 	background-size: 100% 100%;
