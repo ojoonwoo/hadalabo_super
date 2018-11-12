@@ -656,8 +656,8 @@
 					<button type="button" class="btn-ok" onclick="location.href='./index.php'">
 						<img src="images/layer-complete-btn-01.png" alt="확인">
 					</button>
-					<button type="button" class="btn-sale" onclick="location.href='http://www.oliveyoung.co.kr/store/goods/getGoodsDetail.do?goodsNo=A000000117864&dispCatNo=1000001000100010009'">
-						<img src="images/layer-complete-btn-02.png" alt="55%할인 효과 고쿠쥰 로션&밀크 특별 할인 구매">
+					<button type="button" class="btn-sale" onclick="location.href='https://smartstore.naver.com/cosnique/products/264931382'" target="_blank">
+						<img src="images/layer-complete-btn-02.png" alt="고쿠쥰 로션 만나보기">
 					</button>
 				</div>
 			</section>
