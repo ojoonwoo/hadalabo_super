@@ -146,7 +146,12 @@
 				</p>
 				<ul class="buttons">
 					<li>
+<!--
 						<a href="event.php" class="btn btn--01">
+							<img src="images/main-section-01-button-01.png" alt="4행시 도전">
+						</a>
+-->
+						<a href="javascript:void(0)" class="btn btn--01">
 							<img src="images/main-section-01-button-01.png" alt="4행시 도전">
 						</a>
 					</li>
@@ -646,7 +651,7 @@
 		<!-- layer : 참여완료 -->
 		<div class="layer-wrap layer-complete" id="layerComplete">
 			<section class="layer layer--medium">
-				<button type="button" class="layer-close" onclick="location.href='./index.php'">
+				<button type="button" class="layer-close js-layer-close" onclick="location.href='./index.php'">
 					<span class="for-a11y">참여완료 레이어 팝업 닫기</span>
 				</button>
 				<h1 class="title">
@@ -1035,6 +1040,9 @@
 			}
 			$(window).on('load', function() {
 				hadalaboUI.layer.open($('#layerLike'));
+			});
+			$('.btn--01').on('click', function() {
+				alert("4행시 이벤트는 종료되었으며, 참여작에 '좋아요' 투표하시면 수퍼보습 5days kit을 드립니다");
 			});
 		</script>
 	</body>
