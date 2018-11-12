@@ -1,5 +1,6 @@
 <?
 	include_once "head.php";
+	exit;
 ?>
 	<body>
 		<div class="wrap sub-p">
