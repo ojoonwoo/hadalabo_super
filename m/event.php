@@ -193,6 +193,27 @@
 				</button>
 			</section>
 		</div>
+		
+		<!-- layer : 참여완료 -->
+		<div class="layer-wrap layer-complete" id="layerComplete">
+			<section class="layer layer--medium">
+				<button type="button" class="layer-close" onclick="location.href='./index.php'">
+					<span class="for-a11y">참여완료 레이어 팝업 닫기</span>
+				</button>
+				<h1 class="title">
+					<img src="images/layer-complete-title.png" alt="신청이 완료되었습니다! 5dayz KIT는 매주 월요일 순차적으로 발송됩니다" class="popup-image">
+				</h1>
+				<div class="btn-wrap">
+					<button type="button" class="btn-ok" onclick="location.href='./index.php'">
+						<img src="images/layer-complete-btn-01.png" alt="확인">
+					</button>
+					<button type="button" class="btn-sale" onclick="location.href='http://www.oliveyoung.co.kr/store/goods/getGoodsDetail.do?goodsNo=A000000117864&dispCatNo=1000001000100010009'">
+						<img src="images/layer-complete-btn-02.png" alt="55%할인 효과 고쿠쥰 로션&밀크 특별 할인 구매">
+					</button>
+				</div>
+			</section>
+		</div>
+		
 		<div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:9999;-webkit-overflow-scrolling:touch;">
 			<img src="//i1.daumcdn.net/localimg/localimages/07/postcode/320/close.png" id="btnCloseLayer" style="width:7%;cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
 		</div>
@@ -305,10 +326,12 @@
 						console.log(response);
 						if (response == "Y")
 						{
-							alert("신청이 완료되었습니다. 매주 월요일에 순차적으로 발송됩니다.");
-							location.href = "index.php";
+//							alert("신청이 완료되었습니다. 매주 월요일에 순차적으로 발송됩니다.");
+//							location.href = "index.php";
+							hadalaboUI.layer.open($('#layerComplete'));
+							
 						}else if (response == "D"){
-							alert("이미 샘플신청이 완료되셨습니다.");
+							alert("이미 참여해주셨습니다! 샘플은 1인당 1회에 한합니다.");
 							location.href = "index.php";
 						}else{
 							alert("사용자가 많아 참여가 지연되고 있습니다. 다시 참여 부탁드립니다.");

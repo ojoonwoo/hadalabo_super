@@ -86,7 +86,8 @@ img {
   position: absolute;
 }
 .content-image {
-  width: 282px;
+/*  width: 282px;*/
+  width: 320px;
   margin: 0 auto;
 }
 .popup-image {
@@ -295,6 +296,9 @@ img {
 }
 .main-section--01 .text {
   margin-bottom: 40px;
+}
+.main-section--01 .text .content-image {
+	width: 285px;
 }
 .main-section--01 .buttons {
   position: relative;
@@ -741,6 +745,9 @@ img {
   background: url('../images/main-section-02-step-arrow.png') no-repeat 0 42px;
   background-size: auto 12px;
 }
+.main-section--02 .step li:first-child img {
+	height: 87px;
+}
 .main-section--02 .step li img {
   height: 100px;
   margin: 0 auto;
@@ -756,7 +763,7 @@ img {
   box-shadow: 0 0 11px 6px rgba(113, 69, 59, 0.15);
 }
 .main-section--02 .product li {
-  width: 277px;
+  width: 275px;
   margin: 0 auto;
 }
 .main-section--02 .product li + li {
@@ -764,6 +771,9 @@ img {
 }
 .main-section--02 .product li img {
   width: 100%;
+}
+.main-section--02 .notice .content-image {
+	width: 278px;
 }
 .main-section--03 {
   position: relative;
@@ -983,9 +993,12 @@ img {
 }
 .main-section--05 {
   position: relative;
-  height: 414px;
-  background: url('../images/main-section-05-bg-02.png') no-repeat 50% 256px, url('../images/main-section-05-bg-01.jpg') no-repeat 50% 0;
-  background-size: 375px auto, 100% 100%;
+/*  height: 414px;*/
+  height: 466px;
+/*  background: url('../images/main-section-05-bg-02.png') no-repeat 50% 256px, url('../images/main-section-05-bg-01.jpg') no-repeat 50% 0;*/
+  background: url('../images/main-section-05-bg-02.png') no-repeat 50% 256px, url('../images/main-section-05-bg-01.png') no-repeat 50% 0;
+/*  background-size: 375px auto, 100% 100%;*/
+  background-size: 375px auto, cover;
 }
 .main-section--05 .title {
   padding: 20px 0 8px;
@@ -1034,6 +1047,18 @@ img {
   height: 100%;
   margin: 0 auto;
 }
+.main-section--05 .sns li.buy-link {
+	display: block;
+	margin: 15px 0 0;
+}
+.main-section--05 .sns li.buy-link a {
+	width: 237px;
+	height: 45px;
+	border-radius: 45px;
+	margin: 0 auto;
+}
+.main-section--05 .sns li.buy-link a img { width: 163px; height: auto; padding: 11px 0;}
+
 .event-section--01 {
   position: relative;
   height: 535px;
@@ -1043,6 +1068,9 @@ img {
 .event-section--01 .title {
   padding: 38px 0 0;
   height: 50px;
+}
+.event-section--01 .text .content-image {
+	width: 259px;
 }
 .event-section--01 .form {
   margin: 27px auto;
@@ -1569,3 +1597,94 @@ img {
 	margin: 0 auto;
 	width: 60px;
 }
+
+.layer-like .layer {
+	background: url('../images/layer-clause-bg.jpg') no-repeat 0 0;
+	background-size: 100% 100%;
+	/*	height: 415px;*/
+	padding: 30px 0 24px;
+}
+.layer-like .title {
+	padding: 0 0 15px;
+	text-align: center;
+	font-size: 0;
+}
+.layer-like .title img {
+	width: 218px;
+	margin: 0 auto;
+}
+.layer-like .product-image img {
+	width: 50px;
+	margin: 0 auto;
+	padding-bottom: 6px;
+}
+.layer-like .btn-wrap {
+	text-align: center;
+	font-size: 0;
+}
+.layer-like .btn-wrap button {
+	display: inline-block;
+	border-radius: 17px;
+	/*	width: 100%;*/
+	width: 136px;
+	background: #fff;
+	text-align: center;
+	line-height: 0;
+	-webkit-box-shadow: 0 6px 5px rgba(38, 49, 54, 0.33);
+	box-shadow: 0 6px 5px rgba(38, 49, 54, 0.33);
+}
+.layer-like .btn-wrap button:first-child {
+	margin-right: 12px;
+}
+.layer-like .btn-wrap button img {
+	display: block;
+	padding: 5px 0 6px;
+	margin: 0 auto;
+	width: 111px;
+}
+
+.layer-complete .layer {
+	background: url('../images/layer-lead-bg.jpg') no-repeat 0 0;
+	background-size: 100% 100%;
+	padding: 30px 0 33px;
+}
+.layer-complete .title {
+	padding: 0 0 15px;
+	text-align: center;
+	font-size: 0;
+}
+.layer-complete .title img {
+	width: 192px;
+	margin: 0 auto;
+}
+.layer-complete .btn-wrap {
+	text-align: center;
+	font-size: 0;
+}
+.layer-complete .btn-wrap button {
+	display: inline-block;
+	border-radius: 17px;
+	/*	width: 100%;*/
+	width: 105px;
+	background: #fff;
+	text-align: center;
+	line-height: 0;
+	-webkit-box-shadow: 0 6px 5px rgba(38, 49, 54, 0.33);
+	box-shadow: 0 6px 5px rgba(38, 49, 54, 0.33);
+}
+.layer-complete .btn-wrap button:first-child {
+	margin-right: 6px;
+}
+.layer-complete .btn-wrap button img {
+	display: block;
+	padding: 5px 0 6px;
+	margin: 0 auto;
+}
+.layer-complete .btn-wrap button:first-child img {
+	width: 33px;
+}
+.layer-complete .btn-wrap button:last-child img {
+	width: 84px;
+	padding: 3px 0;
+}
+

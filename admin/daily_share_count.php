@@ -76,9 +76,11 @@
 ?>
                     <td rowspan="<?=$rowspan_cnt?>">
                     	<?php echo $daily_date?>
+<!--
 						<a id="excelDown" href="excel_download_share.php?date=<?=$daily_date?>">
 							<span>엑셀 다운로드</span>
 						</a>
+-->
 					</td>
 <?
 			}

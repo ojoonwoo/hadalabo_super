@@ -47,9 +47,9 @@ $startDate =  $_REQUEST['sDate'];
 $endDate =  $_REQUEST['eDate'];
 $where = "";
 if($startDate != "" && $endDate != "") {
-    $where = "AND mb_regdate >= '".$startDate."' AND mb_regdate <= '".$endDate." 23:59:59'";
+    $where = "AND mb_regdate >= '".$startDate." 00:00:00' AND mb_regdate <= '".$endDate." 23:59:59'";
 }
-$list_query = "SELECT * FROM member_info_9 WHERE 1 ".$where."";
+$list_query = "SELECT * FROM member_info WHERE 1 ".$where."";
 $list_res		= mysqli_query($my_db, $list_query);
 // Create new PHPExcel object
 $objPHPExcel = new PHPExcel();
@@ -68,13 +68,15 @@ $objPHPExcel->getProperties()->setCreator("minivertising")
 $objPHPExcel->setActiveSheetIndex(0)
             ->setCellValue('A1', '이름')
             ->setCellValue('B1', '전화번호')
-            ->setCellValue('C1', '선택배경이미지')
-            ->setCellValue('D1', '선택사이즈')
-            ->setCellValue('E1', '주소')
-            ->setCellValue('F1', '메시지내용')
-            ->setCellValue('G1', '유입구분')
-			->setCellValue('H1', '유입매체')
-			->setCellValue('I1', '참여일자');
+            ->setCellValue('C1', '좋아요 숫자')
+            ->setCellValue('D1', '4행시 1')
+            ->setCellValue('E1', '4행시 2')
+            ->setCellValue('F1', '4행시 3')
+            ->setCellValue('G1', '4행시 4')
+            ->setCellValue('H1', '주소')
+            ->setCellValue('I1', '참여 디바이스')
+            ->setCellValue('J1', '유입매체')
+			->setCellValue('K1', '참여일시');
 
 while ($buyer_data = @mysqli_fetch_array($list_res)) {
     $buyer_info[] = $buyer_data;
@@ -82,18 +84,19 @@ while ($buyer_data = @mysqli_fetch_array($list_res)) {
 $dataIdx = 2;
 foreach($buyer_info as $key => $val)
 {       
-	$address = $buyer_info[$key]['mb_addr1'].' '.$buyer_info[$key]['mb_addr2'];
-	$message = str_replace('<br>', "\n", $buyer_info[$key]['mb_message']);
+	$address = '('.$buyer_info[$key]['mb_zipcode'].') '.$buyer_info[$key]['mb_addr1'].' '.$buyer_info[$key]['mb_addr2'];
     $objPHPExcel->setActiveSheetIndex(0)
                 ->setCellValue('A'.$dataIdx, $buyer_info[$key]['mb_name'])
                 ->setCellValue('B'.$dataIdx, $buyer_info[$key]['mb_phone'])
-                ->setCellValue('C'.$dataIdx, $buyer_info[$key]['mb_type'])
-                ->setCellValue('D'.$dataIdx, $buyer_info[$key]['mb_size'])
-                ->setCellValue('E'.$dataIdx, $address)
-                ->setCellValue('F'.$dataIdx, $message)
-                ->setCellValue('G'.$dataIdx, $buyer_info[$key]['mb_gubun'])
-                ->setCellValue('H'.$dataIdx, $buyer_info[$key]['mb_media'])
-                ->setCellValue('I'.$dataIdx, $buyer_info[$key]['mb_regdate']);
+                ->setCellValue('C'.$dataIdx, $buyer_info[$key]['mb_like'])
+                ->setCellValue('D'.$dataIdx, $buyer_info[$key]['quatrain01'])
+                ->setCellValue('E'.$dataIdx, $buyer_info[$key]['quatrain02'])
+                ->setCellValue('F'.$dataIdx, $buyer_info[$key]['quatrain03'])
+                ->setCellValue('G'.$dataIdx, $buyer_info[$key]['quatrain04'])
+                ->setCellValue('H'.$dataIdx, $address)
+				->setCellValue('I'.$dataIdx, $buyer_info[$key]['mb_gubun'])
+                ->setCellValue('J'.$dataIdx, $buyer_info[$key]['mb_media'])
+                ->setCellValue('K'.$dataIdx, $buyer_info[$key]['mb_regdate']);
 
     $dataIdx++;
 }
@@ -102,9 +105,10 @@ foreach($buyer_info as $key => $val)
 // ->getColumnDimension('A')->setWidth(15);
 
 
-// $objPHPExcel->getActiveSheet()->getStyle('A2')->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+// $objPHPExcel->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+$objPHPExcel->getActiveSheet()->getStyle("A1:K1")->getFont()->setBold(true);
 // Rename worksheet
-$objPHPExcel->getActiveSheet()->setTitle('현대해상마음봇_참여자리스트데이터'.date("Ymd"));
+$objPHPExcel->getActiveSheet()->setTitle('하다라보슈퍼보습_사행시참여자리스트데이터'.date("Ymd"));
 
 
 // Set active sheet index to the first sheet, so Excel opens this as the first sheet
@@ -113,7 +117,7 @@ $objPHPExcel->setActiveSheetIndex(0);
 
 // Redirect output to a client’s web browser (Excel5)
 header('Content-Type: application/vnd.ms-excel');
-header('Content-Disposition: attachment;filename="현대해상마음봇_참여자리스트데이터'.date("Ymd").'.xls"');
+header('Content-Disposition: attachment;filename="하다라보슈퍼보습_사행시참여자리스트데이터'.date("Ymd").'.xls"');
 header('Cache-Control: max-age=0');
 // If you're serving to IE 9, then the following may be needed
 header('Cache-Control: max-age=1');
