@@ -663,7 +663,7 @@
 					<button type="button" class="btn-ok">
 						<img src="images/layer-complete-btn-01.png" alt="확인">
 					</button>
-					<button type="button" class="btn-sale" onclick="location.href='https://smartstore.naver.com/cosnique/products/264931382'">
+					<button type="button" class="btn-sale" onclick="location.href='https://smartstore.naver.com/cosnique/products/264931382'" target="_blank">
 						<img src="images/layer-complete-btn-02.png" alt="고쿠쥰 로션 만나보기">
 					</button>
 				</div>
