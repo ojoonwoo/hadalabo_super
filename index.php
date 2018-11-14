@@ -681,17 +681,57 @@
 				<h1 class="title">
 					<img src="images/layer-like-title.png" alt="" class="popup-image">
 				</h1>
-				<div class="product-image">
-					<img src="./images/layer-like-product.png" alt="">
+				<div class="btn-wrap">
+					<!--					<button type="button" class="btn-ok" onclick="location.href='./index.php'">-->
+					<button type="button" class="btn-ok">
+						<img src="images/layer-like-btn-new-01.png" alt="확인">
+					</button>
+					<div class="line"></div>
+					<button type="button" class="btn-sale js-layer-close" data-layer="#layerWinner">
+						<img src="images/layer-like-btn-new-02.png" alt="">
+					</button>
+				</div>
+			</section>
+		</div>
+		
+		<!-- layer : 당첨자 팝업 -->
+		<div class="layer-wrap layer-winner" id="layerWinner">
+			<section class="layer layer--medium">
+				<!--				<button type="button" class="layer-close" onclick="location.href='./index.php'">-->
+				<button type="button" class="layer-close js-layer-close">
+					<span class="for-a11y">당첨자 레이어 팝업 닫기</span>
+				</button>
+				<h1 class="title">
+					<img src="images/layer-winner-title.png" alt="" class="popup-image">
+				</h1>
+				<div class="list-area">
+					<div class="block 1st">
+						<div class="title-block">
+							<span>최종 수상작 (10인)</span>
+						</div>
+						<div class="list">
+							<div class="inner">
+								<span>1.황*정 (010-****-3140)</span>
+								<span>2.이*예 (010-****-6790)</span>
+								<span>3.방*영 (010-****-2306)</span>
+								<span>4.조*주 (010-****-6838)</span>
+								<span>5.이*희 (010-****-1997)</span>
+								<span>6.김*준 (010-****-6327)</span>
+								<span>7.조*주 (010-****-8086)</span>
+								<span>8.오*비 (010-****-2054)</span>
+								<span>9.김*미 (010-****-9095)</span>
+								<span>10.정*영 (010-****-5121)</span>
+							</div>
+						</div>
+					</div>
+					<div class="block 2nd"></div>
 				</div>
 				<div class="btn-wrap">
 					<!--					<button type="button" class="btn-ok" onclick="location.href='./index.php'">-->
 					<button type="button" class="btn-ok">
-						<img src="images/layer-like-btn-01.png" alt="확인">
+						<img src="images/layer-winner-btn.png" alt="확인">
 					</button>
-					<button type="button" class="btn-sale js-layer-close">
-						<img src="images/layer-like-btn-02.png" alt="55%할인 효과 고쿠쥰 로션&밀크 특별 할인 구매">
-					</button>
+					
 				</div>
 			</section>
 		</div>

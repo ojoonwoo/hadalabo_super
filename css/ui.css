@@ -1357,10 +1357,10 @@ img {
 	background: url('../images/layer-clause-bg.jpg') no-repeat 0 0;
 	background-size: 100% 100%;
 /*	height: 415px;*/
-	padding: 64px 0 56px;
+	padding: 54px 0 16px;
 }
 .layer-like .title {
-	padding: 0 0 16px;
+	padding: 0 0 22px;
 	text-align: center;
 	font-size: 0;
 }
@@ -1375,24 +1375,30 @@ img {
 	font-size: 0;
 }
 .layer-like .btn-wrap button {
-	display: inline-block;
-	border-radius: 21px;
+	display: block;
+/*	border-radius: 21px;*/
 	/*	width: 100%;*/
-	width: 224px;
-	background: #fff;
+	margin: 0 auto;
 	text-align: center;
 	line-height: 0;
+/*
 	-webkit-box-shadow: 12px 12px 10px rgba(38, 49, 54, 0.33);
 	box-shadow: 12px 12px 10px rgba(38, 49, 54, 0.33);
+*/
 }
-.layer-like .btn-wrap button:first-child {
-	margin-right: 12px;
+.layer-like .btn-wrap button.btn-ok {
+}
+.layer-like .btn-wrap .line {
+	width: 488px;
+	height: 1px;
+	background: #004071;
+	margin: 8px auto 25px;
 }
 .layer-like .btn-wrap button img {
 	display: block;
-	padding: 12px 0 11px;
-	margin: 0 auto;
-	width: 192px;
+/*	padding: 12px 0 11px;*/
+/*	margin: 0 auto;*/
+/*	width: 192px;*/
 }
 
 .layer-complete .layer {
