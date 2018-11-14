@@ -383,7 +383,7 @@
 							</a>
 						</li>
 						<li class="buy-link">
-							<a href="http://www.oliveyoung.co.kr/store/goods/getGoodsDetail.do?goodsNo=A000000117864&dispCatNo=1000001000100010009" target="_blank">
+							<a href="https://smartstore.naver.com/cosnique/products/264931382" target="_blank">
 								<img src="./images/main-section-05-link.png" alt="">
 							</a>
 						</li>
@@ -687,9 +687,34 @@
 						<img src="images/layer-like-btn-new-01.png" alt="확인">
 					</button>
 					<div class="line"></div>
-					<button type="button" class="btn-sale js-layer-close" data-layer="#layerWinner">
+					<button type="button" class="btn-winner js-layer-close" data-layer="#layerWinner">
 						<img src="images/layer-like-btn-new-02.png" alt="">
 					</button>
+				</div>
+			</section>
+		</div>
+		
+		<!-- layer : 이벤트 진행 팝업 -->
+		<div class="layer-wrap layer-continue" id="layerContinue">
+			<section class="layer layer--medium">
+				<!--				<button type="button" class="layer-close" onclick="location.href='./index.php'">-->
+				<button type="button" class="layer-close js-layer-close">
+					<span class="for-a11y">이벤트 진행 레이어 팝업 닫기</span>
+				</button>
+				<h1 class="title">
+					<img src="images/layer-continue-title.png" alt="" class="popup-image">
+				</h1>
+				<!-- <div class="product-image">
+					<img src="./images/layer-like-product.png" alt="">
+				</div> -->
+				<div class="btn-wrap">
+					<!--					<button type="button" class="btn-ok" onclick="location.href='./index.php'">-->
+					<button type="button" class="btn-ok">
+						<img src="images/layer-continue-btn.png" alt="확인">
+					</button>
+					<!-- <button type="button" class="btn-sale js-layer-close">
+						<img src="images/layer-like-btn-02.png" alt="55%할인 효과 고쿠쥰 로션&밀크 특별 할인 구매">
+					</button> -->
 				</div>
 			</section>
 		</div>
@@ -701,37 +726,69 @@
 				<button type="button" class="layer-close js-layer-close">
 					<span class="for-a11y">당첨자 레이어 팝업 닫기</span>
 				</button>
-				<h1 class="title">
-					<img src="images/layer-winner-title.png" alt="" class="popup-image">
-				</h1>
 				<div class="list-area">
-					<div class="block 1st">
-						<div class="title-block">
-							<span>최종 수상작 (10인)</span>
-						</div>
+					<div class="block _1st">
 						<div class="list">
 							<div class="inner">
-								<span>1.황*정 (010-****-3140)</span>
-								<span>2.이*예 (010-****-6790)</span>
-								<span>3.방*영 (010-****-2306)</span>
-								<span>4.조*주 (010-****-6838)</span>
-								<span>5.이*희 (010-****-1997)</span>
-								<span>6.김*준 (010-****-6327)</span>
-								<span>7.조*주 (010-****-8086)</span>
-								<span>8.오*비 (010-****-2054)</span>
-								<span>9.김*미 (010-****-9095)</span>
-								<span>10.정*영 (010-****-5121)</span>
+								<span>김*미 (010-****-9095)</span>
+								<span>김*준 (010-****-6327)</span>
+								<span>방*영 (010-****-2306)</span>
+								<span>오*비 (010-****-2054)</span>
+								<span>이*예 (010-****-6790)</span>
+								<span>이*희 (010-****-1997)</span>
+								<span>정*영 (010-****-5121)</span>
+								<span>조*주 (010-****-6838)</span>
+								<span>조*주 (010-****-8086)</span>
+								<span>황*정 (010-****-3140)</span>
 							</div>
 						</div>
 					</div>
-					<div class="block 2nd"></div>
-				</div>
-				<div class="btn-wrap">
-					<!--					<button type="button" class="btn-ok" onclick="location.href='./index.php'">-->
-					<button type="button" class="btn-ok">
-						<img src="images/layer-winner-btn.png" alt="확인">
-					</button>
-					
+					<div class="block _2nd">
+						<div class="list">
+							<div class="inner">
+								<span>김*정 (010-****-6884)</span>
+								<span>김*지 (010-****-8329)</span>
+								<span>김*진 (010-****-4250)</span>
+								<span>김*현 (010-****-8311)</span>
+								<span>김*현 (010-****-4740)</span>
+								<span>김*혜 (010-****-2127)</span>
+								<span>김*환 (010-****-4117)</span>
+								<span>김*희 (010-****-7159)</span>
+								<span>노*기 (010-****-1662)</span>
+								<span>박*경 (010-****-4770)</span>
+								<span>박*린 (010-****-7933)</span>
+								<span>박*미 (010-****-8796)</span>
+								<span>박*비 (010-****-3408)</span>
+								<span>백*영 (010-****-1157)</span>
+								<span>송*이 (010-****-5830)</span>
+								<span>신*수 (010-****-0030)</span>
+								<span>신*호 (010-****-3767)</span>
+								<span>오*람 (010-****-1331)</span>
+								<span>원*현 (010-****-4070)</span>
+								<span>이* (010-****-3929)</span>
+								<span>이*만 (010-****-5478)</span>
+								<span>이*민 (010-****-7024)</span>
+								<span>이*실 (010-****-1062)</span>
+								<span>이*옥 (010-****-5685)</span>
+								<span>이*완 (010-****-4346)</span>
+								<span>이*혜 (010-****-1613)</span>
+								<span>임*리 (010-****-5592)</span>
+								<span>임*영 (010-****-5094)</span>
+								<span>전*연 (010-****-8315)</span>
+								<span>전*정 (010-****-3113)</span>
+								<span>전*진 (010-****-2067)</span>
+								<span>정*선 (010-****-8292)</span>
+								<span>정*염 (010-****-0468)</span>
+								<span>정*철 (010-****-1779)</span>
+								<span>정*혜 (010-****-5322)</span>
+								<span>정*화 (010-****-5418)</span>
+								<span>조*은 (010-****-0470)</span>
+								<span>최*영 (010-****-1700)</span>
+								<span>최*원 (010-****-9572)</span>
+								<span>최*지 (010-****-8202)</span>
+							</div>
+						</div>
+					</div>
 				</div>
 			</section>
 		</div>
@@ -1028,6 +1085,16 @@
 					scrollTop: $('.main-section--04').offset().top
 				}, 1300);
 			});
+			$('#layerLike .btn-winner').on('click', function() {
+				hadalaboUI.layer.close($('#layerLike'));
+				hadalaboUI.layer.open($('#layerWinner'));
+			});
+//			$('#layerContinue .btn-ok').on('click', function() {
+//				hadalaboUI.layer.close($('#layerContinue'));
+//				$('html, body').animate({
+//					scrollTop: $('.main-section--04').offset().top
+//				}, 1300);
+//			});
 
 			$(".search").on("click", function(){
 				new daum.Postcode({

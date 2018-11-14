@@ -1643,6 +1643,103 @@ img {
 	width: 111px;
 }
 
+.layer-continue .layer {
+	background: url('../images/layer-clause-bg.jpg') no-repeat 0 0;
+	background-size: 100% 100%;
+	/*	height: 415px;*/
+	padding: 30px 0 24px;
+}
+.layer-continue .title {
+	padding: 0 0 15px;
+	text-align: center;
+	font-size: 0;
+}
+.layer-continue .title img {
+	width: 287px;
+	margin: 0 auto;
+}
+.layer-continue .product-image img {
+	width: 50px;
+	margin: 0 auto;
+	padding-bottom: 6px;
+}
+.layer-continue .btn-wrap {
+	text-align: center;
+	font-size: 0;
+}
+.layer-continue .btn-wrap .line {
+	width: 89%;
+	height: 1px;
+	background: #004071;
+	margin: 13px auto 9px;
+}
+.layer-continue .btn-wrap button {
+	display: inline-block;
+	border-radius: 17px;
+	/*	width: 100%;*/
+	width: 150px;
+	background: #fee4db;
+	text-align: center;
+	line-height: 0;
+	-webkit-box-shadow: 0 6px 5px rgba(38, 49, 54, 0.33);
+	box-shadow: 0 6px 5px rgba(38, 49, 54, 0.33);
+}
+.layer-continue .btn-wrap button:first-child {
+	background: #fff;
+}
+.layer-continue .btn-wrap button img {
+	display: block;
+	padding: 5px 0 6px;
+	margin: 0 auto;
+	height: 9px;
+}
+.layer-continue .btn-wrap button:first-child img {
+/*	padding: ;*/
+	height: 11px;
+}
+
+.layer-winner .layer {
+	background: url(../images/layer-winner-bg.png) no-repeat 0 0;
+	background-size: 100% 100%;
+	width: 100%;
+	max-width: 334px;
+	height: 428px;
+	padding: 0;
+}
+.layer-winner .layer .list-area {
+	position: absolute;
+	top: 135px;
+	left: 26px;
+	width: 265px;
+}
+.layer-winner .layer .list-area .block._1st {
+	height: 94px;
+	margin-bottom: 10px;
+}
+.layer-winner .layer .list-area .block._2nd {
+	height: 149px;
+}
+.layer-winner .layer .list-area .block {
+	padding: 20px 9px 16px 19px;
+	box-sizing: border-box;
+}
+.layer-winner .layer .list-area .block .list {
+	height: 100%;
+	padding-right: 12px;
+	overflow: scroll;
+}
+.layer-winner .layer .list-area .block .inner {
+	font-size: 0;
+}
+.layer-winner .layer .list-area .block .inner span {
+	text-align: center;
+	display: inline-block;
+	width: 50%;
+	font-size: 10px;
+	color: #004071;
+	line-height: 18px;
+}
+
 .layer-complete .layer {
 	background: url('../images/layer-lead-bg.jpg') no-repeat 0 0;
 	background-size: 100% 100%;
